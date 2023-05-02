@@ -1,0 +1,7 @@
+items:
+- phone
+- ipad
+quantity: 2
+price:
+  phone: 500€
+  ipad: 1000€
