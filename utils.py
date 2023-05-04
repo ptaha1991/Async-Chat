@@ -43,9 +43,11 @@ def process_ans(message):
 
 # Server
 def process_client_message(msg):
-    if msg['action'] == 'presence' and msg['user']['account_name'] == 'User':
+    if 'action' in msg and msg['action'] == 'presence' and 'time' in msg and \
+            'user' in msg and msg['user']['account_name'] == 'User':
         return {'response': 200}
     return {
         'response': 400,
         'error': 'Bad Request'
     }
+
