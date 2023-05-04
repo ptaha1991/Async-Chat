@@ -21,10 +21,13 @@
 # ○ -a <addr> — IP-адрес для прослушивания (по умолчанию слушает все
 # доступные адреса).
 import json
+import logging
 import sys
 from socket import socket, AF_INET, SOCK_STREAM
 
 from utils import get_message, process_client_message, send_message
+
+server_logger = logging.getLogger('server')
 
 
 def main():
@@ -36,11 +39,11 @@ def main():
         if listen_port < 1024 or listen_port > 65535:
             raise ValueError
     except IndexError:
-        print('После параметра -\'p\' необходимо указать номер порта.')
+        server_logger.critical(f'Неподходящий порт {listen_port}. В качастве порта может быть указано только число в диапазоне от 1024 до 65535.')
         sys.exit(1)
     except ValueError:
-        print(
-            'В качастве порта может быть указано только число в диапазоне от 1024 до 65535.')
+        server_logger.critical(
+            'ValueError. В качастве порта может быть указано только число в диапазоне от 1024 до 65535.')
         sys.exit(1)
 
 
@@ -51,7 +54,7 @@ def main():
             listen_address = ''
 
     except IndexError:
-        print(
+        server_logger.error(
             'После параметра \'a\'- необходимо указать адрес, который будет слушать сервер.')
         sys.exit(1)
 
@@ -61,13 +64,15 @@ def main():
 
     while True:
         client, client_address = s.accept()
+        server_logger.info(f'Установлено соедение с ПК {client_address}')
         try:
             message_from_client = get_message(client)
+            server_logger.info(f'Получено сообщение {message_from_client}')
             response = process_client_message(message_from_client)
             send_message(client, response)
             client.close()
         except (ValueError, json.JSONDecodeError):
-            print('Принято некорретное сообщение от клиента.')
+            server_logger.error('Принято некорретное сообщение от клиента.')
             client.close()
 
 

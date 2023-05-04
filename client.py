@@ -12,10 +12,14 @@
 # ○ addr — ip-адрес сервера;
 # ○ port — tcp-порт на сервере, по умолчанию 7777.
 import json
+import logging
 import sys
 from socket import AF_INET, SOCK_STREAM, socket
+import log.client_log_config
 
 from utils import create_presence, send_message, process_ans, get_message
+
+client_logger = logging.getLogger('server')
 
 
 def main():
@@ -28,7 +32,7 @@ def main():
         server_address = '127.0.0.1'
         server_port = 7777
     except ValueError:
-        print('Порт может быть в диапазоне от 1024 до 65535.')
+        client_logger.critical('Порт может быть в диапазоне от 1024 до 65535.')
         sys.exit(1)
 
     s = socket(AF_INET, SOCK_STREAM)
@@ -38,9 +42,9 @@ def main():
 
     try:
         answer = process_ans(get_message(s))
-        print(answer)
+        client_logger.info(f'Принят ответ от сервера {answer}')
     except (ValueError, json.JSONDecodeError):
-        print('Не удалось декодировать сообщение сервера.')
+        client_logger.error('Не удалось декодировать сообщение сервера.')
 
 
 if __name__ == '__main__':
