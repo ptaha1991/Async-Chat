@@ -8,7 +8,6 @@
 # Журналирование обработки исключений try/except.
 # Вместо функции print() использовать журналирование и обеспечить вывод служебных сообщений в лог-файл;
 
-
 import logging.handlers
 import os
 import sys
@@ -31,10 +30,11 @@ log_file.setFormatter(formatter)
 logger = logging.getLogger('server')
 logger.addHandler(error_hand)
 logger.addHandler(log_file)
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.INFO)
 
 
 if __name__ == '__main__':
     logger.critical('Creeping death detected!')
     logger.error('Error')
+    logger.debug('Debug')
     logger.info('INFO')

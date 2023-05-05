@@ -1,3 +1,7 @@
-2023-05-04 16:40:44,536 CRITICAL client_log_config.py Creeping death detected!
-2023-05-04 16:40:44,536 ERROR client_log_config.py Error
-2023-05-04 16:40:44,536 INFO client_log_config.py INFO
+2023-05-05 13:04:06,338 CRITICAL client_log_config.py Creeping death detected!
+2023-05-05 13:04:06,338 ERROR client_log_config.py Error
+2023-05-05 13:04:06,338 INFO client_log_config.py INFO
+2023-05-05 13:25:20,415 INFO client.py Принят ответ от сервера 200 : OK
+2023-05-05 13:26:46,720 INFO client.py Принят ответ от сервера 200 : OK
+2023-05-05 13:28:37,454 INFO client.py Принят ответ от сервера 200 : OK
+2023-05-05 17:11:34,208 INFO client.py Принят ответ от сервера 200 : OK

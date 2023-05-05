@@ -3,7 +3,6 @@ import os
 import sys
 sys.path.append('../')
 
-logger = logging.getLogger('client')
 
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(filename)s %(message)s')
 
@@ -14,17 +13,18 @@ error_hand = logging.StreamHandler(sys.stderr)
 error_hand.setLevel(logging.ERROR)
 error_hand.setFormatter(formatter)
 
-# настроить ежедневную ротацию лог-файлов
-log_file = logging.FileHandler(PATH, encoding='utf8')
+log_file = logging.FileHandler(PATH,  encoding='utf8')
 log_file.setFormatter(formatter)
 
 
+logger = logging.getLogger('client')
 logger.addHandler(error_hand)
 logger.addHandler(log_file)
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.INFO)
 
 
 if __name__ == '__main__':
     logger.critical('Creeping death detected!')
     logger.error('Error')
+    logger.debug('Debug')
     logger.info('INFO')

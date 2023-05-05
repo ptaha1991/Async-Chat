@@ -1,31 +1,19 @@
-# Реализовать простое клиент-серверное взаимодействие по протоколу JIM (JSON instant messaging):
-# a. клиент отправляет запрос серверу;
-# b. сервер отвечает соответствующим кодом результата.
-# Клиент и сервер должны быть реализованы в виде отдельных скриптов, содержащих соответствующие функции.
-#
-# Функции клиента:
-# ● сформировать presence-сообщение;
-# ● отправить сообщение серверу;
-# ● получить ответ сервера;
-# ● разобрать сообщение сервера;
-# ● параметры командной строки скрипта client.py <addr> [<port>]:
-# ○ addr — ip-адрес сервера;
-# ○ port — tcp-порт на сервере, по умолчанию 7777.
 import json
 import logging
 import sys
 from socket import AF_INET, SOCK_STREAM, socket
-import log.client_log_config
 
 from utils import create_presence, send_message, process_ans, get_message
+import log.client_log_config
 
-client_logger = logging.getLogger('server')
+client_logger = logging.getLogger('client')
 
 
 def main():
     try:
         server_address = sys.argv[1]
         server_port = int(sys.argv[2])
+        print((server_address, server_port))
         if server_port < 1024 or server_port > 65535:
             raise ValueError
     except IndexError:
