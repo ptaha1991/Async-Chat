@@ -30,7 +30,7 @@ log_file.setFormatter(formatter)
 logger = logging.getLogger('server')
 logger.addHandler(error_hand)
 logger.addHandler(log_file)
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 
 
 if __name__ == '__main__':

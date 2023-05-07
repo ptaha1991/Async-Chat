@@ -1,7 +1,10 @@
 import json
 import time
 
+from decorator import logs
 
+
+@logs
 def get_message(client):
     encoded_response = client.recv(1024)
     if isinstance(encoded_response, bytes):
@@ -12,7 +15,7 @@ def get_message(client):
         raise ValueError
     raise ValueError
 
-
+@logs
 def send_message(s, msg):
     js_message = json.dumps(msg)
     encoded_message = js_message.encode('utf-8')
@@ -20,6 +23,7 @@ def send_message(s, msg):
 
 
 # Client
+@logs
 def create_presence(account_name='User'):
     presense = {
         'action': 'presence',
@@ -33,6 +37,7 @@ def create_presence(account_name='User'):
     return presense
 
 
+@logs
 def process_ans(message):
     if 'response' in message:
         if message['response'] == 200:
@@ -42,6 +47,7 @@ def process_ans(message):
 
 
 # Server
+@logs
 def process_client_message(msg):
     if 'action' in msg and msg['action'] == 'presence' and 'time' in msg and \
             'user' in msg and msg['user']['account_name'] == 'User':
@@ -50,4 +56,3 @@ def process_client_message(msg):
         'response': 400,
         'error': 'Bad Request'
     }
-
