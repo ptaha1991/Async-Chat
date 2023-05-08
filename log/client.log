@@ -1,0 +1,48 @@
+2023-05-05 13:04:06,338 CRITICAL client_log_config.py Creeping death detected!
+2023-05-05 13:04:06,338 ERROR client_log_config.py Error
+2023-05-05 13:04:06,338 INFO client_log_config.py INFO
+2023-05-05 13:25:20,415 INFO client.py Принят ответ от сервера 200 : OK
+2023-05-05 13:26:46,720 INFO client.py Принят ответ от сервера 200 : OK
+2023-05-05 13:28:37,454 INFO client.py Принят ответ от сервера 200 : OK
+2023-05-05 17:11:34,208 INFO client.py Принят ответ от сервера 200 : OK
+2023-05-06 21:33:27,933 INFO client.py Принят ответ от сервера 200 : OK
+2023-05-06 21:36:52,364 INFO client.py Принят ответ от сервера 200 : OK
+2023-05-06 21:38:14,524 INFO client.py Принят ответ от сервера 200 : OK
+2023-05-06 21:41:00,041 INFO client.py Принят ответ от сервера 200 : OK
+2023-05-06 21:41:36,580 INFO client.py Принят ответ от сервера 200 : OK
+2023-05-06 21:42:24,952 INFO client.py Принят ответ от сервера 200 : OK
+2023-05-06 21:43:15,727 INFO client.py Принят ответ от сервера 200 : OK
+2023-05-06 21:48:08,110 INFO client.py Принят ответ от сервера 200 : OK
+2023-05-07 20:31:28,763 INFO client.py Принят ответ от сервера 200 : OK
+2023-05-07 20:35:00,438 INFO client.py Принят ответ от сервера 200 : OK
+2023-05-07 20:37:16,677 INFO client.py Принят ответ от сервера 200 : OK
+2023-05-07 20:38:21,647 INFO client.py Принят ответ от сервера 200 : OK
+2023-05-07 20:40:36,323 INFO client.py Принят ответ от сервера 200 : OK
+2023-05-07 20:43:55,889 DEBUG decorator.py Функция  "create_presence" c аргументами (), {} вызвана из функции "main"
+2023-05-07 20:43:55,890 DEBUG decorator.py Функция  "send_message" c аргументами (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55801), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1683485035.884636, 'type': 'status', 'user': {'account_name': 'User', 'status': 'Yep, I am here!'}}), {} вызвана из функции "main"
+2023-05-07 20:43:55,891 DEBUG decorator.py Функция  "get_message" c аргументами (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55801), raddr=('127.0.0.1', 7777)>,), {} вызвана из функции "main"
+2023-05-07 20:43:55,891 DEBUG decorator.py Функция  "process_ans" c аргументами ({'response': 200},), {} вызвана из функции "main"
+2023-05-07 20:43:55,891 INFO client.py Принят ответ от сервера 200 : OK
+2023-05-07 20:44:37,894 DEBUG decorator.py Функция  "create_presence" c аргументами (), {} вызвана из функции "main"
+2023-05-07 20:44:37,894 DEBUG decorator.py Функция  "send_message" c аргументами (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55802), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1683485077.8890681, 'type': 'status', 'user': {'account_name': 'User', 'status': 'Yep, I am here!'}}), {} вызвана из функции "main"
+2023-05-07 20:44:37,895 DEBUG decorator.py Функция  "get_message" c аргументами (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55802), raddr=('127.0.0.1', 7777)>,), {} вызвана из функции "main"
+2023-05-07 20:44:37,896 DEBUG decorator.py Функция  "process_ans" c аргументами ({'response': 200},), {} вызвана из функции "main"
+2023-05-07 20:44:37,896 INFO client.py Принят ответ от сервера 200 : OK
+2023-05-07 20:55:47,954 DEBUG decorator.py Функция  "create_presence" c аргументами (), {} вызвана из функции "main"
+2023-05-07 20:55:47,955 DEBUG decorator.py Функция  "send_message" c аргументами (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55806), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1683485747.948361, 'type': 'status', 'user': {'account_name': 'User', 'status': 'Yep, I am here!'}}), {} вызвана из функции "main"
+2023-05-07 20:55:47,956 DEBUG decorator.py Функция  "get_message" c аргументами (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55806), raddr=('127.0.0.1', 7777)>,), {} вызвана из функции "main"
+2023-05-07 20:55:47,956 DEBUG decorator.py Функция  "process_ans" c аргументами ({'response': 200},), {} вызвана из функции "main"
+2023-05-07 20:55:47,956 INFO client.py Принят ответ от сервера 200 : OK
+2023-05-07 20:57:19,771 DEBUG decorator.py Функция  "create_presence" c аргументами (), {} вызвана из функции "main"
+2023-05-07 20:57:19,772 DEBUG decorator.py Функция  "send_message" c аргументами (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55807), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1683485839.765137, 'type': 'status', 'user': {'account_name': 'User', 'status': 'Yep, I am here!'}}), {} вызвана из функции "main"
+2023-05-07 20:57:19,773 DEBUG decorator.py Функция  "get_message" c аргументами (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55807), raddr=('127.0.0.1', 7777)>,), {} вызвана из функции "main"
+2023-05-07 20:57:19,773 DEBUG decorator.py Функция  "process_ans" c аргументами ({'response': 200},), {} вызвана из функции "main"
+2023-05-07 20:57:19,773 INFO client.py Принят ответ от сервера 200 : OK
+2023-05-07 20:58:00,906 DEBUG decorator.py Функция  "create_presence" c аргументами (), {} вызвана из функции "main"
+2023-05-07 20:58:00,906 DEBUG decorator.py Функция  "send_message" c аргументами (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55808), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1683485880.901196, 'type': 'status', 'user': {'account_name': 'User', 'status': 'Yep, I am here!'}}), {} вызвана из функции "main"
+2023-05-07 20:58:00,912 DEBUG decorator.py Функция  "get_message" c аргументами (<socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 55808)>,), {} вызвана из функции "main"
+2023-05-07 20:58:00,912 DEBUG decorator.py Функция  "process_client_message" c аргументами ({'action': 'presence', 'time': 1683485880.901196, 'type': 'status', 'user': {'account_name': 'User', 'status': 'Yep, I am here!'}},), {} вызвана из функции "main"
+2023-05-07 20:58:00,912 DEBUG decorator.py Функция  "send_message" c аргументами (<socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 55808)>, {'response': 200}), {} вызвана из функции "main"
+2023-05-07 20:58:00,913 DEBUG decorator.py Функция  "get_message" c аргументами (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55808), raddr=('127.0.0.1', 7777)>,), {} вызвана из функции "main"
+2023-05-07 20:58:00,913 DEBUG decorator.py Функция  "process_ans" c аргументами ({'response': 200},), {} вызвана из функции "main"
+2023-05-07 20:58:00,913 INFO client.py Принят ответ от сервера 200 : OK
