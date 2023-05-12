@@ -1,12 +1,11 @@
 import logging
 import sys
-import time
 from argparse import ArgumentParser
 from select import select
 from socket import socket, AF_INET, SOCK_STREAM
 
 from decorator import logs
-from utils import get_message, process_client_message, send_message
+from utils import get_message, process_client_message, message_to_client
 import log.server_log_config
 
 server_logger = logging.getLogger('server')
@@ -40,6 +39,7 @@ def main():
         f'Если адрес не указан, принимаются соединения с любых адресов.')
     clients_list = []
     messages_list = []
+    names = dict()
 
     s = socket(AF_INET, SOCK_STREAM)
     s.bind((listen_address, listen_port))
@@ -67,26 +67,19 @@ def main():
             for client_with_message in r:
                 try:
                     process_client_message(get_message(client_with_message),
-                                           messages_list, client_with_message)
+                                           messages_list, client_with_message, clients_list, names)
                 except:
                     server_logger.info(f'Клиент {client_with_message.getpeername()} отключился от сервера.')
                     clients_list.remove(client_with_message)
 
-        if messages_list and w:
-            print(messages_list)
-            message = {
-                'action': 'message',
-                'time': time.time(),
-                'sender': messages_list[0][0],
-                'message_text': messages_list[0][1]
-            }
-            del messages_list[0]
-            for waiting_client in w:
-                try:
-                    send_message(waiting_client, message)
-                except:
-                    server_logger.info(f'Клиент {waiting_client.getpeername()} отключился от сервера.')
-                    clients_list.remove(waiting_client)
+        for i in messages_list:
+            try:
+                message_to_client(i, names, w)
+            except:
+                server_logger.info(f'Связь с клиентом с именем {i["destination"]} была потеряна')
+                clients_list.remove(names[i["destination"]])
+                del names[i["destination"]]
+        messages_list.clear()
 
 
 if __name__ == '__main__':
