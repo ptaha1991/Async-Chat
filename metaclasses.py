@@ -26,14 +26,12 @@ class ServerVerifier(type):
                 pass
             else:
                 for i in ret:
-                    print(i)
                     # i - Instruction(opname='LOAD_GLOBAL', opcode=116, arg=9, argval='send_message',
                     # argrepr='send_message', offset=308, starts_line=201, is_jump_target=False)
                     # opname - имя для операции
                     if i.opname == 'LOAD_GLOBAL':
                         if i.argval not in methods:
                             methods.append(i.argval)
-        print(methods)
         if 'connect' in methods:
             raise TypeError('Использование метода connect недопустимо в серверном классе')
         if not ('SOCK_STREAM' in methods and 'AF_INET' in methods):

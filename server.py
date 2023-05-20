@@ -5,7 +5,7 @@ from select import select
 from socket import socket, AF_INET, SOCK_STREAM
 
 from decorator import logs
-from descriptor import WrongPort
+from descriptor import WrongPort, WrongAddress
 from metaclasses import ServerVerifier
 from utils import get_message, send_message
 import log.server_log_config
@@ -28,6 +28,7 @@ def arg_parser():
 
 class Server(metaclass=ServerVerifier):
     port = WrongPort()
+    address = WrongAddress()
 
     def __init__(self, listen_address, listen_port):
         self.address = listen_address
