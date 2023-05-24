@@ -1,5 +1,6 @@
 import logging
 import sys
+import threading
 from argparse import ArgumentParser
 from select import select
 from socket import socket, AF_INET, SOCK_STREAM
@@ -7,6 +8,7 @@ from socket import socket, AF_INET, SOCK_STREAM
 from decorator import logs
 from descriptor import WrongPort, WrongAddress
 from metaclasses import ServerVerifier
+from server_database import ServerDatabase
 from utils import get_message, send_message
 import log.server_log_config
 
@@ -26,16 +28,18 @@ def arg_parser():
     return listen_address, listen_port
 
 
-class Server(metaclass=ServerVerifier):
+class Server(threading.Thread, metaclass=ServerVerifier):
     port = WrongPort()
     address = WrongAddress()
 
-    def __init__(self, listen_address, listen_port):
+    def __init__(self, listen_address, listen_port, database):
         self.address = listen_address
         self.port = listen_port
         self.clients_list = []
         self.messages_list = []
         self.names = dict()
+        self.database = database
+        super().__init__()
 
     def init_socket(self):
         server_logger.info(
@@ -48,7 +52,7 @@ class Server(metaclass=ServerVerifier):
         self.s = s
         s.listen(5)
 
-    def main_loop(self):
+    def run(self):
         self.init_socket()
 
         while True:
@@ -91,6 +95,8 @@ class Server(metaclass=ServerVerifier):
                 'user' in msg:
             if msg['user']['account_name'] not in self.names.keys():
                 self.names[msg['user']['account_name']] = client
+                client_ip, client_port = client.getpeername()
+                self.database.client_login(msg['user']['account_name'], client_ip)
                 send_message(client, {'response': 200})
             else:
                 send_message(client, {'response': 400, 'error': 'Имя пользователя уже занято.'})
@@ -101,6 +107,7 @@ class Server(metaclass=ServerVerifier):
         elif 'action' in msg and msg['action'] == 'message' and 'time' in msg and 'sender' in msg and \
                 'destination' in msg and 'message_text' in msg:
             self.messages_list.append(msg)
+            self.database.add_contact_to_client(msg['sender'], msg['destination'])
             return
         elif 'action' in msg and msg['action'] == 'exit' and 'user' in msg:
             self.clients_list.remove(self.names[msg['user']])
@@ -125,8 +132,28 @@ class Server(metaclass=ServerVerifier):
 
 def main():
     listen_address, listen_port = arg_parser()
-    server = Server(listen_address, listen_port)
-    server.main_loop()
+    database = ServerDatabase()
+    server = Server(listen_address, listen_port, database)
+    server.daemon = True
+    server.start()
+    print('Просмотр истории (history),Контакты пользователя (contacts), выйти (exit)')
+    while True:
+        command = input('Введите команду: ')
+        if command == 'history':
+            name = input('Введите имя пользователя для просмотра истории или просто нажмите Enter: ')
+            for user in sorted(database.get_clients_history(name)):
+                print(f'Пользователь: {user[0]} время входа: {user[1]}. Вход с: {user[2]}')
+        elif command == 'contacts':
+            name = input('Введите имя пользователя для просмотра контактов пользователя ')
+            if name:
+                for contact in database.get_contacts(name):
+                    print(contact)
+            else:
+                print('Что то пошло не так, попробуйте еще раз!')
+        elif command == 'exit':
+            break
+        else:
+            print('Что то пошло не так, попробуйте еще раз!')
 
 
 if __name__ == '__main__':
