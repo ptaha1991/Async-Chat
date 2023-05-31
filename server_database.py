@@ -41,12 +41,25 @@ class ServerDatabase:
             self.owner_id = owner_id
             self.contact_id = contact_id
 
+    class OnlineClients(Base):
+        __tablename__ = 'online_clients'
+        id = Column(Integer, primary_key=True)
+        client_id = Column(Integer, ForeignKey("clients.id"), nullable=False)
+        client_ip = Column(Integer)
+
+        def __init__(self, client_id, client_ip):
+            self.client_id = client_id
+            self.client_ip = client_ip
+
     def __init__(self):
         self.database_engine = create_engine('sqlite:///server_base.db3', echo=False, pool_recycle=7200)
         Base.metadata.create_all(self.database_engine)
 
         Session = sessionmaker(bind=self.database_engine)
         self.session = Session()
+
+        self.session.query(self.OnlineClients).delete()
+        self.session.commit()
 
     def client_login(self, account_name, ip_address):
         rez = self.session.query(self.Clients).filter_by(name=account_name)
@@ -58,8 +71,16 @@ class ServerDatabase:
             self.session.add(user)
             self.session.commit()
 
+        new_online_client = self.OnlineClients(user.id, ip_address)
+        self.session.add(new_online_client)
+
         history = self.ClientsHistory(user.id, datetime.now(), ip_address)
         self.session.add(history)
+        self.session.commit()
+
+    def client_logout(self, account_name):
+        user = self.session.query(self.Clients).filter_by(name=account_name).first()
+        self.session.query(self.OnlineClients).filter_by(client_id=user.id).delete()
         self.session.commit()
 
     def add_contact_to_client(self, account_name, contact):
@@ -74,6 +95,19 @@ class ServerDatabase:
         self.session.add(contact_new)
         self.session.commit()
 
+    def delete_contact_from_client(self, account_name, contact):
+        user = self.session.query(self.Clients).filter_by(name=account_name).first()
+        contact = self.session.query(self.Clients).filter_by(name=contact).first()
+
+        if not contact:
+            return
+
+        self.session.query(self.ClientsContacts).filter(
+            self.ClientsContacts.owner_id == user.id,
+            self.ClientsContacts.contact_id == contact.id
+        ).delete()
+        self.session.commit()
+
     def get_clients_history(self, account_name=None):
         query = self.session.query(self.Clients.name,
                                    self.ClientsHistory.login_time,
@@ -85,10 +119,20 @@ class ServerDatabase:
         return query.all()
 
     def get_contacts(self, account_name):
-        user = self.session.query(self.Clients).filter_by(name=account_name).first()
-        if not user:
-            return
+        user = self.session.query(self.Clients).filter_by(name=account_name).one()
+
         query = self.session.query(self.ClientsContacts, self.Clients.name). \
             filter_by(owner_id=user.id). \
             join(self.Clients, self.ClientsContacts.contact_id == self.Clients.id)
         return [contact[1] for contact in query.all()]
+
+    def get_online_clients(self):
+        query = self.session.query(
+            self.Clients.name,
+            self.OnlineClients.client_ip,
+        ).join(self.Clients)
+        return query.all()
+
+    def get_clients_list(self):
+        query = self.session.query(self.Clients.name, self.Clients.last_login)
+        return query.all()

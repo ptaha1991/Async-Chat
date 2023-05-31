@@ -14,6 +14,9 @@ import log.server_log_config
 
 server_logger = logging.getLogger('server')
 
+new_connection = False
+conflag_lock = threading.Lock()
+
 
 @logs
 def arg_parser():
@@ -78,6 +81,11 @@ class Server(threading.Thread, metaclass=ServerVerifier):
                         self.process_client_message(get_message(client_with_message), client_with_message)
                     except:
                         server_logger.info(f'Клиент {client_with_message.getpeername()} отключился от сервера.')
+                        for name in self.names:
+                            if self.names[name] == client_with_message:
+                                self.database.client_logout(name)
+                                del self.names[name]
+                                break
                         self.clients_list.remove(client_with_message)
 
             for i in self.messages_list:
@@ -86,10 +94,12 @@ class Server(threading.Thread, metaclass=ServerVerifier):
                 except:
                     server_logger.info(f'Связь с клиентом с именем {i["destination"]} была потеряна')
                     self.clients_list.remove(self.names[i["destination"]])
+                    self.database.client_logout(i["destination"])
                     del self.names[i["destination"]]
             self.messages_list.clear()
 
     def process_client_message(self, msg, client):
+        global new_connection
         server_logger.debug(f'Разбор сообщения от клиента : {msg}')
         if 'action' in msg and msg['action'] == 'presence' and 'time' in msg and \
                 'user' in msg:
@@ -98,6 +108,8 @@ class Server(threading.Thread, metaclass=ServerVerifier):
                 client_ip, client_port = client.getpeername()
                 self.database.client_login(msg['user']['account_name'], client_ip)
                 send_message(client, {'response': 200})
+                with conflag_lock:
+                    new_connection = True
             else:
                 send_message(client, {'response': 400, 'error': 'Имя пользователя уже занято.'})
                 self.clients_list.remove(client)
@@ -107,13 +119,34 @@ class Server(threading.Thread, metaclass=ServerVerifier):
         elif 'action' in msg and msg['action'] == 'message' and 'time' in msg and 'sender' in msg and \
                 'destination' in msg and 'message_text' in msg:
             self.messages_list.append(msg)
-            self.database.add_contact_to_client(msg['sender'], msg['destination'])
+            # self.database.add_contact_to_client(msg['sender'], msg['destination'])
             return
-        elif 'action' in msg and msg['action'] == 'exit' and 'user' in msg:
+        elif 'action' in msg and msg['action'] == 'exit' and 'user' in msg and self.names[msg['user']] == client:
+            self.database.client_logout(msg['user'])
             self.clients_list.remove(self.names[msg['user']])
             self.names[msg['user']].close()
             del self.names[msg['user']]
             return
+
+        elif 'action' in msg and msg['action'] == 'get_contacts' and 'user' in msg and self.names[msg['user']] == client:
+            response = {'response': 202, 'alert': self.database.get_contacts(msg['user'])}
+            send_message(client, response)
+
+        elif 'action' in msg and msg['action'] == 'add_contact' and 'contact' in msg and 'user' in msg \
+                and self.names[msg['user']] == client:
+            self.database.add_contact_to_client(msg['user'], msg['contact'])
+            send_message(client, {'response': 200})
+
+        elif 'action' in msg and msg['action'] == 'delete_contact' and 'contact' in msg and 'user' in msg \
+                and self.names[msg['user']] == client:
+            self.database.delete_contact_from_client(msg['user'], msg['contact'])
+            send_message(client, {'response': 200})
+
+        elif 'action' in msg and msg['action'] == 'clients_request' and 'user' in msg \
+                and self.names[msg['user']] == client:
+            response = {'response': 202, 'alert': [user[0] for user in self.database.get_clients_list()]}
+            send_message(client, response)
+
         else:
             send_message(client, {
                 'response': 400,
