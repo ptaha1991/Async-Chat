@@ -22,7 +22,7 @@ class ServerDatabase:
     class ClientsHistory(Base):
         __tablename__ = 'clients_history'
         id = Column(Integer, primary_key=True)
-        client_id = Column(Integer, ForeignKey("clients.id"), nullable=False)
+        client_id = Column(Integer, ForeignKey('clients.id'), nullable=False)
         login_time = Column(DateTime)
         login_ip = Column(Integer)
 
@@ -34,8 +34,8 @@ class ServerDatabase:
     class ClientsContacts(Base):
         __tablename__ = 'clients_contacts'
         id = Column(Integer, primary_key=True)
-        owner_id = Column(Integer, ForeignKey("clients.id"), nullable=False)
-        contact_id = Column(Integer, ForeignKey("clients.id"), nullable=False)
+        owner_id = Column(Integer, ForeignKey('clients.id'), nullable=False)
+        contact_id = Column(Integer, ForeignKey('clients.id'), nullable=False)
 
         def __init__(self, owner_id, contact_id):
             self.owner_id = owner_id
@@ -44,14 +44,15 @@ class ServerDatabase:
     class OnlineClients(Base):
         __tablename__ = 'online_clients'
         id = Column(Integer, primary_key=True)
-        client_id = Column(Integer, ForeignKey("clients.id"), nullable=False)
+        client_id = Column(Integer, ForeignKey('clients.id'), nullable=False)
         client_ip = Column(Integer)
 
         def __init__(self, client_id, client_ip):
             self.client_id = client_id
             self.client_ip = client_ip
 
-    def __init__(self):
+    def __init__(self, path):
+        print(path)
         self.database_engine = create_engine('sqlite:///server_base.db3', echo=False, pool_recycle=7200)
         Base.metadata.create_all(self.database_engine)
 

@@ -4,10 +4,6 @@ import time
 
 from decorator import logs
 
-import log.client_log_config
-
-client_logger = logging.getLogger('client')
-
 
 @logs
 def get_message(client):
@@ -114,8 +110,3 @@ def clients_list_request(sock, username):
         return ans['alert']
     else:
         raise ValueError
-
-
-
-
-
