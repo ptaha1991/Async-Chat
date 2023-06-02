@@ -55,6 +55,7 @@ class ClientDatabase:
 
     def del_contact(self, contact):
         self.session.query(self.Contacts).filter_by(contact=contact).delete()
+        self.session.commit()
 
     def save_message(self, from_user, to_user, message):
         message_row = self.MessageHistory(from_user, to_user, message)
@@ -63,6 +64,9 @@ class ClientDatabase:
 
     def get_contacts(self):
         return [contact[0] for contact in self.session.query(self.Contacts.contact).all()]
+
+    def get_clients(self):
+        return [client[0] for client in self.session.query(self.KnownClients.username).all()]
 
     def add_users(self, users_list):
         self.session.query(self.KnownClients).delete()
