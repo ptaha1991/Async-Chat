@@ -1,3 +1,8 @@
+import base64
+import json
+
+from Crypto.Cipher import PKCS1_OAEP
+from Crypto.PublicKey import RSA
 from PyQt5.QtCore import Qt, pyqtSlot
 from PyQt5.QtGui import QStandardItemModel, QStandardItem, QBrush, QColor
 from PyQt5.QtWidgets import QDialog, QLabel, QLineEdit, QPushButton, qApp, QMainWindow, QMessageBox
@@ -6,10 +11,11 @@ from main_client_window_ui import Ui_MainClientWindow
 
 
 class ClientMainWindow(QMainWindow):
-    def __init__(self, database, transport):
+    def __init__(self, database, transport, keys):
         super().__init__()
         self.database = database
         self.transport = transport
+        self.decrypter = PKCS1_OAEP.new(keys)
 
         self.ui = Ui_MainClientWindow()
         self.ui.setupUi(self)
@@ -26,6 +32,8 @@ class ClientMainWindow(QMainWindow):
         self.history_model = None
         self.messages = QMessageBox()
         self.current_contact = None
+        self.current_contact_key = None
+        self.encryptor = None
         self.new_current_contact = None
         self.ui.list_message_history.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.ui.list_message_history.setWordWrap(True)
@@ -48,6 +56,10 @@ class ClientMainWindow(QMainWindow):
         self.ui.text_message.setDisabled(True)
         self.ui.btn_add_contact.setDisabled(True)
         self.ui.btn_delete_contact.setDisabled(True)
+
+        self.encryptor = None
+        self.current_contact = None
+        self.current_contact_key = None
 
     def history_list_update(self):
         list_history = sorted(self.database.get_history(self.current_contact), key=lambda item: item[3])
@@ -82,6 +94,21 @@ class ClientMainWindow(QMainWindow):
         self.set_contact()
 
     def set_contact(self):
+        # Запрашиваем публичный ключ пользователя и создаём объект шифрования
+        try:
+            self.current_contact_key = self.transport.key_request(
+                self.current_contact)
+            if self.current_contact_key:
+                self.encryptor = PKCS1_OAEP.new(
+                    RSA.import_key(self.current_contact_key))
+        except (OSError, json.JSONDecodeError):
+            self.current_contact_key = None
+            self.encryptor = None
+
+        if not self.current_contact_key:
+            self.messages.warning(self, 'Ошибка', 'Для выбранного пользователя нет ключа шифрования.')
+            return
+
         self.ui.label_new_message.setText(f'Введите сообщенние для {self.current_contact}:')
         self.ui.btn_send_message.setDisabled(False)
         self.ui.text_message.setDisabled(False)
@@ -146,8 +173,12 @@ class ClientMainWindow(QMainWindow):
         self.ui.text_message.clear()
         if not message_text:
             return
+        # Шифруем сообщение ключом получателя и упаковываем в base64.
+        message_text_encrypted = self.encryptor.encrypt(message_text.encode('utf8'))
+        message_text_encrypted_base64 = base64.b64encode(message_text_encrypted)
         try:
-            self.transport.send_message_to_server(self.current_contact, message_text)
+            self.transport.send_message_to_server(self.current_contact, message_text_encrypted_base64.decode('ascii'))
+
         except OSError as err:
             if err.errno:
                 self.messages.critical(self, 'Ошибка', 'Потеряно соединение с сервером!')
@@ -158,8 +189,18 @@ class ClientMainWindow(QMainWindow):
             self.database.save_message(self.current_contact, 'out', message_text)
             self.history_list_update()
 
-    @pyqtSlot(str)
-    def message(self, sender):
+    @pyqtSlot(dict)
+    def message(self, message):
+        encrypted_message = base64.b64decode(message['message_text'])
+        try:
+            decrypted_message = self.decrypter.decrypt(encrypted_message)
+        except (ValueError, TypeError):
+            self.messages.warning(
+                self, 'Ошибка', 'Не удалось декодировать сообщение.')
+            return
+        self.database.save_message(self.current_contact, 'in', decrypted_message.decode('utf8'))
+
+        sender = message['sender']
         if sender == self.current_contact:
             self.history_list_update()
         else:
@@ -179,18 +220,33 @@ class ClientMainWindow(QMainWindow):
                     self.new_current_contact = sender
                     self.add_contact_action()
                     self.current_contact = sender
+                    # Нужно заново сохранить сообщение, иначе оно будет потеряно,
+                    # т.к. на момент предыдущего вызова контакта не было.
+                    self.database.save_message(
+                        self.current_contact, 'in', decrypted_message.decode('utf8'))
                     self.set_contact()
 
-    # Слот потери соединения
-    # Выдаёт сообщение о ошибке и завершает работу приложения
     @pyqtSlot()
     def connection_lost(self):
         self.messages.warning(self, 'Сбой соединения', 'Потеряно соединение с сервером. ')
         self.close()
 
+    @pyqtSlot()
+    def sig_205(self):
+        if self.current_contact and not self.database.check_user(
+                self.current_contact):
+            self.messages.warning(
+                self,
+                'Сочувствую',
+                'К сожалению собеседник был удалён с сервера.')
+            self.set_disabled_input()
+            self.current_contact = None
+        self.contacts_list_update()
+
     def make_connection(self, trans_obj):
         trans_obj.new_message.connect(self.message)
         trans_obj.connection_lost.connect(self.connection_lost)
+        trans_obj.message_205.connect(self.sig_205)
 
 
 class UserNameDialog(QDialog):
@@ -199,28 +255,37 @@ class UserNameDialog(QDialog):
 
         self.ok_pressed = False
 
-        self.setWindowTitle('Выбор имени')
-        self.setFixedSize(175, 93)
+        self.setWindowTitle('Авторизация')
+        self.setFixedSize(250, 150)
 
         self.label = QLabel('Введите имя:', self)
         self.label.move(10, 10)
-        self.label.setFixedSize(150, 10)
+        self.label.setFixedSize(230, 10)
 
         self.client_name = QLineEdit(self)
-        self.client_name.setFixedSize(154, 20)
+        self.client_name.setFixedSize(230, 20)
         self.client_name.move(10, 30)
 
         self.btn_ok = QPushButton('Начать', self)
-        self.btn_ok.move(10, 60)
+        self.btn_ok.move(10, 100)
         self.btn_ok.clicked.connect(self.click)
 
         self.btn_cancel = QPushButton('Выход', self)
-        self.btn_cancel.move(90, 60)
+        self.btn_cancel.move(140, 100)
         self.btn_cancel.clicked.connect(qApp.exit)
+
+        self.label_passwd = QLabel('Введите пароль:', self)
+        self.label_passwd.move(10, 55)
+        self.label_passwd.setFixedSize(230, 15)
+
+        self.client_passwd = QLineEdit(self)
+        self.client_passwd.setFixedSize(230, 20)
+        self.client_passwd.move(10, 75)
+        self.client_passwd.setEchoMode(QLineEdit.Password)
 
         self.show()
 
     def click(self):
-        if self.client_name.text():
+        if self.client_name.text() and self.client_passwd.text():
             self.ok_pressed = True
             qApp.exit()

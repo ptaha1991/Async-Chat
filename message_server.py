@@ -1,6 +1,4 @@
-import binascii
 import configparser
-import hmac
 import logging
 import os
 import sys
@@ -12,12 +10,12 @@ from socket import socket, AF_INET, SOCK_STREAM
 from PyQt5.QtCore import QTimer
 from PyQt5.QtWidgets import QApplication, QMessageBox
 
-from decorator import logs, login_required
+from decorator import logs
 from descriptor import WrongPort, WrongAddress
 from metaclasses import ServerVerifier
 from server_database import ServerDatabase
 from server_gui import MainWindow, gui_create_model, ConfigWindow, HistoryWindow, create_stat_model, AllClientsWindow, \
-    create_all_users_model, DelUserDialog, RegisterUser
+    create_all_users_model
 from utils import get_message, send_message
 import log.server_log_config
 
@@ -28,7 +26,7 @@ conflag_lock = threading.Lock()
 
 
 @logs
-def arg_parser(default_port, default_address):
+def arg_parser(default_port):
     parser = ArgumentParser()
     parser.add_argument('-p', default=default_port, type=int, nargs='?')
     parser.add_argument('-a', default='', nargs='?')
@@ -47,10 +45,10 @@ class Server(threading.Thread, metaclass=ServerVerifier):
         self.address = listen_address
         self.port = listen_port
         self.clients_list = []
-        self.listen_sockets = None
-        self.error_sockets = None
+        self.messages_list = []
         self.names = dict()
         self.database = database
+
         super().__init__()
 
     def init_socket(self):
@@ -74,13 +72,13 @@ class Server(threading.Thread, metaclass=ServerVerifier):
                 pass
             else:
                 server_logger.info(f'Установлено соедение с ПК {client_address}')
-                client.settimeout(5)
                 self.clients_list.append(client)
 
             r = []
+            w = []
             try:
                 if self.clients_list:
-                    r, self.listen_sockets, self.error_sockets = select(self.clients_list, self.clients_list, [], 0)
+                    r, w, e = select(self.clients_list, self.clients_list, [], 1)
             except OSError:
                 pass
 
@@ -90,163 +88,83 @@ class Server(threading.Thread, metaclass=ServerVerifier):
                         self.process_client_message(get_message(client_with_message), client_with_message)
                     except:
                         server_logger.info(f'Клиент {client_with_message.getpeername()} отключился от сервера.')
+                        for name in self.names:
+                            if self.names[name] == client_with_message:
+                                self.database.client_logout(name)
+                                del self.names[name]
+                                break
                         self.clients_list.remove(client_with_message)
 
-    def remove_client(self, client):
-        server_logger.info(f'Клиент {client.getpeername()} отключился от сервера.')
-        for name in self.names:
-            if self.names[name] == client:
-                self.database.client_logout(name)
-                del self.names[name]
-                break
-        self.clients_list.remove(client)
-        client.close()
+            for i in self.messages_list:
+                try:
+                    self.message_to_client(i, w)
+                except:
+                    server_logger.info(f'Связь с клиентом с именем {i["destination"]} была потеряна')
+                    self.clients_list.remove(self.names[i['destination']])
+                    self.database.client_logout(i['destination'])
+                    del self.names[i['destination']]
+            self.messages_list.clear()
 
-    @login_required
     def process_client_message(self, msg, client):
+        global new_connection
         server_logger.debug(f'Разбор сообщения от клиента : {msg}')
         if 'action' in msg and msg['action'] == 'presence' and 'time' in msg and \
                 'user' in msg:
-            self.autorize_user(msg, client)
-
-            # Если это сообщение, то отправляем его получателю.
-        elif 'action' in msg and msg['action'] == 'message' and 'time' in msg and 'sender' in msg and \
-                'destination' in msg and 'message_text' in msg and self.names[msg['sender']] == client:
-            if msg['destination'] in self.names:
-                self.message_to_client(msg)
-                try:
-                    send_message(client, {'response': 200})
-                except OSError:
-                    self.remove_client(client)
+            if msg['user']['account_name'] not in self.names.keys():
+                self.names[msg['user']['account_name']] = client
+                client_ip, client_port = client.getpeername()
+                self.database.client_login(msg['user']['account_name'], client_ip)
+                send_message(client, {'response': 200})
+                with conflag_lock:
+                    new_connection = True
             else:
-                response = {'response': 400, 'error': 'Пользователь не зарегистрирован на сервере.'}
-                try:
-                    send_message(client, response)
-                except OSError:
-                    pass
+                send_message(client, {'response': 400, 'error': 'Имя пользователя уже занято.'})
+                self.clients_list.remove(client)
+                client.close()
+            return
+
+        elif 'action' in msg and msg['action'] == 'message' and 'time' in msg and 'sender' in msg and \
+                'destination' in msg and 'message_text' in msg:
+            self.messages_list.append(msg)
             return
         elif 'action' in msg and msg['action'] == 'exit' and 'user' in msg and self.names[msg['user']] == client:
-            self.remove_client(client)
+            self.database.client_logout(msg['user'])
+            self.clients_list.remove(self.names[msg['user']])
+            self.names[msg['user']].close()
+            del self.names[msg['user']]
+            return
 
         elif 'action' in msg and msg['action'] == 'get_contacts' and 'user' in msg and self.names[
             msg['user']] == client:
             response = {'response': 202, 'alert': self.database.get_contacts(msg['user'])}
-            try:
-                send_message(client, response)
-            except OSError:
-                self.remove_client(client)
+            send_message(client, response)
 
         elif 'action' in msg and msg['action'] == 'add_contact' and 'contact' in msg and 'user' in msg \
                 and self.names[msg['user']] == client:
             self.database.add_contact_to_client(msg['user'], msg['contact'])
-            try:
-                send_message(client, {'response': 200})
-            except OSError:
-                self.remove_client(client)
+            send_message(client, {'response': 200})
 
         elif 'action' in msg and msg['action'] == 'delete_contact' and 'contact' in msg and 'user' in msg \
                 and self.names[msg['user']] == client:
             self.database.delete_contact_from_client(msg['user'], msg['contact'])
-            try:
-                send_message(client, {'response': 200})
-            except OSError:
-                self.remove_client(client)
+            send_message(client, {'response': 200})
 
         elif 'action' in msg and msg['action'] == 'clients_request' and 'user' in msg \
                 and self.names[msg['user']] == client:
             response = {'response': 202, 'alert': [user[0] for user in self.database.get_clients_list()]}
-            try:
-                send_message(client, response)
-            except OSError:
-                self.remove_client(client)
-
-        elif 'action' in msg and msg['action'] == 'public_key_request' and 'account_name' in msg:
-            response = {'response': 511, 'data': self.database.get_pubkey(msg['account_name'])}
-            if response['data']:
-                send_message(client, response)
-            else:
-                response = {'response': 400, 'error': 'Нет публичного ключа для данного пользователя'}
-                try:
-                    send_message(client, response)
-                except OSError:
-                    self.remove_client(client)
+            send_message(client, response)
 
         else:
-            send_message(client, {
-                'response': 400,
-                'error': 'Bad Request'
-            })
+            send_message(client, {'response': 400, 'error': 'Bad Request'})
             return
 
-    def message_to_client(self, msg):
-        if msg['destination'] in self.names and self.names[msg['destination']] in self.listen_sockets:
-            try:
-                send_message(self.names[msg['destination']], msg)
-                server_logger.info(
-                    f'Отправлено сообщение пользователю {msg["destination"]} от пользователя {msg["sender"]}.')
-            except OSError:
-                self.remove_client(msg["destination"])
-        elif msg["destination"] in self.names and self.names[msg["destination"]] not in self.listen_sockets:
-            server_logger.error(
-                f'Связь с клиентом {msg["destination"]} была потеряна. Соединение закрыто, доставка невозможна.')
-            self.remove_client(self.names[msg["destination"]])
+    def message_to_client(self, msg, listen_socks):
+        if msg['destination'] in self.names and self.names[msg['destination']] in listen_socks:
+            send_message(self.names[msg['destination']], msg)
+            server_logger.info(
+                f'Отправлено сообщение пользователю {msg["destination"]} от пользователя {msg["sender"]}.')
         else:
-            server_logger.error(
-                f'Пользователь {msg["destination"]} не зарегистрирован на сервере, отправка сообщения невозможна.')
-
-    def autorize_user(self, message, sock):
-        server_logger.debug(f'Start auth process for {message["user"]}')
-        if message['user']['account_name'] in self.names.keys():
-            response = {'response': 400, 'error': 'Имя пользователя уже занято.'}
-            try:
-                send_message(sock, response)
-            except OSError:
-                pass
-            self.clients_list.remove(sock)
-            sock.close()
-        elif not self.database.check_user(message['user']['account_name']):
-            response = {'response': 400, 'error': 'Пользователь не зарегистрирован.'}
-            try:
-                send_message(sock, response)
-            except OSError:
-                pass
-            self.clients_list.remove(sock)
-            sock.close()
-        else:
-            server_logger.debug('Correct username, starting passwd check.')
-            message_auth = {'response': 511, 'data': None}
-            # Набор байтов в hex представлении
-            random_str = binascii.hexlify(os.urandom(64))
-            message_auth['data'] = random_str.decode('ascii')
-            # Создаём хэш пароля и связки с рандомной строкой, сохраняем серверную версию ключа
-            hash = hmac.new(self.database.get_hash(message['user']['account_name']), random_str, 'MD5')
-            digest = hash.digest()
-            server_logger.debug(f'Auth message = {message_auth}')
-            try:
-                send_message(sock, message_auth)
-                ans = get_message(sock)
-            except OSError as err:
-                server_logger.debug('Error in auth, data:', exc_info=err)
-                sock.close()
-                return
-            client_digest = binascii.a2b_base64(ans['data'])
-            if 'response' in ans and ans['response'] == 511 and hmac.compare_digest(digest, client_digest):
-                self.names[message['user']['account_name']] = sock
-                client_ip, client_port = sock.getpeername()
-                send_message(sock, {'response': 200})
-                self.database.client_login(message['user']['account_name'], client_ip, message['user']['public_key'])
-            else:
-                response = {'response': 400, 'error': 'Неверный пароль.'}
-                try:
-                    send_message(sock, response)
-                except OSError:
-                    pass
-                self.clients_list.remove(sock)
-                sock.close()
-
-    def service_update_lists(self):
-        for client in self.names:
-            send_message(self.names[client], {'response': 205})
+            server_logger.error(f'Отправка сообщения невозможна.')
 
 
 def main():
@@ -277,6 +195,7 @@ def main():
     main_window.active_clients_table.resizeColumnsToContents()
     main_window.active_clients_table.resizeRowsToContents()
 
+    # Функция создающяя окно со списком всех клиентов
     def show_all_clients():
         global all_clients
         all_clients = AllClientsWindow()
@@ -285,11 +204,18 @@ def main():
         all_clients.all_clients_table.resizeRowsToContents()
         all_clients.show()
 
+    # Функция обновляющяя список подключённых, проверяет флаг подключения, и если надо обновляет список
     def list_update():
-        main_window.active_clients_table.setModel(gui_create_model(database))
-        main_window.active_clients_table.resizeColumnsToContents()
-        main_window.active_clients_table.resizeRowsToContents()
+        global new_connection
+        if new_connection:
+            main_window.active_clients_table.setModel(
+                gui_create_model(database))
+            main_window.active_clients_table.resizeColumnsToContents()
+            main_window.active_clients_table.resizeRowsToContents()
+            with conflag_lock:
+                new_connection = False
 
+    # Функция создающяя окно со статистикой клиентов
     def show_statistics():
         global stat_window
         stat_window = HistoryWindow()
@@ -298,25 +224,15 @@ def main():
         stat_window.history_table.resizeRowsToContents()
         stat_window.show()
 
+    # Функция создающяя окно с настройками сервера.
     def server_config():
         global config_window
-        # Создаём окно и заносим в него текущие параметры
         config_window = ConfigWindow()
         config_window.db_path.insert(config['SETTINGS']['Database_path'])
         config_window.db_file.insert(config['SETTINGS']['Database_file'])
         config_window.port.insert(config['SETTINGS']['Default_port'])
         config_window.ip.insert(config['SETTINGS']['Listen_Address'])
         config_window.save_btn.clicked.connect(save_server_config)
-
-    def reg_user():
-        global reg_window
-        reg_window = RegisterUser(database, server)
-        reg_window.show()
-
-    def rem_user():
-        global rem_window
-        rem_window = DelUserDialog(database, server)
-        rem_window.show()
 
     def save_server_config():
         global config_window
@@ -352,8 +268,6 @@ def main():
     main_window.refresh_button.triggered.connect(list_update)
     main_window.show_history_button.triggered.connect(show_statistics)
     main_window.config_btn.triggered.connect(server_config)
-    main_window.register_btn.triggered.connect(reg_user)
-    main_window.remove_btn.triggered.connect(rem_user)
 
     server_app.exec_()
 

@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, create_engine
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, create_engine, Text
 from sqlalchemy.orm import declarative_base, sessionmaker
 
 Base = declarative_base()
@@ -11,11 +11,15 @@ class ServerDatabase:
         __tablename__ = 'clients'
         id = Column(Integer, primary_key=True)
         name = Column(String(30), unique=True)
+        passwd_hash = Column(String)
+        pubkey = Column(Text)
         info = Column(String(255), nullable=True)
         last_login = Column(DateTime)
 
-        def __init__(self, name, info=None):
+        def __init__(self, name, passwd_hash, info=None):
             self.name = name
+            self.passwd_hash = passwd_hash
+            self.pubkey = None
             self.info = info
             self.last_login = datetime.now()
 
@@ -62,15 +66,15 @@ class ServerDatabase:
         self.session.query(self.OnlineClients).delete()
         self.session.commit()
 
-    def client_login(self, account_name, ip_address):
+    def client_login(self, account_name, ip_address, key):
         rez = self.session.query(self.Clients).filter_by(name=account_name)
         if rez.count():
             user = rez.first()
             user.last_login = datetime.now()
+            if user.pubkey != key:
+                user.pubkey = key
         else:
-            user = self.Clients(account_name)
-            self.session.add(user)
-            self.session.commit()
+            raise ValueError('Пользователь не зарегистрирован.')
 
         new_online_client = self.OnlineClients(user.id, ip_address)
         self.session.add(new_online_client)
@@ -78,6 +82,34 @@ class ServerDatabase:
         history = self.ClientsHistory(user.id, datetime.now(), ip_address)
         self.session.add(history)
         self.session.commit()
+
+    def add_user(self, name, passwd_hash):
+        user_row = self.Clients(name, passwd_hash)
+        self.session.add(user_row)
+        self.session.commit()
+
+    def remove_user(self, name):
+        user = self.session.query(self.Clients).filter_by(name=name).first()
+        self.session.query(self.OnlineClients).filter_by(client_id=user.id).delete()
+        self.session.query(self.ClientsHistory).filter_by(client_id=user.id).delete()
+        self.session.query(self.ClientsContacts).filter_by(owner_id=user.id).delete()
+        self.session.query(self.ClientsContacts).filter_by(contact_id=user.id).delete()
+        self.session.query(self.Clients).filter_by(name=name).delete()
+        self.session.commit()
+
+    def get_hash(self, name):
+        user = self.session.query(self.Clients).filter_by(name=name).first()
+        return user.passwd_hash
+
+    def get_pubkey(self, name):
+        user = self.session.query(self.Clients).filter_by(name=name).first()
+        return user.pubkey
+
+    def check_user(self, name):
+        if self.session.query(self.Clients).filter_by(name=name).count():
+            return True
+        else:
+            return False
 
     def client_logout(self, account_name):
         user = self.session.query(self.Clients).filter_by(name=account_name).first()
