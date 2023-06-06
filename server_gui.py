@@ -1,9 +1,12 @@
-from PyQt5.QtWidgets import QMainWindow, QAction, qApp, QLabel, QTableView, QDialog, QPushButton, QLineEdit, QFileDialog
+import binascii
+import hashlib
+
+from PyQt5.QtWidgets import QMainWindow, QAction, qApp, QLabel, QTableView, QDialog, QPushButton, QLineEdit, \
+    QFileDialog, QMessageBox, QComboBox
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtCore import Qt
 
 
-# GUI - Создание таблицы QModel, для отображения в окне программы.
 def gui_create_model(database):
     list_users = database.get_online_clients()
     list = QStandardItemModel()
@@ -18,7 +21,6 @@ def gui_create_model(database):
     return list
 
 
-# GUI - Функция реализующая заполнение таблицы всех клиентов.
 def create_all_users_model(database):
     list_all_users = database.get_clients_list()
     list = QStandardItemModel()
@@ -33,7 +35,6 @@ def create_all_users_model(database):
     return list
 
 
-# GUI - Функция реализующая заполнение таблицы историей клиентов.
 def create_stat_model(database):
     hist_list = database.get_clients_history()
     list = QStandardItemModel()
@@ -51,7 +52,6 @@ def create_stat_model(database):
     return list
 
 
-# Класс основного окна
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -75,8 +75,13 @@ class MainWindow(QMainWindow):
         # Кнопка вывести историю сообщений
         self.show_history_button = QAction('История клиентов', self)
 
+        # Кнопка регистрации пользователя
+        self.register_btn = QAction('Регистрация клиента', self)
+
+        # Кнопка удаления пользователя
+        self.remove_btn = QAction('Удаление клиента', self)
+
         # Статусбар
-        # dock widget
         self.statusBar()
 
         # Тулбар
@@ -86,10 +91,12 @@ class MainWindow(QMainWindow):
         self.toolbar.addAction(self.refresh_button)
         self.toolbar.addAction(self.show_history_button)
         self.toolbar.addAction(self.config_btn)
+        self.toolbar.addAction(self.register_btn)
+        self.toolbar.addAction(self.remove_btn)
 
         # Настройки геометрии основного окна
         self.setFixedSize(800, 600)
-        self.setWindowTitle('Messaging Server alpha release')
+        self.setWindowTitle('Чат Сервер')
 
         # Надпись о том, что ниже список подключённых клиентов
         self.label = QLabel('Список подключённых клиентов:', self)
@@ -235,3 +242,125 @@ class ConfigWindow(QDialog):
         self.close_button.clicked.connect(self.close)
 
         self.show()
+
+
+class DelUserDialog(QDialog):
+    def __init__(self, database, server):
+        super().__init__()
+        self.database = database
+        self.server = server
+
+        self.setFixedSize(350, 120)
+        self.setWindowTitle('Удаление пользователя')
+        self.setAttribute(Qt.WA_DeleteOnClose)
+        self.setModal(True)
+
+        self.selector_label = QLabel(
+            'Выберите пользователя для удаления:', self)
+        self.selector_label.setFixedSize(330, 20)
+        self.selector_label.move(10, 0)
+
+        self.selector = QComboBox(self)
+        self.selector.setFixedSize(200, 20)
+        self.selector.move(10, 30)
+
+        self.btn_ok = QPushButton('Удалить', self)
+        self.btn_ok.setFixedSize(100, 30)
+        self.btn_ok.move(230, 20)
+        self.btn_ok.clicked.connect(self.remove_user)
+
+        self.btn_cancel = QPushButton('Отмена', self)
+        self.btn_cancel.setFixedSize(100, 30)
+        self.btn_cancel.move(230, 60)
+        self.btn_cancel.clicked.connect(self.close)
+
+        self.selector.addItems([item[0]
+                                for item in self.database.get_clients_list()])
+
+    def remove_user(self):
+        self.database.remove_user(self.selector.currentText())
+        if self.selector.currentText() in self.server.names:
+            sock = self.server.names[self.selector.currentText()]
+            del self.server.names[self.selector.currentText()]
+            self.server.remove_client(sock)
+        # Рассылаем клиентам сообщение о необходимости обновить справочники
+        self.server.service_update_lists()
+        self.close()
+
+
+class RegisterUser(QDialog):
+    def __init__(self, database, server):
+        super().__init__()
+
+        self.database = database
+        self.server = server
+
+        self.setWindowTitle('Регистрация')
+        self.setFixedSize(350, 250)
+        self.setModal(True)
+        self.setAttribute(Qt.WA_DeleteOnClose)
+
+        self.label_username = QLabel('Введите имя пользователя:', self)
+        self.label_username.move(10, 10)
+        self.label_username.setFixedSize(330, 15)
+
+        self.client_name = QLineEdit(self)
+        self.client_name.setFixedSize(330, 20)
+        self.client_name.move(10, 30)
+
+        self.label_passwd = QLabel('Введите пароль:', self)
+        self.label_passwd.move(10, 55)
+        self.label_passwd.setFixedSize(330, 15)
+
+        self.client_passwd = QLineEdit(self)
+        self.client_passwd.setFixedSize(330, 20)
+        self.client_passwd.move(10, 75)
+        self.client_passwd.setEchoMode(QLineEdit.Password)
+        self.label_conf = QLabel('Введите подтверждение:', self)
+        self.label_conf.move(10, 100)
+        self.label_conf.setFixedSize(330, 15)
+
+        self.client_conf = QLineEdit(self)
+        self.client_conf.setFixedSize(330, 20)
+        self.client_conf.move(10, 120)
+        self.client_conf.setEchoMode(QLineEdit.Password)
+
+        self.btn_ok = QPushButton('Сохранить', self)
+        self.btn_ok.move(10, 150)
+        self.btn_ok.clicked.connect(self.save_data)
+
+        self.btn_cancel = QPushButton('Выход', self)
+        self.btn_cancel.move(250, 150)
+        self.btn_cancel.clicked.connect(self.close)
+
+        self.messages = QMessageBox()
+
+        self.show()
+
+    def save_data(self):
+
+        if not self.client_name.text():
+            self.messages.critical(
+                self, 'Ошибка', 'Не указано имя пользователя.')
+            return
+        elif self.client_passwd.text() != self.client_conf.text():
+            self.messages.critical(
+                self, 'Ошибка', 'Введённые пароли не совпадают.')
+            return
+        elif self.database.check_user(self.client_name.text()):
+            self.messages.critical(
+                self, 'Ошибка', 'Пользователь уже существует.')
+            return
+        else:
+            passwd_bytes = self.client_passwd.text().encode('utf-8')
+            salt = self.client_name.text().lower().encode('utf-8')
+            passwd_hash = hashlib.pbkdf2_hmac(
+                'sha512', passwd_bytes, salt, 10000)
+            self.database.add_user(
+                self.client_name.text(),
+                binascii.hexlify(passwd_hash))
+            self.messages.information(
+                self, 'Успех', 'Пользователь успешно зарегистрирован.')
+
+            self.server.service_update_lists()
+            self.close()

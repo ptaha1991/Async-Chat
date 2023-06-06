@@ -1,15 +1,6 @@
-# 1. Продолжая задачу логирования, реализовать декоратор @log, фиксирующий обращение к декорируемой функции.
-# Он сохраняет ее имя и аргументы.
-# 2. В декораторе @log реализовать фиксацию функции, из которой была вызвана декодированная. Если имеется такой код:
-# @log
-# def func_z():
-# pass
-# def main():
-# func_z()
-# ...в логе должна быть отражена информация:
-# "<дата-время> Функция func_z() вызвана из функции main"
 import inspect
 import logging
+import socket
 from functools import wraps
 
 import log.server_log_config
@@ -31,3 +22,33 @@ def logs(func):
         return ret
 
     return log_saver
+
+
+def login_required(func):
+    def checker(*args, **kwargs):
+        # проверяем, что первый аргумент - экземпляр Server
+        # Импортить необходимо тут, иначе ошибка рекурсивного импорта.
+        from server import Server
+        if isinstance(args[0], Server):
+            found = False
+            for arg in args:
+                if isinstance(arg, socket.socket):
+                    # Проверяем, что данный сокет есть в списке names класса
+                    # Server
+                    for client in args[0].names:
+                        if args[0].names[client] == arg:
+                            found = True
+
+            # Теперь надо проверить, что передаваемые аргументы не presence
+            # сообщение. Если presense, то разрешаем
+            for arg in args:
+                if isinstance(arg, dict):
+                    if 'action' in arg and arg['action'] == 'presence':
+                        found = True
+            # Если не не авторизован и не сообщение начала авторизации, то
+            # вызываем исключение.
+            if not found:
+                raise TypeError
+        return func(*args, **kwargs)
+
+    return checker
