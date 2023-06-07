@@ -1,41 +1,39 @@
 import binascii
 import configparser
 import hmac
+import json
 import logging
 import os
 import sys
 import threading
+
 from argparse import ArgumentParser
 from select import select
 from socket import socket, AF_INET, SOCK_STREAM
-
 from PyQt5.QtCore import QTimer
 from PyQt5.QtWidgets import QApplication, QMessageBox
 
-from decorator import logs, login_required
-from descriptor import WrongPort, WrongAddress
-from metaclasses import ServerVerifier
-from server_database import ServerDatabase
-from server_gui import MainWindow, gui_create_model, ConfigWindow, HistoryWindow, create_stat_model, AllClientsWindow, \
+from common.decorators import logs, login_required
+from common.descriptors import WrongPort, WrongAddress
+from common.metaclasses import ServerVerifier
+from common.utils import get_message, send_message
+from server_module.server_database import ServerDatabase
+from server_module.server_gui import MainWindow, gui_create_model, \
+    ConfigWindow, HistoryWindow, AllClientsWindow, create_stat_model, \
     create_all_users_model, DelUserDialog, RegisterUser
-from utils import get_message, send_message
-import log.server_log_config
 
-server_logger = logging.getLogger('server')
-
-new_connection = False
-conflag_lock = threading.Lock()
+server_logger = logging.getLogger('server_module')
 
 
 @logs
 def arg_parser(default_port, default_address):
+    """Парсер аргументов командной строки."""
     parser = ArgumentParser()
     parser.add_argument('-p', default=default_port, type=int, nargs='?')
-    parser.add_argument('-a', default='', nargs='?')
+    parser.add_argument('-a', default=default_address, nargs='?')
     namespace = parser.parse_args(sys.argv[1:])
     listen_address = namespace.a
     listen_port = namespace.p
-
     return listen_address, listen_port
 
 
@@ -53,7 +51,43 @@ class Server(threading.Thread, metaclass=ServerVerifier):
         self.database = database
         super().__init__()
 
+    def run(self):
+        """Метод основной цикл потока Server."""
+        self.init_socket()
+
+        while True:
+            try:
+                client, client_address = self.s.accept()
+            except OSError:
+                pass
+            else:
+                server_logger.info(
+                    f'Установлено соедение с ПК {client_address}')
+                client.settimeout(5)
+                self.clients_list.append(client)
+
+            r = []
+            try:
+                if self.clients_list:
+                    r, self.listen_sockets, self.error_sockets = select(
+                        self.clients_list, self.clients_list, [], 0)
+            except OSError:
+                pass
+
+            if r:
+                for client_with_message in r:
+                    try:
+                        self.process_client_message(
+                            get_message(client_with_message),
+                            client_with_message)
+                    except (OSError, json.JSONDecodeError, TypeError):
+                        server_logger.info(
+                            f'Клиент {client_with_message.getpeername()} '
+                            f'отключился от сервера.')
+                        self.clients_list.remove(client_with_message)
+
     def init_socket(self):
+        """Метод инициализатор сокета."""
         server_logger.info(
             f'Запущен сервер, порт для подключений: {self.port}, '
             f'адрес с которого принимаются подключения: {self.address}. '
@@ -64,36 +98,13 @@ class Server(threading.Thread, metaclass=ServerVerifier):
         self.s = s
         s.listen(5)
 
-    def run(self):
-        self.init_socket()
-
-        while True:
-            try:
-                client, client_address = self.s.accept()
-            except OSError as e:
-                pass
-            else:
-                server_logger.info(f'Установлено соедение с ПК {client_address}')
-                client.settimeout(5)
-                self.clients_list.append(client)
-
-            r = []
-            try:
-                if self.clients_list:
-                    r, self.listen_sockets, self.error_sockets = select(self.clients_list, self.clients_list, [], 0)
-            except OSError:
-                pass
-
-            if r:
-                for client_with_message in r:
-                    try:
-                        self.process_client_message(get_message(client_with_message), client_with_message)
-                    except:
-                        server_logger.info(f'Клиент {client_with_message.getpeername()} отключился от сервера.')
-                        self.clients_list.remove(client_with_message)
-
     def remove_client(self, client):
-        server_logger.info(f'Клиент {client.getpeername()} отключился от сервера.')
+        """
+        Метод обработчик клиента с которым прервана связь.
+        Ищет клиента и удаляет его из списков и базы:
+        """
+        server_logger.info(
+            f'Клиент {client.getpeername()} отключился от сервера.')
         for name in self.names:
             if self.names[name] == client:
                 self.database.client_logout(name)
@@ -104,14 +115,18 @@ class Server(threading.Thread, metaclass=ServerVerifier):
 
     @login_required
     def process_client_message(self, msg, client):
+        """Метод обработчик поступающих сообщений."""
         server_logger.debug(f'Разбор сообщения от клиента : {msg}')
-        if 'action' in msg and msg['action'] == 'presence' and 'time' in msg and \
-                'user' in msg:
+        if 'action' in msg and msg['action'] == 'presence' \
+                and 'time' in msg \
+                and 'user' in msg:
             self.autorize_user(msg, client)
 
-            # Если это сообщение, то отправляем его получателю.
-        elif 'action' in msg and msg['action'] == 'message' and 'time' in msg and 'sender' in msg and \
-                'destination' in msg and 'message_text' in msg and self.names[msg['sender']] == client:
+        elif 'action' in msg and msg['action'] == 'message' \
+                and 'time' in msg \
+                and 'sender' in msg and 'destination' in msg \
+                and 'message_text' in msg \
+                and self.names[msg['sender']] == client:
             if msg['destination'] in self.names:
                 self.message_to_client(msg)
                 try:
@@ -119,24 +134,36 @@ class Server(threading.Thread, metaclass=ServerVerifier):
                 except OSError:
                     self.remove_client(client)
             else:
-                response = {'response': 400, 'error': 'Пользователь не зарегистрирован на сервере.'}
+                response = {
+                    'response': 400,
+                    'error': 'Пользователь не зарегистрирован на сервере.'
+                }
                 try:
                     send_message(client, response)
                 except OSError:
                     pass
             return
-        elif 'action' in msg and msg['action'] == 'exit' and 'user' in msg and self.names[msg['user']] == client:
+
+        elif 'action' in msg and msg['action'] == 'exit' \
+                and 'user' in msg \
+                and self.names[msg['user']] == client:
             self.remove_client(client)
 
-        elif 'action' in msg and msg['action'] == 'get_contacts' and 'user' in msg and self.names[
-            msg['user']] == client:
-            response = {'response': 202, 'alert': self.database.get_contacts(msg['user'])}
+        elif 'action' in msg and msg['action'] == 'get_contacts' \
+                and 'user' in msg \
+                and self.names[msg['user']] == client:
+            response = {
+                'response': 202,
+                'alert': self.database.get_contacts(msg['user'])
+            }
             try:
                 send_message(client, response)
             except OSError:
                 self.remove_client(client)
 
-        elif 'action' in msg and msg['action'] == 'add_contact' and 'contact' in msg and 'user' in msg \
+        elif 'action' in msg and msg['action'] == 'add_contact' \
+                and 'contact' in msg \
+                and 'user' in msg \
                 and self.names[msg['user']] == client:
             self.database.add_contact_to_client(msg['user'], msg['contact'])
             try:
@@ -144,82 +171,110 @@ class Server(threading.Thread, metaclass=ServerVerifier):
             except OSError:
                 self.remove_client(client)
 
-        elif 'action' in msg and msg['action'] == 'delete_contact' and 'contact' in msg and 'user' in msg \
+        elif 'action' in msg and msg['action'] == 'delete_contact' \
+                and 'contact' in msg \
+                and 'user' in msg \
                 and self.names[msg['user']] == client:
-            self.database.delete_contact_from_client(msg['user'], msg['contact'])
+            self.database.delete_contact_from_client(
+                msg['user'], msg['contact'])
             try:
                 send_message(client, {'response': 200})
             except OSError:
                 self.remove_client(client)
 
-        elif 'action' in msg and msg['action'] == 'clients_request' and 'user' in msg \
+        elif 'action' in msg and msg['action'] == 'clients_request' \
+                and 'user' in msg \
                 and self.names[msg['user']] == client:
-            response = {'response': 202, 'alert': [user[0] for user in self.database.get_clients_list()]}
+            response = {
+                'response': 202,
+                'alert': [user[0] for user in self.database.get_clients_list()]
+            }
             try:
                 send_message(client, response)
             except OSError:
                 self.remove_client(client)
 
-        elif 'action' in msg and msg['action'] == 'public_key_request' and 'account_name' in msg:
-            response = {'response': 511, 'data': self.database.get_pubkey(msg['account_name'])}
+        elif 'action' in msg and msg['action'] == 'public_key_request' \
+                and 'account_name' in msg:
+            response = {
+                'response': 511,
+                'data': self.database.get_pubkey(msg['account_name'])
+            }
             if response['data']:
                 send_message(client, response)
             else:
-                response = {'response': 400, 'error': 'Нет публичного ключа для данного пользователя'}
+                response = {
+                    'response': 400,
+                    'error': 'Нет публичного ключа для данного пользователя'
+                }
                 try:
                     send_message(client, response)
                 except OSError:
                     self.remove_client(client)
 
         else:
-            send_message(client, {
-                'response': 400,
-                'error': 'Bad Request'
-            })
+            send_message(client, {'response': 400, 'error': 'Bad Request'})
             return
 
     def message_to_client(self, msg):
-        if msg['destination'] in self.names and self.names[msg['destination']] in self.listen_sockets:
+        """Метод отправки сообщения клиенту."""
+        if msg['destination'] in self.names \
+                and self.names[msg['destination']] in self.listen_sockets:
             try:
                 send_message(self.names[msg['destination']], msg)
                 server_logger.info(
-                    f'Отправлено сообщение пользователю {msg["destination"]} от пользователя {msg["sender"]}.')
+                    f'Отправлено сообщение пользователю {msg["destination"]} '
+                    f'от пользователя {msg["sender"]}.')
             except OSError:
                 self.remove_client(msg["destination"])
-        elif msg["destination"] in self.names and self.names[msg["destination"]] not in self.listen_sockets:
+        elif msg["destination"] in self.names \
+                and self.names[msg["destination"]] not in self.listen_sockets:
             server_logger.error(
-                f'Связь с клиентом {msg["destination"]} была потеряна. Соединение закрыто, доставка невозможна.')
+                f'Связь с клиентом {msg["destination"]} была потеряна. '
+                f'Соединение закрыто, доставка невозможна.')
             self.remove_client(self.names[msg["destination"]])
         else:
             server_logger.error(
-                f'Пользователь {msg["destination"]} не зарегистрирован на сервере, отправка сообщения невозможна.')
+                f'Пользователь {msg["destination"]} не зарегистрирован '
+                f'на сервере, отправка сообщения невозможна.')
 
     def autorize_user(self, message, sock):
+        """Метод реализующий авторизацию пользователей."""
         server_logger.debug(f'Start auth process for {message["user"]}')
         if message['user']['account_name'] in self.names.keys():
-            response = {'response': 400, 'error': 'Имя пользователя уже занято.'}
+            response = {
+                'response': 400,
+                'error': 'Имя пользователя уже занято.'
+            }
             try:
                 send_message(sock, response)
             except OSError:
                 pass
             self.clients_list.remove(sock)
             sock.close()
+
         elif not self.database.check_user(message['user']['account_name']):
-            response = {'response': 400, 'error': 'Пользователь не зарегистрирован.'}
+            response = {
+                'response': 400,
+                'error': 'Пользователь не зарегистрирован.'
+            }
             try:
                 send_message(sock, response)
             except OSError:
                 pass
             self.clients_list.remove(sock)
             sock.close()
+
         else:
             server_logger.debug('Correct username, starting passwd check.')
             message_auth = {'response': 511, 'data': None}
             # Набор байтов в hex представлении
             random_str = binascii.hexlify(os.urandom(64))
             message_auth['data'] = random_str.decode('ascii')
-            # Создаём хэш пароля и связки с рандомной строкой, сохраняем серверную версию ключа
-            hash = hmac.new(self.database.get_hash(message['user']['account_name']), random_str, 'MD5')
+            # Создаём хэш пароля и связки с рандомной строкой,
+            # сохраняем серверную версию ключа
+            hash = hmac.new(self.database.get_hash(
+                message['user']['account_name']), random_str, 'MD5')
             digest = hash.digest()
             server_logger.debug(f'Auth message = {message_auth}')
             try:
@@ -230,11 +285,15 @@ class Server(threading.Thread, metaclass=ServerVerifier):
                 sock.close()
                 return
             client_digest = binascii.a2b_base64(ans['data'])
-            if 'response' in ans and ans['response'] == 511 and hmac.compare_digest(digest, client_digest):
+            if 'response' in ans and ans['response'] == 511 \
+                    and hmac.compare_digest(digest, client_digest):
                 self.names[message['user']['account_name']] = sock
                 client_ip, client_port = sock.getpeername()
                 send_message(sock, {'response': 200})
-                self.database.client_login(message['user']['account_name'], client_ip, message['user']['public_key'])
+                self.database.client_login(
+                    message['user']['account_name'],
+                    client_ip,
+                    message['user']['public_key'])
             else:
                 response = {'response': 400, 'error': 'Неверный пароль.'}
                 try:
@@ -245,18 +304,21 @@ class Server(threading.Thread, metaclass=ServerVerifier):
                 sock.close()
 
     def service_update_lists(self):
+        """Метод реализующий отправку сервисного сообщения 205 клиентам."""
         for client in self.names:
             send_message(self.names[client], {'response': 205})
 
 
 def main():
+    """Основная функция сервера"""
     config = configparser.ConfigParser()
 
     dir_path = os.path.dirname(os.path.realpath(__file__))
     config.read(f"{dir_path}/{'server.ini'}")
 
     listen_address, listen_port = arg_parser(
-        config['SETTINGS']['Default_port'], config['SETTINGS']['Listen_Address'])
+        config['SETTINGS']['Default_port'],
+        config['SETTINGS']['Listen_Address'])
 
     database = ServerDatabase(
         os.path.join(
@@ -278,19 +340,23 @@ def main():
     main_window.active_clients_table.resizeRowsToContents()
 
     def show_all_clients():
+        """Метод создающий окно со списком клиентов."""
         global all_clients
         all_clients = AllClientsWindow()
-        all_clients.all_clients_table.setModel(create_all_users_model(database))
+        all_clients.all_clients_table.setModel(
+            create_all_users_model(database))
         all_clients.all_clients_table.resizeColumnsToContents()
         all_clients.all_clients_table.resizeRowsToContents()
         all_clients.show()
 
     def list_update():
+        """Метод обновляющий список клиентов."""
         main_window.active_clients_table.setModel(gui_create_model(database))
         main_window.active_clients_table.resizeColumnsToContents()
         main_window.active_clients_table.resizeRowsToContents()
 
     def show_statistics():
+        """Метод создающий окно со статистикой клиентов."""
         global stat_window
         stat_window = HistoryWindow()
         stat_window.history_table.setModel(create_stat_model(database))
@@ -299,6 +365,7 @@ def main():
         stat_window.show()
 
     def server_config():
+        """Метод создающий окно с настройками сервера."""
         global config_window
         # Создаём окно и заносим в него текущие параметры
         config_window = ConfigWindow()
@@ -309,16 +376,22 @@ def main():
         config_window.save_btn.clicked.connect(save_server_config)
 
     def reg_user():
+        """Метод создающий окно регистрации пользователя."""
         global reg_window
         reg_window = RegisterUser(database, server)
         reg_window.show()
 
     def rem_user():
+        """Метод создающий окно удаления пользователя."""
         global rem_window
         rem_window = DelUserDialog(database, server)
         rem_window.show()
 
     def save_server_config():
+        """
+        Метод сохранения настроек.
+        Проверяет правильность введённых данных и сохраняет ini файл.
+        """
         global config_window
         message = QMessageBox()
         config['SETTINGS']['Database_path'] = config_window.db_path.text()
