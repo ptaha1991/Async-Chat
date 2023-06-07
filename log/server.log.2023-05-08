@@ -1,4 +1,0 @@
-2023-05-10 12:29:10,758 DEBUG decorator.py Функция  "create_presence" c аргументами (), {} вызвана из функции "main"
-2023-05-10 12:29:10,760 DEBUG decorator.py Функция  "send_message" c аргументами (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 56139), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1683714550.7509649, 'type': 'status', 'user': {'account_name': 'User', 'status': 'Yep, I am here!'}}), {} вызвана из функции "main"
-2023-05-10 12:29:11,270 DEBUG decorator.py Функция  "get_message" c аргументами (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 56139), raddr=('127.0.0.1', 7777)>,), {} вызвана из функции "main"
-2023-05-10 12:29:11,270 DEBUG decorator.py Функция  "process_ans" c аргументами ({'response': 200},), {} вызвана из функции "main"

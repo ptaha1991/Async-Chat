@@ -1,25 +1,24 @@
 import logging
 import os
 import sys
-import threading
-from argparse import ArgumentParser
 
+from argparse import ArgumentParser
 from Crypto.PublicKey import RSA
 from PyQt5.QtWidgets import QApplication
 
-from client_database import ClientDatabase
-from client_gui import UserNameDialog, ClientMainWindow
-from transport import ClientTransport
+from client_module.client_database import ClientDatabase
+from client_module.client_gui import UserNameDialog, ClientMainWindow
+from client_module.transport import ClientTransport
 
-import log.client_log_config
-
-client_logger = logging.getLogger('client')
-
-sock_lock = threading.Lock()
-database_lock = threading.Lock()
+client_logger = logging.getLogger('client_module')
 
 
 def args_parser():
+    """
+    Парсер аргументов командной строки, возвращает кортеж из 4 элементов:
+    адрес сервера, порт, имя пользователя, пароль.
+    Выполняет проверку на корректность номера порта.
+    """
     default_address = '127.0.0.1'
     default_port = 7777
     parser = ArgumentParser()
@@ -42,6 +41,7 @@ def args_parser():
 
 
 def main():
+    """Основная функция клиента."""
     server_address, server_port, client_name, client_passwd = args_parser()
 
     client_app = QApplication(sys.argv)
@@ -52,7 +52,8 @@ def main():
         if start_dialog.ok_pressed:
             client_name = start_dialog.client_name.text()
             client_passwd = start_dialog.client_passwd.text()
-            client_logger.debug(f'Using USERNAME = {client_name}, PASSWD = {client_passwd}.')
+            client_logger.debug(f'Using USERNAME = {client_name}, '
+                                f'PASSWD = {client_passwd}.')
         else:
             exit(0)
 
@@ -66,18 +67,18 @@ def main():
     else:
         with open(key_file, 'rb') as key:
             keys = RSA.import_key(key.read())
-
     client_logger.debug("Keys sucsessfully loaded.")
 
     database = ClientDatabase(client_name)
 
     # Создаём объект - транспорт и запускаем транспортный поток
     try:
-        transport = ClientTransport(server_address, server_port, database, client_name, client_passwd, keys)
+        transport = ClientTransport(server_address, server_port,
+                                    database, client_name, client_passwd, keys)
     except Exception as e:
         print(e)
         exit(1)
-    transport.setDaemon(True)
+    transport.daemon = True
     transport.start()
 
     del start_dialog

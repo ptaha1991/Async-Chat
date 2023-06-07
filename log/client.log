@@ -5359,3 +5359,571 @@
 2023-06-06 00:34:49,822 DEBUG decorator.py Функция  "send_message" c аргументами (<socket.socket fd=17, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 61864), raddr=('127.0.0.1', 7777)>, {'action': 'exit', 'time': 1686004489.387135, 'user': 'q'}), {} вызвана из функции "transport_shutdown"
 2023-06-06 00:34:49,822 DEBUG transport.py Транспорт завершает работу.
 2023-06-06 00:34:50,317 DEBUG decorator.py Функция  "get_message" c аргументами (<socket.socket fd=13, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 61864)>,), {} вызвана из функции "run"
+2023-06-06 20:13:06,842 DEBUG decorator.py Функция  "arg_parser" c аргументами ('7777', ''), {} вызвана из функции "main"
+2023-06-06 20:14:31,339 DEBUG decorator.py Функция  "arg_parser" c аргументами ('7777', ''), {} вызвана из функции "main"
+2023-06-06 20:16:54,214 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-06 20:16:54,392 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 20:16:54,462 DEBUG decorator.py Функция  "send_message" c аргументами (<socket.socket fd=17, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 62866), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1686075414.434549, 'type': 'status', 'user': {'account_name': 'User1', 'status': 'Yep, I am here!', 'public_key': '-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArQ/Kc/6DHNX6mei3IH6s\nbZlx4JCzafRS+rUgees4FI9PWmMuW7c4zghdxVtQeGZ6QiiSa8Nu0qNTD1GN9wI+\nCp4z19jFftDajhUI5sPcx0Da2wyMps6nshg91mJ2xhyFcYuOjgisyhEFwIIzLEy+\nOh0rOvoxdoQf30K+vGTiAfVNWNkCLQrwJg0ROYf7GnkP4sv3W2YkuIrBZbm8LRYs\nb635Eh8RYifTNLJ7VtusnvJa25KH5rxU+BhrrdCqJ03g+QHBgZjElgfRxRsc/4Pu\nnf3gq4TrV5rt3oUlTHXHqdsDaqC0WB69d9jSCn/H6f7lu3bb+DPqcrQJSv7/C0vE\nlQIDAQAB\n-----END PUBLIC KEY-----'}}), {} вызвана из функции "connection_init"
+2023-06-06 20:16:54,937 DEBUG decorator.py Функция  "get_message" c аргументами (<socket.socket fd=17, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 62866)>,), {} вызвана из функции "run"
+2023-06-06 20:16:59,462 CRITICAL transport.py Потеряно соединение с сервером!
+2023-06-06 20:18:07,177 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-06 20:18:07,239 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 20:18:07,296 DEBUG decorator.py Функция  "send_message" c аргументами (<socket.socket fd=17, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 62872), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1686075487.2699468, 'type': 'status', 'user': {'account_name': 'User1', 'status': 'Yep, I am here!', 'public_key': '-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArQ/Kc/6DHNX6mei3IH6s\nbZlx4JCzafRS+rUgees4FI9PWmMuW7c4zghdxVtQeGZ6QiiSa8Nu0qNTD1GN9wI+\nCp4z19jFftDajhUI5sPcx0Da2wyMps6nshg91mJ2xhyFcYuOjgisyhEFwIIzLEy+\nOh0rOvoxdoQf30K+vGTiAfVNWNkCLQrwJg0ROYf7GnkP4sv3W2YkuIrBZbm8LRYs\nb635Eh8RYifTNLJ7VtusnvJa25KH5rxU+BhrrdCqJ03g+QHBgZjElgfRxRsc/4Pu\nnf3gq4TrV5rt3oUlTHXHqdsDaqC0WB69d9jSCn/H6f7lu3bb+DPqcrQJSv7/C0vE\nlQIDAQAB\n-----END PUBLIC KEY-----'}}), {} вызвана из функции "connection_init"
+2023-06-06 20:18:07,766 DEBUG decorator.py Функция  "get_message" c аргументами (<socket.socket fd=22, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 62872)>,), {} вызвана из функции "run"
+2023-06-06 20:18:12,297 CRITICAL transport.py Потеряно соединение с сервером!
+2023-06-06 20:24:14,370 DEBUG decorator.py Функция  "arg_parser" c аргументами ('7777', ''), {} вызвана из функции "main"
+2023-06-06 20:24:29,745 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-06 20:24:29,811 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 20:24:29,870 DEBUG decorator.py Функция  "send_message" c аргументами (<socket.socket fd=17, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 62892), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1686075869.843352, 'type': 'status', 'user': {'account_name': 'User1', 'status': 'Yep, I am here!', 'public_key': '-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArQ/Kc/6DHNX6mei3IH6s\nbZlx4JCzafRS+rUgees4FI9PWmMuW7c4zghdxVtQeGZ6QiiSa8Nu0qNTD1GN9wI+\nCp4z19jFftDajhUI5sPcx0Da2wyMps6nshg91mJ2xhyFcYuOjgisyhEFwIIzLEy+\nOh0rOvoxdoQf30K+vGTiAfVNWNkCLQrwJg0ROYf7GnkP4sv3W2YkuIrBZbm8LRYs\nb635Eh8RYifTNLJ7VtusnvJa25KH5rxU+BhrrdCqJ03g+QHBgZjElgfRxRsc/4Pu\nnf3gq4TrV5rt3oUlTHXHqdsDaqC0WB69d9jSCn/H6f7lu3bb+DPqcrQJSv7/C0vE\nlQIDAQAB\n-----END PUBLIC KEY-----'}}), {} вызвана из функции "connection_init"
+2023-06-06 20:24:30,345 DEBUG decorator.py Функция  "get_message" c аргументами (<socket.socket fd=13, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 62892)>,), {} вызвана из функции "run"
+2023-06-06 20:24:34,870 CRITICAL transport.py Потеряно соединение с сервером!
+2023-06-06 20:29:06,321 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-06 20:29:06,383 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 20:29:06,440 DEBUG decorator.py Функция  "send_message" c аргументами (<socket.socket fd=17, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 62906), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1686076146.4144819, 'type': 'status', 'user': {'account_name': 'User1', 'status': 'Yep, I am here!', 'public_key': '-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArQ/Kc/6DHNX6mei3IH6s\nbZlx4JCzafRS+rUgees4FI9PWmMuW7c4zghdxVtQeGZ6QiiSa8Nu0qNTD1GN9wI+\nCp4z19jFftDajhUI5sPcx0Da2wyMps6nshg91mJ2xhyFcYuOjgisyhEFwIIzLEy+\nOh0rOvoxdoQf30K+vGTiAfVNWNkCLQrwJg0ROYf7GnkP4sv3W2YkuIrBZbm8LRYs\nb635Eh8RYifTNLJ7VtusnvJa25KH5rxU+BhrrdCqJ03g+QHBgZjElgfRxRsc/4Pu\nnf3gq4TrV5rt3oUlTHXHqdsDaqC0WB69d9jSCn/H6f7lu3bb+DPqcrQJSv7/C0vE\nlQIDAQAB\n-----END PUBLIC KEY-----'}}), {} вызвана из функции "connection_init"
+2023-06-06 20:29:06,911 DEBUG decorator.py Функция  "get_message" c аргументами (<socket.socket fd=14, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 62906)>,), {} вызвана из функции "run"
+2023-06-06 20:29:11,441 CRITICAL transport.py Потеряно соединение с сервером!
+2023-06-06 20:29:43,906 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-06 20:29:44,010 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 20:29:44,120 DEBUG decorator.py Функция  "send_message" c аргументами (<socket.socket fd=18, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 62914), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1686076184.043679, 'type': 'status', 'user': {'account_name': 'User1', 'status': 'Yep, I am here!', 'public_key': '-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArQ/Kc/6DHNX6mei3IH6s\nbZlx4JCzafRS+rUgees4FI9PWmMuW7c4zghdxVtQeGZ6QiiSa8Nu0qNTD1GN9wI+\nCp4z19jFftDajhUI5sPcx0Da2wyMps6nshg91mJ2xhyFcYuOjgisyhEFwIIzLEy+\nOh0rOvoxdoQf30K+vGTiAfVNWNkCLQrwJg0ROYf7GnkP4sv3W2YkuIrBZbm8LRYs\nb635Eh8RYifTNLJ7VtusnvJa25KH5rxU+BhrrdCqJ03g+QHBgZjElgfRxRsc/4Pu\nnf3gq4TrV5rt3oUlTHXHqdsDaqC0WB69d9jSCn/H6f7lu3bb+DPqcrQJSv7/C0vE\nlQIDAQAB\n-----END PUBLIC KEY-----'}}), {} вызвана из функции "connection_init"
+2023-06-06 20:29:44,538 DEBUG decorator.py Функция  "get_message" c аргументами (<socket.socket fd=13, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 62914)>,), {} вызвана из функции "run"
+2023-06-06 20:31:47,555 DEBUG decorator.py Функция  "arg_parser" c аргументами ('7777', ''), {} вызвана из функции "main"
+2023-06-06 20:31:56,765 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-06 20:31:56,821 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 20:31:56,869 DEBUG decorator.py Функция  "send_message" c аргументами (<socket.socket fd=17, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 62920), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1686076316.8443131, 'type': 'status', 'user': {'account_name': 'User1', 'status': 'Yep, I am here!', 'public_key': '-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArQ/Kc/6DHNX6mei3IH6s\nbZlx4JCzafRS+rUgees4FI9PWmMuW7c4zghdxVtQeGZ6QiiSa8Nu0qNTD1GN9wI+\nCp4z19jFftDajhUI5sPcx0Da2wyMps6nshg91mJ2xhyFcYuOjgisyhEFwIIzLEy+\nOh0rOvoxdoQf30K+vGTiAfVNWNkCLQrwJg0ROYf7GnkP4sv3W2YkuIrBZbm8LRYs\nb635Eh8RYifTNLJ7VtusnvJa25KH5rxU+BhrrdCqJ03g+QHBgZjElgfRxRsc/4Pu\nnf3gq4TrV5rt3oUlTHXHqdsDaqC0WB69d9jSCn/H6f7lu3bb+DPqcrQJSv7/C0vE\nlQIDAQAB\n-----END PUBLIC KEY-----'}}), {} вызвана из функции "connection_init"
+2023-06-06 20:31:57,344 DEBUG decorator.py Функция  "get_message" c аргументами (<socket.socket fd=13, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 62920)>,), {} вызвана из функции "run"
+2023-06-06 20:32:01,869 CRITICAL transport.py Потеряно соединение с сервером!
+2023-06-06 20:33:05,136 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-06 20:33:05,242 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 20:33:05,353 DEBUG decorator.py Функция  "send_message" c аргументами (<socket.socket fd=18, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 62923), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1686076385.279946, 'type': 'status', 'user': {'account_name': 'User1', 'status': 'Yep, I am here!', 'public_key': '-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArQ/Kc/6DHNX6mei3IH6s\nbZlx4JCzafRS+rUgees4FI9PWmMuW7c4zghdxVtQeGZ6QiiSa8Nu0qNTD1GN9wI+\nCp4z19jFftDajhUI5sPcx0Da2wyMps6nshg91mJ2xhyFcYuOjgisyhEFwIIzLEy+\nOh0rOvoxdoQf30K+vGTiAfVNWNkCLQrwJg0ROYf7GnkP4sv3W2YkuIrBZbm8LRYs\nb635Eh8RYifTNLJ7VtusnvJa25KH5rxU+BhrrdCqJ03g+QHBgZjElgfRxRsc/4Pu\nnf3gq4TrV5rt3oUlTHXHqdsDaqC0WB69d9jSCn/H6f7lu3bb+DPqcrQJSv7/C0vE\nlQIDAQAB\n-----END PUBLIC KEY-----'}}), {} вызвана из функции "connection_init"
+2023-06-06 20:33:05,773 DEBUG decorator.py Функция  "get_message" c аргументами (<socket.socket fd=14, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 62923)>,), {} вызвана из функции "run"
+2023-06-06 20:34:01,567 CRITICAL transport.py Потеряно соединение с сервером!
+2023-06-06 20:34:56,793 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-06 20:34:56,851 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 20:34:56,898 DEBUG decorator.py Функция  "send_message" c аргументами (<socket.socket fd=17, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 62929), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1686076496.873606, 'type': 'status', 'user': {'account_name': 'User1', 'status': 'Yep, I am here!', 'public_key': '-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArQ/Kc/6DHNX6mei3IH6s\nbZlx4JCzafRS+rUgees4FI9PWmMuW7c4zghdxVtQeGZ6QiiSa8Nu0qNTD1GN9wI+\nCp4z19jFftDajhUI5sPcx0Da2wyMps6nshg91mJ2xhyFcYuOjgisyhEFwIIzLEy+\nOh0rOvoxdoQf30K+vGTiAfVNWNkCLQrwJg0ROYf7GnkP4sv3W2YkuIrBZbm8LRYs\nb635Eh8RYifTNLJ7VtusnvJa25KH5rxU+BhrrdCqJ03g+QHBgZjElgfRxRsc/4Pu\nnf3gq4TrV5rt3oUlTHXHqdsDaqC0WB69d9jSCn/H6f7lu3bb+DPqcrQJSv7/C0vE\nlQIDAQAB\n-----END PUBLIC KEY-----'}}), {} вызвана из функции "connection_init"
+2023-06-06 20:34:57,369 DEBUG decorator.py Функция  "get_message" c аргументами (<socket.socket fd=13, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 62929)>,), {} вызвана из функции "run"
+2023-06-06 20:35:01,899 CRITICAL transport.py Потеряно соединение с сервером!
+2023-06-06 20:35:40,274 DEBUG decorator.py Функция  "arg_parser" c аргументами ('7777', ''), {} вызвана из функции "main"
+2023-06-06 20:35:49,923 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-06 20:35:50,004 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 20:35:50,058 DEBUG decorator.py Функция  "send_message" c аргументами (<socket.socket fd=17, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 62935), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1686076550.032487, 'type': 'status', 'user': {'account_name': 'User1', 'status': 'Yep, I am here!', 'public_key': '-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArQ/Kc/6DHNX6mei3IH6s\nbZlx4JCzafRS+rUgees4FI9PWmMuW7c4zghdxVtQeGZ6QiiSa8Nu0qNTD1GN9wI+\nCp4z19jFftDajhUI5sPcx0Da2wyMps6nshg91mJ2xhyFcYuOjgisyhEFwIIzLEy+\nOh0rOvoxdoQf30K+vGTiAfVNWNkCLQrwJg0ROYf7GnkP4sv3W2YkuIrBZbm8LRYs\nb635Eh8RYifTNLJ7VtusnvJa25KH5rxU+BhrrdCqJ03g+QHBgZjElgfRxRsc/4Pu\nnf3gq4TrV5rt3oUlTHXHqdsDaqC0WB69d9jSCn/H6f7lu3bb+DPqcrQJSv7/C0vE\nlQIDAQAB\n-----END PUBLIC KEY-----'}}), {} вызвана из функции "connection_init"
+2023-06-06 20:35:50,533 DEBUG decorator.py Функция  "get_message" c аргументами (<socket.socket fd=13, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 62935)>,), {} вызвана из функции "run"
+2023-06-06 20:35:55,059 CRITICAL transport.py Потеряно соединение с сервером!
+2023-06-06 20:36:07,779 DEBUG client.py Using USERNAME = User2, PASSWD = User2.
+2023-06-06 20:36:08,022 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 20:36:08,077 DEBUG decorator.py Функция  "send_message" c аргументами (<socket.socket fd=17, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 62936), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1686076568.052475, 'type': 'status', 'user': {'account_name': 'User2', 'status': 'Yep, I am here!', 'public_key': '-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqcOTwLXCWzl4YrTgNgag\n6xKWWVsgvb1/8FceALtVQGwo77DUitbjPuGEEouw4Gu4W4z8+zeOHjcV4VQX0sr8\n1dR778uITkpGG16m4325PO9NFIYzu1/5XM44QqnvIZRlCsohfSr6XVzhfd6UFtpK\n+Kxrjj/M6YpyJJyqDI0oBF3grhEv9+DNDwBXsB2dgpO8p6U8HfrbEDlkwQSZM3wa\nOtHbQ3bb6VpGwAU7m/PwnRJb2wdYH+mmplPSCNvMa9RqdoJLyfQ0vyQsdtGIADZ4\nSaL0ZeQIDoC7d4Bpx9HEcV7rKRlCdYT8sO0TA4TSVjIgX0e50Fkc/7g7INGjzXje\nCQIDAQAB\n-----END PUBLIC KEY-----'}}), {} вызвана из функции "connection_init"
+2023-06-06 20:36:08,548 DEBUG decorator.py Функция  "get_message" c аргументами (<socket.socket fd=14, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 62936)>,), {} вызвана из функции "run"
+2023-06-06 20:36:13,079 CRITICAL transport.py Потеряно соединение с сервером!
+2023-06-06 20:40:21,082 DEBUG decorator.py Функция  "arg_parser" c аргументами ('7777', ''), {} вызвана из функции "main"
+2023-06-06 20:40:33,664 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-06 20:40:33,738 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 20:40:33,791 DEBUG decorator.py Функция  "send_message" c аргументами (<socket.socket fd=17, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 62947), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1686076833.767178, 'type': 'status', 'user': {'account_name': 'User1', 'status': 'Yep, I am here!', 'public_key': '-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArQ/Kc/6DHNX6mei3IH6s\nbZlx4JCzafRS+rUgees4FI9PWmMuW7c4zghdxVtQeGZ6QiiSa8Nu0qNTD1GN9wI+\nCp4z19jFftDajhUI5sPcx0Da2wyMps6nshg91mJ2xhyFcYuOjgisyhEFwIIzLEy+\nOh0rOvoxdoQf30K+vGTiAfVNWNkCLQrwJg0ROYf7GnkP4sv3W2YkuIrBZbm8LRYs\nb635Eh8RYifTNLJ7VtusnvJa25KH5rxU+BhrrdCqJ03g+QHBgZjElgfRxRsc/4Pu\nnf3gq4TrV5rt3oUlTHXHqdsDaqC0WB69d9jSCn/H6f7lu3bb+DPqcrQJSv7/C0vE\nlQIDAQAB\n-----END PUBLIC KEY-----'}}), {} вызвана из функции "connection_init"
+2023-06-06 20:40:34,266 DEBUG decorator.py Функция  "get_message" c аргументами (<socket.socket fd=13, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 62947)>,), {} вызвана из функции "run"
+2023-06-06 20:40:38,792 CRITICAL transport.py Потеряно соединение с сервером!
+2023-06-06 20:41:31,668 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-06 20:41:31,777 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 20:41:31,891 DEBUG decorator.py Функция  "send_message" c аргументами (<socket.socket fd=18, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 62950), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1686076891.8135219, 'type': 'status', 'user': {'account_name': 'User1', 'status': 'Yep, I am here!', 'public_key': '-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArQ/Kc/6DHNX6mei3IH6s\nbZlx4JCzafRS+rUgees4FI9PWmMuW7c4zghdxVtQeGZ6QiiSa8Nu0qNTD1GN9wI+\nCp4z19jFftDajhUI5sPcx0Da2wyMps6nshg91mJ2xhyFcYuOjgisyhEFwIIzLEy+\nOh0rOvoxdoQf30K+vGTiAfVNWNkCLQrwJg0ROYf7GnkP4sv3W2YkuIrBZbm8LRYs\nb635Eh8RYifTNLJ7VtusnvJa25KH5rxU+BhrrdCqJ03g+QHBgZjElgfRxRsc/4Pu\nnf3gq4TrV5rt3oUlTHXHqdsDaqC0WB69d9jSCn/H6f7lu3bb+DPqcrQJSv7/C0vE\nlQIDAQAB\n-----END PUBLIC KEY-----'}}), {} вызвана из функции "connection_init"
+2023-06-06 20:41:32,307 DEBUG decorator.py Функция  "get_message" c аргументами (<socket.socket fd=14, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 62950)>,), {} вызвана из функции "run"
+2023-06-06 20:42:24,036 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-06 20:42:24,090 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 20:42:24,137 DEBUG decorator.py Функция  "send_message" c аргументами (<socket.socket fd=17, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 62956), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1686076944.112861, 'type': 'status', 'user': {'account_name': 'User1', 'status': 'Yep, I am here!', 'public_key': '-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArQ/Kc/6DHNX6mei3IH6s\nbZlx4JCzafRS+rUgees4FI9PWmMuW7c4zghdxVtQeGZ6QiiSa8Nu0qNTD1GN9wI+\nCp4z19jFftDajhUI5sPcx0Da2wyMps6nshg91mJ2xhyFcYuOjgisyhEFwIIzLEy+\nOh0rOvoxdoQf30K+vGTiAfVNWNkCLQrwJg0ROYf7GnkP4sv3W2YkuIrBZbm8LRYs\nb635Eh8RYifTNLJ7VtusnvJa25KH5rxU+BhrrdCqJ03g+QHBgZjElgfRxRsc/4Pu\nnf3gq4TrV5rt3oUlTHXHqdsDaqC0WB69d9jSCn/H6f7lu3bb+DPqcrQJSv7/C0vE\nlQIDAQAB\n-----END PUBLIC KEY-----'}}), {} вызвана из функции "connection_init"
+2023-06-06 20:42:24,608 DEBUG decorator.py Функция  "get_message" c аргументами (<socket.socket fd=13, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 62956)>,), {} вызвана из функции "run"
+2023-06-06 20:42:29,137 CRITICAL transport.py Потеряно соединение с сервером!
+2023-06-06 20:42:56,343 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-06 20:42:56,450 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 20:42:56,562 DEBUG decorator.py Функция  "send_message" c аргументами (<socket.socket fd=18, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 62959), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1686076976.4859588, 'type': 'status', 'user': {'account_name': 'User1', 'status': 'Yep, I am here!', 'public_key': '-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArQ/Kc/6DHNX6mei3IH6s\nbZlx4JCzafRS+rUgees4FI9PWmMuW7c4zghdxVtQeGZ6QiiSa8Nu0qNTD1GN9wI+\nCp4z19jFftDajhUI5sPcx0Da2wyMps6nshg91mJ2xhyFcYuOjgisyhEFwIIzLEy+\nOh0rOvoxdoQf30K+vGTiAfVNWNkCLQrwJg0ROYf7GnkP4sv3W2YkuIrBZbm8LRYs\nb635Eh8RYifTNLJ7VtusnvJa25KH5rxU+BhrrdCqJ03g+QHBgZjElgfRxRsc/4Pu\nnf3gq4TrV5rt3oUlTHXHqdsDaqC0WB69d9jSCn/H6f7lu3bb+DPqcrQJSv7/C0vE\nlQIDAQAB\n-----END PUBLIC KEY-----'}}), {} вызвана из функции "connection_init"
+2023-06-06 20:42:56,980 DEBUG decorator.py Функция  "get_message" c аргументами (<socket.socket fd=14, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 62959)>,), {} вызвана из функции "run"
+2023-06-06 20:44:17,857 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-06 20:44:17,919 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 20:44:17,966 DEBUG decorator.py Функция  "send_message" c аргументами (<socket.socket fd=9, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 62969), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1686077057.94208, 'type': 'status', 'user': {'account_name': 'User1', 'status': 'Yep, I am here!', 'public_key': '-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArQ/Kc/6DHNX6mei3IH6s\nbZlx4JCzafRS+rUgees4FI9PWmMuW7c4zghdxVtQeGZ6QiiSa8Nu0qNTD1GN9wI+\nCp4z19jFftDajhUI5sPcx0Da2wyMps6nshg91mJ2xhyFcYuOjgisyhEFwIIzLEy+\nOh0rOvoxdoQf30K+vGTiAfVNWNkCLQrwJg0ROYf7GnkP4sv3W2YkuIrBZbm8LRYs\nb635Eh8RYifTNLJ7VtusnvJa25KH5rxU+BhrrdCqJ03g+QHBgZjElgfRxRsc/4Pu\nnf3gq4TrV5rt3oUlTHXHqdsDaqC0WB69d9jSCn/H6f7lu3bb+DPqcrQJSv7/C0vE\nlQIDAQAB\n-----END PUBLIC KEY-----'}}), {} вызвана из функции "connection_init"
+2023-06-06 20:44:18,438 DEBUG decorator.py Функция  "get_message" c аргументами (<socket.socket fd=13, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 62969)>,), {} вызвана из функции "run"
+2023-06-06 20:44:22,967 CRITICAL transport.py Потеряно соединение с сервером!
+2023-06-06 20:52:19,998 DEBUG decorator.py Функция  "arg_parser" c аргументами ('7777', ''), {} вызвана из функции "main"
+2023-06-06 20:52:33,259 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-06 20:52:33,343 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 20:52:33,394 DEBUG decorator.py Функция  "send_message" c аргументами (<socket.socket fd=9, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 62990), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1686077553.367448, 'type': 'status', 'user': {'account_name': 'User1', 'status': 'Yep, I am here!', 'public_key': '-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArQ/Kc/6DHNX6mei3IH6s\nbZlx4JCzafRS+rUgees4FI9PWmMuW7c4zghdxVtQeGZ6QiiSa8Nu0qNTD1GN9wI+\nCp4z19jFftDajhUI5sPcx0Da2wyMps6nshg91mJ2xhyFcYuOjgisyhEFwIIzLEy+\nOh0rOvoxdoQf30K+vGTiAfVNWNkCLQrwJg0ROYf7GnkP4sv3W2YkuIrBZbm8LRYs\nb635Eh8RYifTNLJ7VtusnvJa25KH5rxU+BhrrdCqJ03g+QHBgZjElgfRxRsc/4Pu\nnf3gq4TrV5rt3oUlTHXHqdsDaqC0WB69d9jSCn/H6f7lu3bb+DPqcrQJSv7/C0vE\nlQIDAQAB\n-----END PUBLIC KEY-----'}}), {} вызвана из функции "connection_init"
+2023-06-06 20:52:33,868 DEBUG decorator.py Функция  "get_message" c аргументами (<socket.socket fd=17, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 62990)>,), {} вызвана из функции "run"
+2023-06-06 20:52:38,394 CRITICAL transport.py Потеряно соединение с сервером!
+2023-06-06 21:14:53,421 DEBUG client.py Using USERNAME = User3, PASSWD = User3.
+2023-06-06 21:14:54,686 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 21:14:55,224 DEBUG transport.py Server response = {'response': 511, 'data': 'a5b3196277e447a01ad484e221992a9327c15ee1ca31652de6f1925418239c718619ab802b377d3a330ce5f3f41162b5d5a29f6df6c568ab8d5961a9457212d1'}.
+2023-06-06 21:14:56,248 DEBUG transport.py Запущен процесс - приёмник собщений с сервера.
+2023-06-06 21:15:12,982 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-06 21:15:13,039 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 21:15:13,564 DEBUG transport.py Server response = {'response': 511, 'data': 'ee2e2c3b9069d529d4bbd2540f248864224dd7954407f85475643e83b073187f623491ddef46223332cac53cab95c4aa0ff31618dc5058d929b808ea04d529bd'}.
+2023-06-06 21:15:14,584 DEBUG transport.py Запущен процесс - приёмник собщений с сервера.
+2023-06-06 21:15:20,735 DEBUG transport.py Запрос публичного ключа для User2
+2023-06-06 21:15:21,110 ERROR transport.py Не удалось получить ключ собеседникаUser2.
+2023-06-06 21:15:29,817 DEBUG transport.py Запрос публичного ключа для User3
+2023-06-06 21:15:39,153 INFO transport.py Отправлено сообщение для пользователя User3
+2023-06-06 21:15:39,381 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686078938.4371998, 'sender': 'User1', 'destination': 'User3', 'message_text': 'QhQdYe0FcaNAeiCyZkqhA1sTgT2qn98ubAiz4NkBDjb4NF7C36cLYQlFc0ZrS3qnM9OW82nsoAKe/Kj3e2vYAaBw3899ZzddwrMn2Kq4z65OyOt76/hnHQclz5iW0ccwayBHcEdSHhV4cHtcftnt53sbcgC/J1USS8elpuP4PFdacakGFQ0iKL/vHWErfdONeU85OUiKJ4kmeIZfSFKDV9BAPXvnBrYk2//Moo0+686xO1x7pwQq5NcvVmUJrJHvPQ7NyYDKt3FXocyGLbTpcCjN/kP3AiA08wnzjQPWxSafPXN0yQVS8kWgusjMTbIqlVtHPAoeNAsE+gLpcTsEjw=='}
+2023-06-06 21:15:39,382 DEBUG transport.py Получено сообщение от пользователя User1:QhQdYe0FcaNAeiCyZkqhA1sTgT2qn98ubAiz4NkBDjb4NF7C36cLYQlFc0ZrS3qnM9OW82nsoAKe/Kj3e2vYAaBw3899ZzddwrMn2Kq4z65OyOt76/hnHQclz5iW0ccwayBHcEdSHhV4cHtcftnt53sbcgC/J1USS8elpuP4PFdacakGFQ0iKL/vHWErfdONeU85OUiKJ4kmeIZfSFKDV9BAPXvnBrYk2//Moo0+686xO1x7pwQq5NcvVmUJrJHvPQ7NyYDKt3FXocyGLbTpcCjN/kP3AiA08wnzjQPWxSafPXN0yQVS8kWgusjMTbIqlVtHPAoeNAsE+gLpcTsEjw==
+2023-06-06 21:15:43,269 DEBUG transport.py Запрос публичного ключа для User1
+2023-06-06 21:16:45,789 INFO transport.py Отправлено сообщение для пользователя User3
+2023-06-06 21:16:46,369 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686079005.124327, 'sender': 'User1', 'destination': 'User3', 'message_text': 'DmHg9oxJ7USkeUqgjj19rHth5JdDIZ7H8z5WM1c95YbVpDTosbqY92c71BUCMzUI3QSUxBHT2rGlGgnqhTw43b6crS1qustshNX+9IchmXzxFN9laDTGaBlmWgWCCqKin+zG8tgUi6UouOkf7+gy40R9k06amkVqVRmtuhshaj4DObIkatCQOa6b85hWNxyDaeYCxvdWXfqRdgWdvOzsyRkDqTe162e/ykOdDj1GjMYbfVw7zJ+nd/MXMmvrolSV3G7/aBw6kNvZLCQEi0+yTAZdRZBnS5nNKl8q7ezo29nTKD2Ees2SriYqWcwcx6mbRFl9DAiQhLGyEjqZe1ms5Q=='}
+2023-06-06 21:16:46,370 DEBUG transport.py Получено сообщение от пользователя User1:DmHg9oxJ7USkeUqgjj19rHth5JdDIZ7H8z5WM1c95YbVpDTosbqY92c71BUCMzUI3QSUxBHT2rGlGgnqhTw43b6crS1qustshNX+9IchmXzxFN9laDTGaBlmWgWCCqKin+zG8tgUi6UouOkf7+gy40R9k06amkVqVRmtuhshaj4DObIkatCQOa6b85hWNxyDaeYCxvdWXfqRdgWdvOzsyRkDqTe162e/ykOdDj1GjMYbfVw7zJ+nd/MXMmvrolSV3G7/aBw6kNvZLCQEi0+yTAZdRZBnS5nNKl8q7ezo29nTKD2Ees2SriYqWcwcx6mbRFl9DAiQhLGyEjqZe1ms5Q==
+2023-06-06 21:16:49,958 DEBUG transport.py Запрос публичного ключа для User1
+2023-06-06 21:16:55,816 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686079015.1964679, 'sender': 'User3', 'destination': 'User1', 'message_text': 'qzuYID+4Ox1hr+4dpkA0iAoH5iOa6mLwQy168imrfMGj0+TUewpSH1zBCdiy1jEohm5pv6Nceo2zOZo3d7TShrXYsOM7MFKma/HZfIH5vhn7pC7c/Iq0X2rS1kRRBmG2IsiZG/lUOODMrZ3C7JXaCaNkMQ1cwGvhfoATR2K0+iHK042naMp4RCs5u1dgGQsqQyl02HjtaMjVwjXBZvS+44EVh6U+EgbNbgHX7FbzdAmzGkDJBXnOSF4ashCqcu3uaI34s6tsSWi5lhA2RBrARk15D/QTosZRMOx5yO1AAhOfYypvtakckKhzgJXRNUpoWhzy9rjIieqpF4Zj890B6g=='}
+2023-06-06 21:16:55,816 DEBUG transport.py Получено сообщение от пользователя User3:qzuYID+4Ox1hr+4dpkA0iAoH5iOa6mLwQy168imrfMGj0+TUewpSH1zBCdiy1jEohm5pv6Nceo2zOZo3d7TShrXYsOM7MFKma/HZfIH5vhn7pC7c/Iq0X2rS1kRRBmG2IsiZG/lUOODMrZ3C7JXaCaNkMQ1cwGvhfoATR2K0+iHK042naMp4RCs5u1dgGQsqQyl02HjtaMjVwjXBZvS+44EVh6U+EgbNbgHX7FbzdAmzGkDJBXnOSF4ashCqcu3uaI34s6tsSWi5lhA2RBrARk15D/QTosZRMOx5yO1AAhOfYypvtakckKhzgJXRNUpoWhzy9rjIieqpF4Zj890B6g==
+2023-06-06 21:16:55,817 INFO transport.py Отправлено сообщение для пользователя User1
+2023-06-06 21:17:15,569 DEBUG transport.py Запрос публичного ключа для User2
+2023-06-06 21:17:15,861 ERROR transport.py Не удалось получить ключ собеседникаUser2.
+2023-06-06 21:17:28,104 DEBUG transport.py Запрос публичного ключа для User2
+2023-06-06 21:17:28,902 ERROR transport.py Не удалось получить ключ собеседникаUser2.
+2023-06-06 21:17:49,554 DEBUG transport.py Транспорт завершает работу.
+2023-06-06 21:18:04,959 DEBUG client.py Using USERNAME = User2, PASSWD = User2.
+2023-06-06 21:18:05,018 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 21:18:05,542 DEBUG transport.py Server response = {'response': 511, 'data': '5b43df7ef394b846086d5b00944c543d66145c7d9ad4262f84635f76b3af0f75f3d2edef5c15de07b4a7855fe3cb57a7c287f49d7d442201a38ad2212f709e81'}.
+2023-06-06 21:18:06,560 DEBUG transport.py Запущен процесс - приёмник собщений с сервера.
+2023-06-06 21:18:19,832 DEBUG transport.py Запрос публичного ключа для User1
+2023-06-06 21:18:21,323 DEBUG transport.py Запрос публичного ключа для User1
+2023-06-06 21:18:28,620 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686079108.449383, 'sender': 'User2', 'destination': 'User1', 'message_text': 'n9jZJmz8KxNPFiJ764mCCK+Zf0bUrAhDRyMDScBgGU+Rs+T+xjvfghJClsz2CEq77MULGFE05Cx8MB5Wt1NdKabrCReIu2JtSsis11CLoopTRcP0+ya7dx6lLK47B5fl2O3zbI8QAPIOrotp+Cw9tocP0Y+KbSXUPPV8iBi3M5jod2TVdQuPAPK7usZnxC+LWrf3zcoeojz9vgPUzTwDstQXJuSnzEjr5Omd6tCn+2k9je6KstZobHUnr3+9mKwWNlBzLQMRylxpvjLkNpijSELB7NVprz8hza34Si3WIRGmtF5cy6Zi5vF6CBT3OkFn9LnF2ziiRTx7inuY6VR40Q=='}
+2023-06-06 21:18:28,620 DEBUG transport.py Получено сообщение от пользователя User2:n9jZJmz8KxNPFiJ764mCCK+Zf0bUrAhDRyMDScBgGU+Rs+T+xjvfghJClsz2CEq77MULGFE05Cx8MB5Wt1NdKabrCReIu2JtSsis11CLoopTRcP0+ya7dx6lLK47B5fl2O3zbI8QAPIOrotp+Cw9tocP0Y+KbSXUPPV8iBi3M5jod2TVdQuPAPK7usZnxC+LWrf3zcoeojz9vgPUzTwDstQXJuSnzEjr5Omd6tCn+2k9je6KstZobHUnr3+9mKwWNlBzLQMRylxpvjLkNpijSELB7NVprz8hza34Si3WIRGmtF5cy6Zi5vF6CBT3OkFn9LnF2ziiRTx7inuY6VR40Q==
+2023-06-06 21:18:28,620 INFO transport.py Отправлено сообщение для пользователя User1
+2023-06-06 21:19:00,223 DEBUG transport.py Транспорт завершает работу.
+2023-06-06 21:19:01,088 DEBUG transport.py Транспорт завершает работу.
+2023-06-06 21:19:01,724 DEBUG transport.py Потеряно соединение с сервером.
+2023-06-06 21:50:50,876 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-06 21:50:50,961 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 21:50:51,509 DEBUG transport.py Server response = {'response': 511, 'data': 'b4c6b0e7c1925e95d403d9d6ae69721f16f791fa150c00f2e07777ae7b6deaf4f723605e52ec98e6fb5ef7b9bf741abe8550338f0dacd0a668bcbeef9fdca4d3'}.
+2023-06-06 21:50:52,552 DEBUG transport.py Запущен процесс - приёмник собщений с сервера.
+2023-06-06 21:50:55,561 DEBUG transport.py Транспорт завершает работу.
+2023-06-06 22:16:39,626 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-06 22:16:39,700 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 22:16:40,247 DEBUG transport.py Server response = {'response': 511, 'data': 'e8e6580b2be0f94fecfa7387c8678dc83d29c8b4c2ab76bf09b520cf9720e4b7be979845b2591f9a2b9608929a64f3f5578b11813625963d5fecbf487bf8a2ab'}.
+2023-06-06 22:16:41,286 DEBUG transport.py Запущен процесс - приёмник собщений с сервера.
+2023-06-06 22:16:52,991 DEBUG client.py Using USERNAME = User2, PASSWD = User2.
+2023-06-06 22:16:53,054 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 22:16:53,585 DEBUG transport.py Server response = {'response': 511, 'data': '06330439da96d60b64690bbef86ecca92261bec4110aec2749f29871fbee6487fb9ea5c9d284709a5225b9913e42c0e8c50402e8596975d3c999378798a1b43a'}.
+2023-06-06 22:16:54,619 DEBUG transport.py Запущен процесс - приёмник собщений с сервера.
+2023-06-06 22:16:58,178 DEBUG transport.py Запрос публичного ключа для User1
+2023-06-06 22:17:08,637 INFO transport.py Отправлено сообщение для пользователя User1
+2023-06-06 22:17:09,371 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686082627.97506, 'sender': 'User2', 'destination': 'User1', 'message_text': 'mz58URR09fMAHBvhALgyo306ExrExA9ygHMwwxRVrifdU03YEvKZ1X/p9Rq+KX/Ggp6TuKDTYSQxpei2gv4St3w0A+he877FWcWmiw9jcFZoea3j38jdwC2x+mVGgHjos/f/lQ2l1trxUPysaelTOwrYCR/woc2Y9797QQH253EYWLB1vPHSkdsLQWgGraaO+EsOxiDE2LuEfH18IRf01d/5y8h6Z3x0WSGRRh9NU1JWUmEgs8q9Odx3emlekDr1P8fR3i9EiLBnwmJXCAHx6XP6/2yJoimBwyeFAULK/t99ohBDDgkbRPyxpByYl52XOWUMXJRnjYaeuBsyyYXtNw=='}
+2023-06-06 22:17:09,371 DEBUG transport.py Получено сообщение от пользователя User2:mz58URR09fMAHBvhALgyo306ExrExA9ygHMwwxRVrifdU03YEvKZ1X/p9Rq+KX/Ggp6TuKDTYSQxpei2gv4St3w0A+he877FWcWmiw9jcFZoea3j38jdwC2x+mVGgHjos/f/lQ2l1trxUPysaelTOwrYCR/woc2Y9797QQH253EYWLB1vPHSkdsLQWgGraaO+EsOxiDE2LuEfH18IRf01d/5y8h6Z3x0WSGRRh9NU1JWUmEgs8q9Odx3emlekDr1P8fR3i9EiLBnwmJXCAHx6XP6/2yJoimBwyeFAULK/t99ohBDDgkbRPyxpByYl52XOWUMXJRnjYaeuBsyyYXtNw==
+2023-06-06 22:17:12,026 DEBUG transport.py Запрос публичного ключа для User2
+2023-06-06 22:17:28,178 INFO transport.py Отправлено сообщение для пользователя User1
+2023-06-06 22:17:28,427 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686082647.9622898, 'sender': 'User2', 'destination': 'User1', 'message_text': 'IYpadbdvMK50p5Trftr+0uQaiwp4FziW2M5OXvIH2HGYFisSdOrMEF9k/ePqxMK6CBwwW+Ls/otGZOY39ZrEFAXlMnQfeNl8EfDlXvKa37+xz6Z4rM55oRQc0owGIYXpIWweDxBnR1HRwkvRQi4gusAHfXZnDX9UBtYsNfuzHOodX4KslYFP/34Da4Xc6gusOhT0ONPvtZs1ENdK2RKEO9vl4fyoVLgbSA8ep41xMMBljkceb+89IfcbMZWMGKMlOxVA+/Rgl/q71X/+w+VgWqykKM4KWKqXoBEdafilRBK0DDHen6bucmG81T1FUxuzcriCP4lJPlZkUsgoNjCA0A=='}
+2023-06-06 22:17:28,427 DEBUG transport.py Получено сообщение от пользователя User2:IYpadbdvMK50p5Trftr+0uQaiwp4FziW2M5OXvIH2HGYFisSdOrMEF9k/ePqxMK6CBwwW+Ls/otGZOY39ZrEFAXlMnQfeNl8EfDlXvKa37+xz6Z4rM55oRQc0owGIYXpIWweDxBnR1HRwkvRQi4gusAHfXZnDX9UBtYsNfuzHOodX4KslYFP/34Da4Xc6gusOhT0ONPvtZs1ENdK2RKEO9vl4fyoVLgbSA8ep41xMMBljkceb+89IfcbMZWMGKMlOxVA+/Rgl/q71X/+w+VgWqykKM4KWKqXoBEdafilRBK0DDHen6bucmG81T1FUxuzcriCP4lJPlZkUsgoNjCA0A==
+2023-06-06 22:17:42,081 DEBUG transport.py Запрос публичного ключа для User3
+2023-06-06 22:17:46,235 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686082665.786897, 'sender': 'User2', 'destination': 'User1', 'message_text': 'UeNb6DXwa6LWncieYXm0eAi58pxUWQam3di25vzQLv7DNVAKSOe9zUHDTHyUHwpQPiGIVxqGoNm+WWGzr5YdrQfj0xLjv8QZ3TDbzxe8yyZ/gVoVzBpXI6NnkBLq9NRfoAwluE7sO/hTySnXvFcdlqw+HVOjU/wSftbKWuOGM+spQYS1R1z1+fo9Qt42kdhv/gPiXZkhaqaW0GYWEOWwCCJaVSt/gyxuIPmil5REzVCOMws3DSFH/V9VL7S0urnPnXJoEukM1IJ7ZirGjm90FsAzII7XggCSobGCpqEQxoYksDMn2p1MveHzU0szH/uqfDGSXVWlluEriEVhnHOhoA=='}
+2023-06-06 22:17:46,235 DEBUG transport.py Получено сообщение от пользователя User2:UeNb6DXwa6LWncieYXm0eAi58pxUWQam3di25vzQLv7DNVAKSOe9zUHDTHyUHwpQPiGIVxqGoNm+WWGzr5YdrQfj0xLjv8QZ3TDbzxe8yyZ/gVoVzBpXI6NnkBLq9NRfoAwluE7sO/hTySnXvFcdlqw+HVOjU/wSftbKWuOGM+spQYS1R1z1+fo9Qt42kdhv/gPiXZkhaqaW0GYWEOWwCCJaVSt/gyxuIPmil5REzVCOMws3DSFH/V9VL7S0urnPnXJoEukM1IJ7ZirGjm90FsAzII7XggCSobGCpqEQxoYksDMn2p1MveHzU0szH/uqfDGSXVWlluEriEVhnHOhoA==
+2023-06-06 22:17:46,235 INFO transport.py Отправлено сообщение для пользователя User1
+2023-06-06 22:17:47,912 DEBUG transport.py Запрос публичного ключа для User2
+2023-06-06 22:21:13,154 INFO transport.py Отправлено сообщение для пользователя User1
+2023-06-06 22:21:13,319 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686082872.78379, 'sender': 'User2', 'destination': 'User1', 'message_text': 'iv+BrusTADXqOWfBuXt+CFZdRcTL6zyRQ0EBsJnsAKNQYRMEHI/aewpBbZ/+osEByn4OmwQRl9mGF5rUKxC2/0ZEr48p40QVdPDh5Bm7a1d2EzI4ciw5w7zTunothgIlOtUeJXYiOkduzlg73gwXKcgVyhmj7ur//2FBsfEhtwGWk3UUvaN5DElDw8Ep+gTEgH2NmNwqjhbYTgnfU22/6kV42mJKkmVIntNrOo5okcakgzLXTygcAvRHuhv2URyjDJZgbElSwj457BRnUHqma+vkA5euGm4lRD++c8CCRJU3XeCJVSo/JLKhx4T2l2xn4gW8qToyXd9JXoMPtKf6EQ=='}
+2023-06-06 22:21:13,320 DEBUG transport.py Получено сообщение от пользователя User2:iv+BrusTADXqOWfBuXt+CFZdRcTL6zyRQ0EBsJnsAKNQYRMEHI/aewpBbZ/+osEByn4OmwQRl9mGF5rUKxC2/0ZEr48p40QVdPDh5Bm7a1d2EzI4ciw5w7zTunothgIlOtUeJXYiOkduzlg73gwXKcgVyhmj7ur//2FBsfEhtwGWk3UUvaN5DElDw8Ep+gTEgH2NmNwqjhbYTgnfU22/6kV42mJKkmVIntNrOo5okcakgzLXTygcAvRHuhv2URyjDJZgbElSwj457BRnUHqma+vkA5euGm4lRD++c8CCRJU3XeCJVSo/JLKhx4T2l2xn4gW8qToyXd9JXoMPtKf6EQ==
+2023-06-06 22:21:17,163 INFO transport.py Отправлено сообщение для пользователя User2
+2023-06-06 22:21:17,834 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686082876.7780201, 'sender': 'User1', 'destination': 'User2', 'message_text': 'TidNjdLK1MJJQYE3NKTG40+oWoiK7j2HCdEzHuKf9GoZoMZ60tAFpOkniRDGTGdOb6y79Uz1wWbdnX1sMbsjbuHmbud+fT/fo7q/NGWwyt4UAivXFs1q2GtbWLVpvT2m/CK+w/CCKIkg2Q9eXwiTMAWBR2XEoleSdcJhGOrZvowd0m6Mp/mA/pBK9jpwTbtQqgUw3hFB9AvGpgslOx0DpJH9No4pAiExY6yClORGDOzIPykewiK35DpOdRAX6UYHMZjlUTCtkDgYmbnu9mu+E+am4vtm6dbFP3u8qJvCE+w0pwWkK+Qc6dzplrSxYV+kxpZH5uWVTa6YrHwE4F9zXQ=='}
+2023-06-06 22:21:17,834 DEBUG transport.py Получено сообщение от пользователя User1:TidNjdLK1MJJQYE3NKTG40+oWoiK7j2HCdEzHuKf9GoZoMZ60tAFpOkniRDGTGdOb6y79Uz1wWbdnX1sMbsjbuHmbud+fT/fo7q/NGWwyt4UAivXFs1q2GtbWLVpvT2m/CK+w/CCKIkg2Q9eXwiTMAWBR2XEoleSdcJhGOrZvowd0m6Mp/mA/pBK9jpwTbtQqgUw3hFB9AvGpgslOx0DpJH9No4pAiExY6yClORGDOzIPykewiK35DpOdRAX6UYHMZjlUTCtkDgYmbnu9mu+E+am4vtm6dbFP3u8qJvCE+w0pwWkK+Qc6dzplrSxYV+kxpZH5uWVTa6YrHwE4F9zXQ==
+2023-06-06 22:21:30,698 INFO transport.py Отправлено сообщение для пользователя User1
+2023-06-06 22:21:31,213 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686082890.4864159, 'sender': 'User2', 'destination': 'User1', 'message_text': 'ZDkHdXbkWCUzU2crKQYTuwLe0aiNgPqLW/CIq9YqeC/H6NVy0peN+qXGBzbP++EWwbVwob7ahFzvaEZx+Duvc40cXz7R6PiDx2eGNYMfGKB/bgwPYaaDUGIAIB0TvX8S6ltXWy6F3xL4UqJWmjkw1a3KZ0PsX+M4W+dpoUJCdhL5C3UgqeL/JqqVaCVDbjjmrQm+F0IjX/duYvHZ+1OFdwepVowPygwTA1ERNsCK6+qa8wPUv4d8PtyNFA0W+w3ylGzQF4h80Mw6AO5m375croPdBubA3mSiLb4jnM5oD+WiwNcM1T90damq45x4rV6L0Tbgm9+TKQ4AlMpJ4wTd5g=='}
+2023-06-06 22:21:31,213 DEBUG transport.py Получено сообщение от пользователя User2:ZDkHdXbkWCUzU2crKQYTuwLe0aiNgPqLW/CIq9YqeC/H6NVy0peN+qXGBzbP++EWwbVwob7ahFzvaEZx+Duvc40cXz7R6PiDx2eGNYMfGKB/bgwPYaaDUGIAIB0TvX8S6ltXWy6F3xL4UqJWmjkw1a3KZ0PsX+M4W+dpoUJCdhL5C3UgqeL/JqqVaCVDbjjmrQm+F0IjX/duYvHZ+1OFdwepVowPygwTA1ERNsCK6+qa8wPUv4d8PtyNFA0W+w3ylGzQF4h80Mw6AO5m375croPdBubA3mSiLb4jnM5oD+WiwNcM1T90damq45x4rV6L0Tbgm9+TKQ4AlMpJ4wTd5g==
+2023-06-06 22:21:34,283 DEBUG transport.py Запрос публичного ключа для User2
+2023-06-06 22:21:38,521 DEBUG transport.py Запрос публичного ключа для User3
+2023-06-06 22:21:51,252 INFO transport.py Отправлено сообщение для пользователя User1
+2023-06-06 22:21:51,777 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686082911.216521, 'sender': 'User2', 'destination': 'User1', 'message_text': 'TStPy50u4TdlBK4gIzuiaavTz+td/RRTZFJxmJuKf9E9dpIUhAJdc5JhuPd64gGvELPop2JHOlUpxKClbBaZ5YUTVoOotw/kHL5bq4/OGb31jv4qQJwa4RQ+ncG9YJvkx8fU6J4RmfJNfr9aMdmLjsAjADlbFaqRNZpYF8xA6nnvd+WbgdEthcZDtQGEnL0xPgXUqi6dtnON3TFRjORRwsIK6nk5mLAVCvc+6yGjDgshJuP684itXqne6AxkJPIA6pFeuE/K+y2/pXLL/4yXijirvxMDReS4BQxHuMJZ5/gdfB/23CBj+CrtJgSAVgJhB0+f+UPf48D+aMsUFkTv0w=='}
+2023-06-06 22:21:51,777 DEBUG transport.py Получено сообщение от пользователя User2:TStPy50u4TdlBK4gIzuiaavTz+td/RRTZFJxmJuKf9E9dpIUhAJdc5JhuPd64gGvELPop2JHOlUpxKClbBaZ5YUTVoOotw/kHL5bq4/OGb31jv4qQJwa4RQ+ncG9YJvkx8fU6J4RmfJNfr9aMdmLjsAjADlbFaqRNZpYF8xA6nnvd+WbgdEthcZDtQGEnL0xPgXUqi6dtnON3TFRjORRwsIK6nk5mLAVCvc+6yGjDgshJuP684itXqne6AxkJPIA6pFeuE/K+y2/pXLL/4yXijirvxMDReS4BQxHuMJZ5/gdfB/23CBj+CrtJgSAVgJhB0+f+UPf48D+aMsUFkTv0w==
+2023-06-06 22:21:54,139 DEBUG transport.py Запрос публичного ключа для User2
+2023-06-06 22:22:01,274 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686082920.724416, 'sender': 'User1', 'destination': 'User2', 'message_text': 'kovAvFAWXYvsR2+1Imtkn44XyWeJ64jU/hO06k+9UY1xOxPuJ5KtKGOSU70rtemBRmgSXo6eW3ntG5bjiUFuEvsLEB8FKM7hqw20fAHkYKoLYw3RlFctFyPMMptml0BJnq4Zpsz4QjgsgE3Kav5N7KnSvkp0lqn6Izx1UNBcaPip3yyHxMBdtQqbl+SAUV2J4jiY3DB3eBKqSblclFt76d9aVty9BUnaaBGiWTclhcRo1qXjJf4hOsHxBOCSqJUhMmClnd+0AKXpAfSY71jOvJaQ8d7g2FBr/hlk06Y3mt70cebymo03zEOQ5ycvtkRBR8h6xULHlsSwD6IJXukPEA=='}
+2023-06-06 22:22:01,274 DEBUG transport.py Получено сообщение от пользователя User1:kovAvFAWXYvsR2+1Imtkn44XyWeJ64jU/hO06k+9UY1xOxPuJ5KtKGOSU70rtemBRmgSXo6eW3ntG5bjiUFuEvsLEB8FKM7hqw20fAHkYKoLYw3RlFctFyPMMptml0BJnq4Zpsz4QjgsgE3Kav5N7KnSvkp0lqn6Izx1UNBcaPip3yyHxMBdtQqbl+SAUV2J4jiY3DB3eBKqSblclFt76d9aVty9BUnaaBGiWTclhcRo1qXjJf4hOsHxBOCSqJUhMmClnd+0AKXpAfSY71jOvJaQ8d7g2FBr/hlk06Y3mt70cebymo03zEOQ5ycvtkRBR8h6xULHlsSwD6IJXukPEA==
+2023-06-06 22:22:01,274 INFO transport.py Отправлено сообщение для пользователя User2
+2023-06-06 22:25:36,019 DEBUG transport.py Запрос публичного ключа для User3
+2023-06-06 22:25:44,679 INFO transport.py Отправлено сообщение для пользователя User1
+2023-06-06 22:25:44,991 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686083144.340735, 'sender': 'User2', 'destination': 'User1', 'message_text': 'n5FPS9zcW9xew1AXwuDxpK5mOAHd5q3WqwYD/q2KQ4bX2wEtIt/qGLjYWHUwT8LrHjYah6zg9VGloMqAHHU/74emAND6qcB9uAQgm5lc7y1dNZY7jkY0t1n5joyACbxehxcLZoFNz/71vrw3C1R+UBwvSnUgDzamr1O1yolJ99pBGu+OSwkiIZgKPwBAAOddPDnmJ1ji8YAVKAq1oT7lLekEAMYfSOvKGBZY6GCDzZkoGy98oa3zuVnzTrPbbSRX7sDLwUnR8XdGw/zkZZBf9OoPe7eS8uTfKmYp+b5CydaoXMED7uvV9TpX05csheb7yYwl0f1CqjrceOsfLz+SlA=='}
+2023-06-06 22:25:44,992 DEBUG transport.py Получено сообщение от пользователя User2:n5FPS9zcW9xew1AXwuDxpK5mOAHd5q3WqwYD/q2KQ4bX2wEtIt/qGLjYWHUwT8LrHjYah6zg9VGloMqAHHU/74emAND6qcB9uAQgm5lc7y1dNZY7jkY0t1n5joyACbxehxcLZoFNz/71vrw3C1R+UBwvSnUgDzamr1O1yolJ99pBGu+OSwkiIZgKPwBAAOddPDnmJ1ji8YAVKAq1oT7lLekEAMYfSOvKGBZY6GCDzZkoGy98oa3zuVnzTrPbbSRX7sDLwUnR8XdGw/zkZZBf9OoPe7eS8uTfKmYp+b5CydaoXMED7uvV9TpX05csheb7yYwl0f1CqjrceOsfLz+SlA==
+2023-06-06 22:25:49,389 DEBUG transport.py Запрос публичного ключа для User2
+2023-06-06 22:28:02,268 DEBUG transport.py Запрос публичного ключа для User3
+2023-06-06 22:28:12,232 DEBUG transport.py Потеряно соединение с сервером.
+2023-06-06 22:28:12,730 DEBUG transport.py Потеряно соединение с сервером.
+2023-06-06 22:28:14,760 DEBUG transport.py Транспорт завершает работу.
+2023-06-06 22:28:36,497 DEBUG transport.py Транспорт завершает работу.
+2023-06-06 22:28:52,727 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-06 22:28:52,789 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 22:28:52,803 ERROR transport.py Неудачная попытка подключения к серверу!
+2023-06-06 22:29:42,582 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-06 22:29:42,642 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 22:29:43,179 DEBUG transport.py Server response = {'response': 511, 'data': '04aa5c2edc6bb8bc064ab8fe7a6563f1b4bf0c2d474c2edd2f50d60ffbd0361ce577b91e729e3fd815f6d1cd939aaec0a1cda6f970af9ad23e067d56354a4b61'}.
+2023-06-06 22:29:44,218 DEBUG transport.py Запущен процесс - приёмник собщений с сервера.
+2023-06-06 22:29:58,531 DEBUG client.py Using USERNAME = User2, PASSWD = User2.
+2023-06-06 22:29:58,583 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 22:29:59,106 DEBUG transport.py Server response = {'response': 511, 'data': '068febe307d0bd82b792eb406f9c8d0bae5960019784b620b10599353f186679ac3e4242751fd52c20326d4da698f154023e3326c16a0ecb160b2320f9dc509c'}.
+2023-06-06 22:30:00,138 DEBUG transport.py Запущен процесс - приёмник собщений с сервера.
+2023-06-06 22:30:08,065 DEBUG transport.py Запрос публичного ключа для User1
+2023-06-06 22:30:16,157 INFO transport.py Отправлено сообщение для пользователя User1
+2023-06-06 22:30:16,818 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686083415.7193909, 'sender': 'User2', 'destination': 'User1', 'message_text': 'AD546e/0zhDPe0Mjd9qkv0TTPxwX2bNf9tbWkBnIcVXZ2PRzxHzi5hGpOyVh6vXLPhXHpsIT2KfoIIZ9giA23vUpXPi0eKdjRi0DrTIJlf3IeLk6v1gfUhcxH83AGlWetXsat7DeeMdGtQqMenLAHhNcDzyJxT1D1cBZqU5nCDEm6lWsbSIhl33cIvAC6tM3gPVPynazbNBaqqO/jlZk3Xm3gd1Yp1qCrlFGdZnuf46m5WLnHy+gRqAWCd1pu6QcO1DBYIddvG1TKiQs0SR5qm7UswjiI1oYbvhFRoN8eQrScUF3G9OcPsDRPaaBPIsBgRQY9326q9h56qwZApSysw=='}
+2023-06-06 22:30:16,818 DEBUG transport.py Получено сообщение от пользователя User2:AD546e/0zhDPe0Mjd9qkv0TTPxwX2bNf9tbWkBnIcVXZ2PRzxHzi5hGpOyVh6vXLPhXHpsIT2KfoIIZ9giA23vUpXPi0eKdjRi0DrTIJlf3IeLk6v1gfUhcxH83AGlWetXsat7DeeMdGtQqMenLAHhNcDzyJxT1D1cBZqU5nCDEm6lWsbSIhl33cIvAC6tM3gPVPynazbNBaqqO/jlZk3Xm3gd1Yp1qCrlFGdZnuf46m5WLnHy+gRqAWCd1pu6QcO1DBYIddvG1TKiQs0SR5qm7UswjiI1oYbvhFRoN8eQrScUF3G9OcPsDRPaaBPIsBgRQY9326q9h56qwZApSysw==
+2023-06-06 22:30:18,961 DEBUG transport.py Запрос публичного ключа для User2
+2023-06-06 22:32:56,253 DEBUG transport.py Транспорт завершает работу.
+2023-06-06 22:32:56,773 DEBUG transport.py Потеряно соединение с сервером.
+2023-06-06 22:33:03,959 DEBUG transport.py Транспорт завершает работу.
+2023-06-06 22:33:04,297 DEBUG transport.py Потеряно соединение с сервером.
+2023-06-06 22:33:16,720 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-06 22:33:16,772 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 22:33:17,295 DEBUG transport.py Server response = {'response': 511, 'data': '30604a280627a8b0baa6ec8286bcfa284466cf4d4c0d664d4c1da340274686d2cabdb61c893587fe50a56df2b16e70e1c90142fd834402c3fd64ecdca5a027e5'}.
+2023-06-06 22:33:18,330 DEBUG transport.py Запущен процесс - приёмник собщений с сервера.
+2023-06-06 22:33:28,522 DEBUG client.py Using USERNAME = User2, PASSWD = User2.
+2023-06-06 22:33:28,572 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 22:33:29,094 DEBUG transport.py Server response = {'response': 511, 'data': 'c0c9a7602de96f0faf31dce0efaddaf24f3e75d9689b9669fc6d6e1870da5fd44303ea865934467b0cecc38762a53e671614da46c2dd482fc9982d79daedb82c'}.
+2023-06-06 22:33:30,127 DEBUG transport.py Запущен процесс - приёмник собщений с сервера.
+2023-06-06 22:33:33,127 DEBUG transport.py Запрос публичного ключа для User1
+2023-06-06 22:33:40,138 INFO transport.py Отправлено сообщение для пользователя User1
+2023-06-06 22:33:40,396 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686083619.93886, 'sender': 'User2', 'destination': 'User1', 'message_text': 'aBEAQbk1UWKp9SiF8pJJwUqw1WU4LmhIWbY7T5GlYA/nMGx4A0SEI5imSO6F4wXqj1HhIJ4O7KdshG9XrAuVJUUPh5lK9ymup/+tuC+Rp0mS/eRhlYRaG8zQPP2nVxor17POMGL7DnflHurAid0rvadnUk7yQXEi2LMthvmSwkWmyfUj2c1z5rU7bQeWRhcuiWA7mwyQ81PBv2tda0qfPC1Nhl+A4cKJLlwICWhTn7ZIPLdnAyRavSVTRzlm01BrfvnIUhe3Q5LrGWsss2s/jQ49nDjeCxvqJtztwJiANP//+ZYQ8p054Dv3x0WLRp37ti3/cSnJrNZqJV/11bMfKw=='}
+2023-06-06 22:33:40,396 DEBUG transport.py Получено сообщение от пользователя User2:aBEAQbk1UWKp9SiF8pJJwUqw1WU4LmhIWbY7T5GlYA/nMGx4A0SEI5imSO6F4wXqj1HhIJ4O7KdshG9XrAuVJUUPh5lK9ymup/+tuC+Rp0mS/eRhlYRaG8zQPP2nVxor17POMGL7DnflHurAid0rvadnUk7yQXEi2LMthvmSwkWmyfUj2c1z5rU7bQeWRhcuiWA7mwyQ81PBv2tda0qfPC1Nhl+A4cKJLlwICWhTn7ZIPLdnAyRavSVTRzlm01BrfvnIUhe3Q5LrGWsss2s/jQ49nDjeCxvqJtztwJiANP//+ZYQ8p054Dv3x0WLRp37ti3/cSnJrNZqJV/11bMfKw==
+2023-06-06 22:33:43,206 DEBUG transport.py Запрос публичного ключа для User2
+2023-06-06 22:33:49,570 DEBUG transport.py Запрос публичного ключа для User3
+2023-06-06 22:33:55,171 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686083634.6868649, 'sender': 'User2', 'destination': 'User1', 'message_text': 'UMG61DxkqCyIDEkU0XO5wtyfLqwCYEGit+60fVXz5uXeVjKszuYiACZdAI5WaprkbOXlz1THtWwuZiUQ5X8K2WYsdAuLS7kalprVUh1BCM1zUYuwicu7rwsvNuRlP/bLwMOh3ur3HpKRh5ua5h7PGCfibsDrCIMl6uObH1gT8WLc4edrwqZsg37HNzFN24sbuPG60mB1O1xkYIIr9TbOVeuI6z3p6dJXasr7cZHQjrksOmhB1P1CyLXiuAXsWl2LMP6ns3co9y4IVxDElhbTvKujYnRhcD2TuOaF6T3mGNfvsNGOLnzlwtGzAQ/IKiZOZSOiKzLZLwItKK6DpLpkaw=='}
+2023-06-06 22:33:55,171 DEBUG transport.py Получено сообщение от пользователя User2:UMG61DxkqCyIDEkU0XO5wtyfLqwCYEGit+60fVXz5uXeVjKszuYiACZdAI5WaprkbOXlz1THtWwuZiUQ5X8K2WYsdAuLS7kalprVUh1BCM1zUYuwicu7rwsvNuRlP/bLwMOh3ur3HpKRh5ua5h7PGCfibsDrCIMl6uObH1gT8WLc4edrwqZsg37HNzFN24sbuPG60mB1O1xkYIIr9TbOVeuI6z3p6dJXasr7cZHQjrksOmhB1P1CyLXiuAXsWl2LMP6ns3co9y4IVxDElhbTvKujYnRhcD2TuOaF6T3mGNfvsNGOLnzlwtGzAQ/IKiZOZSOiKzLZLwItKK6DpLpkaw==
+2023-06-06 22:33:55,172 INFO transport.py Отправлено сообщение для пользователя User1
+2023-06-06 22:33:57,362 DEBUG transport.py Запрос публичного ключа для User2
+2023-06-06 22:33:59,263 DEBUG transport.py Запрос публичного ключа для User2
+2023-06-06 22:34:02,734 DEBUG transport.py Запрос публичного ключа для User2
+2023-06-06 22:34:12,945 DEBUG transport.py Запрос публичного ключа для User3
+2023-06-06 22:34:14,794 DEBUG transport.py Запрос публичного ключа для User2
+2023-06-06 22:34:16,115 DEBUG transport.py Запрос публичного ключа для User3
+2023-06-06 22:34:20,742 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686083660.561558, 'sender': 'User2', 'destination': 'User1', 'message_text': 'IWQvwsX1tfo9kSv6K5WD8/4vcr1F/ughP8dBCE1JpeU080b1zmNacddySNEC435FmMYQc+PKpd6B/kKL4VHRM1qq6d5qfo77S+uOjbYJz+m2+DO4njbptzSQ777p02Dxjz+EJqmAqz85Szr09XZHliRCQxzdCT0iJi5TyX4sWDeCGCCKBTlskHwk6Pc8AneW5nghfG7f/H5mAP9d+upTxjPCEwnif17YZfdcZV50toSXEkZ1xSxPu0tKtpL+AdGSS8Qj94ebPil7KnjXCebgxH9PzC4hVuGvqoYuFsiHI2CKbscgH5OlSdy2p34QNMxryyB2M4f/Kh5zHo/xkNIEtw=='}
+2023-06-06 22:34:20,743 DEBUG transport.py Получено сообщение от пользователя User2:IWQvwsX1tfo9kSv6K5WD8/4vcr1F/ughP8dBCE1JpeU080b1zmNacddySNEC435FmMYQc+PKpd6B/kKL4VHRM1qq6d5qfo77S+uOjbYJz+m2+DO4njbptzSQ777p02Dxjz+EJqmAqz85Szr09XZHliRCQxzdCT0iJi5TyX4sWDeCGCCKBTlskHwk6Pc8AneW5nghfG7f/H5mAP9d+upTxjPCEwnif17YZfdcZV50toSXEkZ1xSxPu0tKtpL+AdGSS8Qj94ebPil7KnjXCebgxH9PzC4hVuGvqoYuFsiHI2CKbscgH5OlSdy2p34QNMxryyB2M4f/Kh5zHo/xkNIEtw==
+2023-06-06 22:34:20,743 INFO transport.py Отправлено сообщение для пользователя User1
+2023-06-06 22:34:33,107 DEBUG transport.py Запрос публичного ключа для User3
+2023-06-06 22:34:36,274 INFO transport.py Отправлено сообщение для пользователя User3
+2023-06-06 22:34:55,899 DEBUG transport.py Транспорт завершает работу.
+2023-06-06 22:35:09,149 DEBUG client.py Using USERNAME = User3, PASSWD = User3.
+2023-06-06 22:35:09,198 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 22:35:09,723 DEBUG transport.py Server response = {'response': 511, 'data': '4fd6c16de2df18fe21b61dd34ec9803c0adb574c649856f9e96f6c48f090cca86dffab24af78dfcd6ab60a361238cbf9eb4883203cee0d680a564c76e1c98862'}.
+2023-06-06 22:35:10,759 DEBUG transport.py Запущен процесс - приёмник собщений с сервера.
+2023-06-06 22:35:18,006 DEBUG transport.py Запрос публичного ключа для User1
+2023-06-06 22:39:18,093 DEBUG transport.py Запрос публичного ключа для User2
+2023-06-06 22:39:21,236 INFO transport.py Отправлено сообщение для пользователя User2
+2023-06-06 22:54:58,703 DEBUG transport.py Запрос публичного ключа для User1
+2023-06-06 22:55:09,335 INFO transport.py Отправлено сообщение для пользователя User1
+2023-06-06 22:55:10,073 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686084909.00368, 'sender': 'User3', 'destination': 'User1', 'message_text': 'PjRgY99PddJtnVLnCKMrJ9bu1OOqhzz9yKfr6/soMKHZnnjDPDxM/z4tsMNZBeyvu358VughFW/5K7edqEIxfqu/bCCIsFquuXLBB27teMqh83Dai9HpcFS6UK9/iCaDhrts6NPSYt23kz1LSwfuIwOUguB6oGnvamQkhstEk8qUnH++Xfg1vn+Rs0cou0FCFZ+/iKUaEF1d/nA27dAl2kFmKECOXlB9FXzmvB8SiE7HwTq88mBpDl4OWkBp5tTRBWdwxOgShSfuGtiCN4E02NX9yi91VMovHHYAFMlGXrUVvZjupbk1xcV/qjR6Ew2RE07zAkBZ0ycHeXkad1bg4Q=='}
+2023-06-06 22:55:10,075 DEBUG transport.py Получено сообщение от пользователя User3:PjRgY99PddJtnVLnCKMrJ9bu1OOqhzz9yKfr6/soMKHZnnjDPDxM/z4tsMNZBeyvu358VughFW/5K7edqEIxfqu/bCCIsFquuXLBB27teMqh83Dai9HpcFS6UK9/iCaDhrts6NPSYt23kz1LSwfuIwOUguB6oGnvamQkhstEk8qUnH++Xfg1vn+Rs0cou0FCFZ+/iKUaEF1d/nA27dAl2kFmKECOXlB9FXzmvB8SiE7HwTq88mBpDl4OWkBp5tTRBWdwxOgShSfuGtiCN4E02NX9yi91VMovHHYAFMlGXrUVvZjupbk1xcV/qjR6Ew2RE07zAkBZ0ycHeXkad1bg4Q==
+2023-06-06 22:55:34,148 DEBUG transport.py Транспорт завершает работу.
+2023-06-06 22:56:13,274 DEBUG transport.py Принято сообщение с сервера: {'response': 205}
+2023-06-06 22:56:16,052 DEBUG transport.py Запрос публичного ключа для User1
+2023-06-06 22:56:25,288 DEBUG transport.py Запрос публичного ключа для User1
+2023-06-06 22:56:56,327 DEBUG transport.py Запрос публичного ключа для User1
+2023-06-06 23:14:39,756 DEBUG transport.py Запрос публичного ключа для User2
+2023-06-06 23:15:10,327 CRITICAL transport.py Потеряно соединение с сервером.
+2023-06-06 23:15:15,002 DEBUG transport.py Транспорт завершает работу.
+2023-06-06 23:37:26,545 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-06 23:37:27,567 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 23:37:28,112 DEBUG transport.py Server response = {'response': 511, 'data': '9633e875ced64525f236749128bedf90cd133dbe2ea97a020a684c5c0cfa107afbfbf81f3a1d2f09f09ee4036c4c2d7100eb0c71dd9bfbad941c31fc0497ac63'}.
+2023-06-06 23:38:40,678 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-06 23:38:40,729 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 23:38:41,247 DEBUG transport.py Server response = {'response': 400, 'error': 'Имя пользователя уже занято.'}.
+2023-06-06 23:40:10,425 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-06 23:40:10,476 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 23:40:11,010 DEBUG transport.py Server response = {'response': 511, 'data': 'e8ed92288c722b25bf70ebecdee12c5e6ee489a8284884acafee4789a1c5643e397acfd7c98522216f8c275f0fcd1ec2046f1154070dac0cb929bbe2bf72be8d'}.
+2023-06-06 23:40:12,037 DEBUG transport.py Запущен процесс - приёмник собщений с сервера.
+2023-06-06 23:40:29,329 DEBUG client.py Using USERNAME = User2, PASSWD = User2.
+2023-06-06 23:40:29,376 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 23:40:29,904 DEBUG transport.py Server response = {'response': 511, 'data': '8f5e6f6836c45b589e455f990efd303a6bbcf2162deba06c78515a1f597b933608723bc44505808fec0b8edbccdb3e241b8aab9a1f8315f3ed2951cb511e0bac'}.
+2023-06-06 23:40:30,922 DEBUG transport.py Запущен процесс - приёмник собщений с сервера.
+2023-06-06 23:40:41,775 DEBUG transport.py Запрос публичного ключа для User1
+2023-06-06 23:40:51,476 INFO transport.py Отправлено сообщение для пользователя User1
+2023-06-06 23:40:52,145 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686087651.112397, 'sender': 'User2', 'destination': 'User1', 'message_text': 'PkG+VHhLOgXDDoIXgAce+M9/NwmTL35RaxVXM9OEuL/CwPhN6X0eIzMs3DsFplcCoxh1b1F/AyHM0wwChzKaz+gSmhwNLiyxIHOHKHvocqSfztqFzml/O6cpRrefhou3+wR0+LNZF96zTCj6/NROkT0F7tuLzCs51akTuBL8CExWhEpC0W0JOrBw4Q5ueKGBVHZo+Q1GwhtMi5mFX9pXPklJBcrE5HqIIWOzJ1q4LoE+5K3oZM+HoJ2j1JHHc29aXxIH7O16KTZqfj/mVK/JHKsG0hm0VriC0zu+dBFpSoXgD7hdHVnD7tILUk3Mvd3WJdZHY9ObZUwZs5PkKYraTA=='}
+2023-06-06 23:40:52,145 DEBUG transport.py Получено сообщение от пользователя User2:PkG+VHhLOgXDDoIXgAce+M9/NwmTL35RaxVXM9OEuL/CwPhN6X0eIzMs3DsFplcCoxh1b1F/AyHM0wwChzKaz+gSmhwNLiyxIHOHKHvocqSfztqFzml/O6cpRrefhou3+wR0+LNZF96zTCj6/NROkT0F7tuLzCs51akTuBL8CExWhEpC0W0JOrBw4Q5ueKGBVHZo+Q1GwhtMi5mFX9pXPklJBcrE5HqIIWOzJ1q4LoE+5K3oZM+HoJ2j1JHHc29aXxIH7O16KTZqfj/mVK/JHKsG0hm0VriC0zu+dBFpSoXgD7hdHVnD7tILUk3Mvd3WJdZHY9ObZUwZs5PkKYraTA==
+2023-06-06 23:40:57,879 DEBUG transport.py Запрос публичного ключа для User2
+2023-06-06 23:41:12,033 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686087671.7349708, 'sender': 'User2', 'destination': 'User1', 'message_text': 'WnY9WDMBcj8L5XwEd64sVXEC2O/jkT/9nBiwh36ZsWIuMTKRrJqFZddYn67azeUEvQqC3GrZuktrQ6uQ5PUVqGdqbUsZiJO+9edrXoqphvftql/Vn8hKMUR0pIu7Cdgw43sLaHPMMZCLLr63vuyJWWhIeZEEaGSDxtLe04qsUya1yAXmdOPOX+0aw5p/aS4aHSSY2c4QtwkI3gAkrMT6d1j8rqPGfL0ponjrtTOfroMxlrcBmDsQAkssTX0Why8ZFRv5p/ob8JIQi07BwqVlcodeBPWFDF5Zk+AHKGa6od9L76fBaZx/ncm/18elri12sXDaI+959NVh3ePEbGsbKA=='}
+2023-06-06 23:41:12,034 DEBUG transport.py Получено сообщение от пользователя User2:WnY9WDMBcj8L5XwEd64sVXEC2O/jkT/9nBiwh36ZsWIuMTKRrJqFZddYn67azeUEvQqC3GrZuktrQ6uQ5PUVqGdqbUsZiJO+9edrXoqphvftql/Vn8hKMUR0pIu7Cdgw43sLaHPMMZCLLr63vuyJWWhIeZEEaGSDxtLe04qsUya1yAXmdOPOX+0aw5p/aS4aHSSY2c4QtwkI3gAkrMT6d1j8rqPGfL0ponjrtTOfroMxlrcBmDsQAkssTX0Why8ZFRv5p/ob8JIQi07BwqVlcodeBPWFDF5Zk+AHKGa6od9L76fBaZx/ncm/18elri12sXDaI+959NVh3ePEbGsbKA==
+2023-06-06 23:41:12,034 INFO transport.py Отправлено сообщение для пользователя User1
+2023-06-06 23:41:19,669 DEBUG transport.py Запрос публичного ключа для User3
+2023-06-06 23:41:20,060 ERROR transport.py Не удалось получить ключ собеседникаUser3.
+2023-06-06 23:41:25,142 DEBUG transport.py Запрос публичного ключа для User2
+2023-06-06 23:41:34,123 DEBUG transport.py Транспорт завершает работу.
+2023-06-06 23:41:35,185 DEBUG transport.py Запрос публичного ключа для User2
+2023-06-06 23:41:36,950 DEBUG transport.py Запрос публичного ключа для User2
+2023-06-06 23:41:41,112 INFO transport.py Отправлено сообщение для пользователя User2
+2023-06-06 23:41:56,336 DEBUG client.py Using USERNAME = User3, PASSWD = User3.
+2023-06-06 23:41:57,196 DEBUG client.py Keys sucsessfully loaded.
+2023-06-06 23:41:57,724 DEBUG transport.py Server response = {'response': 511, 'data': '82ae2a7f9186e915179bd0b1cf6d3141e1a6ccd9d55c43a9123340114b04e6d4b8899a0becd6e9c97f2bf7a1d57577034dfa830443debd7e32709733e887fc5b'}.
+2023-06-06 23:41:58,745 DEBUG transport.py Запущен процесс - приёмник собщений с сервера.
+2023-06-06 23:42:10,278 DEBUG transport.py Запрос публичного ключа для User2
+2023-06-06 23:42:13,288 INFO transport.py Отправлено сообщение для пользователя User2
+2023-06-06 23:42:18,326 DEBUG transport.py Запрос публичного ключа для User3
+2023-06-06 23:42:23,831 DEBUG transport.py Запрос публичного ключа для User2
+2023-06-06 23:42:39,957 DEBUG transport.py Запрос публичного ключа для User1
+2023-06-06 23:42:43,363 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686087762.881418, 'sender': 'User3', 'destination': 'User1', 'message_text': 'YBOElpwQGhUMs8cNyCZrRN1NLJzvd4C4r/aQBpXYbBKYT2M4txSxH8jRLBbIGN8A9S+aGQAVkeVj37HpOi4ZlMG+FTDPbP0sJ847yWa9widkJ+gnm37KwGGB8jrWAFfiHpUxO63cUiL0alZdXw5jzMfmtwLggPBLxsIc+1XnfQuX2h0BJbKEvxYyWt5CaMEgCK1n+tJJ46xft3PSL2CueiujY0ZtDkXw14ThC5xqfaEjbI3XU3gXttfRstEkGL7b0zXWR+hVTZPDunYs2elpsrtetcAHxFl6a/QACbpOs9jO5uxSfXu2Rmp93apI+qZeJUaYDo7XrADwkYjfO/gTQA=='}
+2023-06-06 23:42:43,364 DEBUG transport.py Получено сообщение от пользователя User3:YBOElpwQGhUMs8cNyCZrRN1NLJzvd4C4r/aQBpXYbBKYT2M4txSxH8jRLBbIGN8A9S+aGQAVkeVj37HpOi4ZlMG+FTDPbP0sJ847yWa9widkJ+gnm37KwGGB8jrWAFfiHpUxO63cUiL0alZdXw5jzMfmtwLggPBLxsIc+1XnfQuX2h0BJbKEvxYyWt5CaMEgCK1n+tJJ46xft3PSL2CueiujY0ZtDkXw14ThC5xqfaEjbI3XU3gXttfRstEkGL7b0zXWR+hVTZPDunYs2elpsrtetcAHxFl6a/QACbpOs9jO5uxSfXu2Rmp93apI+qZeJUaYDo7XrADwkYjfO/gTQA==
+2023-06-06 23:42:43,364 INFO transport.py Отправлено сообщение для пользователя User1
+2023-06-06 23:42:46,590 DEBUG transport.py Запрос публичного ключа для User3
+2023-06-06 23:42:56,629 DEBUG transport.py Принято сообщение с сервера: {'response': 205}
+2023-06-06 23:42:57,424 DEBUG transport.py Потеряно соединение с сервером.
+2023-06-06 23:43:01,637 DEBUG transport.py Транспорт завершает работу.
+2023-06-06 23:43:12,638 DEBUG transport.py Запрос публичного ключа для User3
+2023-06-06 23:43:20,883 DEBUG transport.py Запрос публичного ключа для User2
+2023-06-06 23:56:51,475 DEBUG transport.py Принято сообщение с сервера: {'response': 205}
+2023-06-07 00:02:28,955 DEBUG transport.py Транспорт завершает работу.
+2023-06-07 00:03:07,280 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-07 00:03:07,346 DEBUG client.py Keys sucsessfully loaded.
+2023-06-07 00:03:07,884 DEBUG transport.py Server response = {'response': 511, 'data': '8952dc8220229da5effa98c865554f3233386fe893947139c8bfa5a87226e8fcf16a50d03fd07340970d5e51458eb5cf731f55f2a423a1d0bbb39d8934b1e5f4'}.
+2023-06-07 00:03:08,909 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': ['User2']}
+2023-06-07 00:03:08,923 DEBUG transport.py Запущен процесс - приёмник собщений с сервера.
+2023-06-07 00:03:38,857 DEBUG transport.py Принято сообщение с сервера: {'response': 205}
+2023-06-07 00:03:39,490 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': ['User2']}
+2023-06-07 00:05:38,009 DEBUG transport.py Принято сообщение с сервера: {'response': 205}
+2023-06-07 00:05:38,706 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': ['User2']}
+2023-06-07 00:06:28,150 DEBUG transport.py Принято сообщение с сервера: {'response': 205}
+2023-06-07 00:06:28,806 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': []}
+2023-06-07 00:12:08,170 DEBUG transport.py Транспорт завершает работу.
+2023-06-07 00:12:20,635 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-07 00:12:20,692 DEBUG client.py Keys sucsessfully loaded.
+2023-06-07 00:12:21,223 DEBUG transport.py Server response = {'response': 511, 'data': '2e9c38d19b34b421d5c324f4f013cbaec1a7cc36aa2293d6e5cbd154228fb48b5ade2c592bc509025da39db34e66c81ad904ab43d342e61851d864ea2a68c429'}.
+2023-06-07 00:12:22,242 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': []}
+2023-06-07 00:12:22,243 DEBUG transport.py Запущен процесс - приёмник собщений с сервера.
+2023-06-07 00:12:36,785 DEBUG transport.py Принято сообщение с сервера: {'response': 205}
+2023-06-07 00:12:37,778 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': []}
+2023-06-07 00:14:55,108 DEBUG transport.py Транспорт завершает работу.
+2023-06-07 00:15:08,705 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-07 00:15:08,765 DEBUG client.py Keys sucsessfully loaded.
+2023-06-07 00:15:09,287 DEBUG transport.py Server response = {'response': 511, 'data': '4a6470a6586c018d890c117c102f1830b1f6b8efb6a803c28b1f2c15ba06f62be6078348214abdcf7d1f29b78a12e543fdb31f715006886fa01dca5a53529667'}.
+2023-06-07 00:15:10,305 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': []}
+2023-06-07 00:15:10,306 DEBUG transport.py Запущен процесс - приёмник собщений с сервера.
+2023-06-07 00:15:40,369 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-07 00:15:40,420 DEBUG client.py Keys sucsessfully loaded.
+2023-06-07 00:15:40,938 DEBUG transport.py Server response = {'response': 400, 'error': 'Имя пользователя уже занято.'}.
+2023-06-07 00:16:27,875 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-07 00:16:27,926 DEBUG client.py Keys sucsessfully loaded.
+2023-06-07 00:16:28,446 DEBUG transport.py Server response = {'response': 400, 'error': 'Имя пользователя уже занято.'}.
+2023-06-07 00:17:21,611 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-07 00:17:21,661 DEBUG client.py Keys sucsessfully loaded.
+2023-06-07 00:17:22,198 DEBUG transport.py Server response = {'response': 511, 'data': '797b0486b6005209a41d39c49d5b2251970b71b9ebd97087c8a1fcba9802b6753653dbbaae1a16d2ad4cecc706141c5e972ff50d901effcba7c7b3a88003fc2d'}.
+2023-06-07 00:17:23,223 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': []}
+2023-06-07 00:17:23,224 DEBUG transport.py Запущен процесс - приёмник собщений с сервера.
+2023-06-07 00:17:33,715 DEBUG transport.py Запрос публичного ключа для 1234
+2023-06-07 00:17:34,261 ERROR transport.py Не удалось получить ключ собеседника1234.
+2023-06-07 00:17:51,561 DEBUG client.py Using USERNAME = 1234, PASSWD = 1234.
+2023-06-07 00:17:52,983 DEBUG client.py Keys sucsessfully loaded.
+2023-06-07 00:17:53,511 DEBUG transport.py Server response = {'response': 511, 'data': '231b0d94ef01018bd53efa89d59a63d6d4dc5cc94fc27330b912804acf8cbcdf3cd696eb3f80e0441ae9d3adbedcfee68ba2b643a83ba0c5d217bd6ac6a8882d'}.
+2023-06-07 00:17:54,531 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': []}
+2023-06-07 00:17:54,532 DEBUG transport.py Запущен процесс - приёмник собщений с сервера.
+2023-06-07 00:18:05,168 DEBUG transport.py Запрос публичного ключа для User1
+2023-06-07 00:18:08,570 INFO transport.py Отправлено сообщение для пользователя User1
+2023-06-07 00:18:09,374 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686089888.312311, 'sender': '1234', 'destination': 'User1', 'message_text': 't3IWVZXwodMx4P/WABGWbSLMiAwFzqQKY4UiEcW4nZf0odewqHMxLuRRnMffSiol1HwbxJ5PCEXx/31a/zmMUkxJLKBOnlBlAn1ILGEZYHNYoBuKeHO0fO3eO+qNDCKwpLgR6k4c9kiesBrEnp5FXDp/RFMszQ46sC9sFqC3D85uwswrnrQUnUgzRG5YziFnuLxMk1c73MQCwhT3ecVWhmKT7stvzcGGgbB+FxNytedwb82agbKNWJA/RxmxbRcBBxsg4ENwGTkmmqZpsZuGnm1Kqj8fXfJb5xzySD5dI7Pk7ckXhpeobJDbT7wYy61bG+l5MYseOkBaIKIgb4hgMw=='}
+2023-06-07 00:18:09,375 DEBUG transport.py Получено сообщение от пользователя 1234:t3IWVZXwodMx4P/WABGWbSLMiAwFzqQKY4UiEcW4nZf0odewqHMxLuRRnMffSiol1HwbxJ5PCEXx/31a/zmMUkxJLKBOnlBlAn1ILGEZYHNYoBuKeHO0fO3eO+qNDCKwpLgR6k4c9kiesBrEnp5FXDp/RFMszQ46sC9sFqC3D85uwswrnrQUnUgzRG5YziFnuLxMk1c73MQCwhT3ecVWhmKT7stvzcGGgbB+FxNytedwb82agbKNWJA/RxmxbRcBBxsg4ENwGTkmmqZpsZuGnm1Kqj8fXfJb5xzySD5dI7Pk7ckXhpeobJDbT7wYy61bG+l5MYseOkBaIKIgb4hgMw==
+2023-06-07 00:18:17,158 DEBUG transport.py Транспорт завершает работу.
+2023-06-07 00:18:18,101 DEBUG transport.py Потеряно соединение с сервером.
+2023-06-07 00:18:29,924 DEBUG transport.py Принято сообщение с сервера: {'response': 205}
+2023-06-07 00:18:30,630 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': []}
+2023-06-07 00:18:57,209 DEBUG transport.py Принято сообщение с сервера: {'response': 205}
+2023-06-07 00:18:58,200 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': ['123']}
+2023-06-07 00:19:03,723 DEBUG transport.py Принято сообщение с сервера: {'response': 205}
+2023-06-07 00:19:04,723 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': ['123']}
+2023-06-07 00:19:10,247 DEBUG transport.py Принято сообщение с сервера: {'response': 205}
+2023-06-07 00:19:11,244 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': ['123']}
+2023-06-07 00:20:00,988 DEBUG client.py Using USERNAME = 123, PASSWD = 123.
+2023-06-07 00:20:01,335 DEBUG client.py Keys sucsessfully loaded.
+2023-06-07 00:20:01,863 DEBUG transport.py Server response = {'response': 511, 'data': '233d41ab6d732b305c257ae1ef15fb594d884ccf76338fd4fca6298d5c45b39a90a4bd54a159dbd9160eda1e085990f92cb594b668481b09bac6a6c43c9c7148'}.
+2023-06-07 00:20:02,883 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': []}
+2023-06-07 00:20:02,884 DEBUG transport.py Запущен процесс - приёмник собщений с сервера.
+2023-06-07 00:20:15,394 DEBUG transport.py Запрос публичного ключа для User1
+2023-06-07 00:20:18,428 INFO transport.py Отправлено сообщение для пользователя User1
+2023-06-07 00:20:18,463 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686090017.872791, 'sender': '123', 'destination': 'User1', 'message_text': 'AflkctBpnyheHu/1l6PKl8t3SzbWTsFkvQa3jjJQiCEXjFuP97aoCXpg/dukLswc3d2Fo9dNF1mteoG6LEhStJ+NlisE5Zh8BV5gFC+j8Imv9fczm0niobDmcjhKJhe17P+rZhdMvqyobwSpp/uslPGygdmrG+Wk7yHdIAB7P4oSh8jI1lz9Pudz/theYiNMPYnahftwHsfsCYhqpzyldRDxkeEKW51WNqxQfSv7KghHmd1QgMFpiJ4y+qzSi65+e1w9mUEOsNlR97+/xWhSi4c1xGniUKEd4x8vwhJ9VG4pt8vwYUZBADl7zfNGesanPKdUfxU3kQel8Bw8dVyc0w=='}
+2023-06-07 00:20:18,464 DEBUG transport.py Получено сообщение от пользователя 123:AflkctBpnyheHu/1l6PKl8t3SzbWTsFkvQa3jjJQiCEXjFuP97aoCXpg/dukLswc3d2Fo9dNF1mteoG6LEhStJ+NlisE5Zh8BV5gFC+j8Imv9fczm0niobDmcjhKJhe17P+rZhdMvqyobwSpp/uslPGygdmrG+Wk7yHdIAB7P4oSh8jI1lz9Pudz/theYiNMPYnahftwHsfsCYhqpzyldRDxkeEKW51WNqxQfSv7KghHmd1QgMFpiJ4y+qzSi65+e1w9mUEOsNlR97+/xWhSi4c1xGniUKEd4x8vwhJ9VG4pt8vwYUZBADl7zfNGesanPKdUfxU3kQel8Bw8dVyc0w==
+2023-06-07 00:20:20,411 DEBUG transport.py Запрос публичного ключа для 123
+2023-06-07 00:20:23,944 DEBUG transport.py Транспорт завершает работу.
+2023-06-07 00:20:33,004 DEBUG transport.py Принято сообщение с сервера: {'response': 205}
+2023-06-07 00:20:33,975 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': ['111', '12']}
+2023-06-07 00:28:41,981 DEBUG transport.py Транспорт завершает работу.
+2023-06-07 00:28:42,575 DEBUG transport.py Потеряно соединение с сервером.
+2023-06-07 00:29:30,804 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-07 00:29:30,854 DEBUG client.py Keys sucsessfully loaded.
+2023-06-07 00:29:31,389 DEBUG transport.py Server response = {'response': 511, 'data': 'e85d10462b3500e495921bdefcfec27ac4286190bf874c43127003b30d9341ec137d0e140839a5765845e2381b3ef7a4b90d7e3a2319fb4b9441f492685fa87f'}.
+2023-06-07 00:29:32,413 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': ['111', '12']}
+2023-06-07 00:29:32,430 DEBUG transport.py Запущен процесс - приёмник собщений с сервера.
+2023-06-07 00:29:46,966 DEBUG transport.py Принято сообщение с сервера: {'response': 205}
+2023-06-07 00:29:47,951 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': ['111', '12']}
+2023-06-07 00:29:54,979 DEBUG transport.py Принято сообщение с сервера: {'response': 205}
+2023-06-07 00:29:55,973 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': ['111', '12']}
+2023-06-07 00:30:14,305 DEBUG client.py Using USERNAME = 12, PASSWD = 12.
+2023-06-07 00:30:14,597 DEBUG client.py Keys sucsessfully loaded.
+2023-06-07 00:30:15,123 DEBUG transport.py Server response = {'response': 511, 'data': 'cb7ed3ec5e60c5f226d533034da1e7a4bc511995288e40a3258a589a39f5f968e7e7c8fdff17ed9208b0e7f180e4cb451944b19b93faefae556bf72da98ce179'}.
+2023-06-07 00:30:16,143 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': []}
+2023-06-07 00:30:16,144 DEBUG transport.py Запущен процесс - приёмник собщений с сервера.
+2023-06-07 00:30:43,716 DEBUG transport.py Запрос публичного ключа для 12
+2023-06-07 00:30:46,739 INFO transport.py Отправлено сообщение для пользователя 12
+2023-06-07 00:30:47,234 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686090646.527589, 'sender': 'User1', 'destination': '12', 'message_text': 'c9xBaG7CksnOk7uo7DvyCqAG8ZCG1XA+y8hOUe6QAK+6PKnRwRQo9mdSdVP5IcIpN5VcKPa4TGNCNy4WjbgWLC3AVMCvfUxT+MmWKngF3MjRTx5WD3Yz4/28EvmkeSa04fogJQy8eLgS11DCElO8c1L8b+Q5vVTt4KYuSvQELlXRtuWdkJ7mXgp7o9jyqpntaSC5y+LB2qeJD43ys3WEp6vMTnuToxS7M2Qt9otp0nFoXb90VynM6ntCQQ29QKfh3nm8hrzBWhVtHdoqGkZik3GKz6dr6Pi+U5LwVx9hXYQkXrMHHBv+x9PLbEzCaAboh2cNx4styjWYmkOJOETPGw=='}
+2023-06-07 00:30:47,235 DEBUG transport.py Получено сообщение от пользователя User1:c9xBaG7CksnOk7uo7DvyCqAG8ZCG1XA+y8hOUe6QAK+6PKnRwRQo9mdSdVP5IcIpN5VcKPa4TGNCNy4WjbgWLC3AVMCvfUxT+MmWKngF3MjRTx5WD3Yz4/28EvmkeSa04fogJQy8eLgS11DCElO8c1L8b+Q5vVTt4KYuSvQELlXRtuWdkJ7mXgp7o9jyqpntaSC5y+LB2qeJD43ys3WEp6vMTnuToxS7M2Qt9otp0nFoXb90VynM6ntCQQ29QKfh3nm8hrzBWhVtHdoqGkZik3GKz6dr6Pi+U5LwVx9hXYQkXrMHHBv+x9PLbEzCaAboh2cNx4styjWYmkOJOETPGw==
+2023-06-07 00:30:49,037 DEBUG transport.py Запрос публичного ключа для User1
+2023-06-07 00:30:51,000 DEBUG transport.py Транспорт завершает работу.
+2023-06-07 00:30:51,257 DEBUG transport.py Потеряно соединение с сервером.
+2023-06-07 00:30:58,773 DEBUG transport.py Принято сообщение с сервера: {'response': 205}
+2023-06-07 00:30:59,279 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': ['111', 'www', 'qqq']}
+2023-06-07 00:31:32,386 DEBUG transport.py Транспорт завершает работу.
+2023-06-07 00:32:43,070 DEBUG client.py Using USERNAME = User1, PASSWD = Userq.
+2023-06-07 00:32:43,119 DEBUG client.py Keys sucsessfully loaded.
+2023-06-07 00:32:43,642 DEBUG transport.py Server response = {'response': 511, 'data': '37b432369dcd45b625563a4af660f8005fbf2a588a59ee226183480673efc8d1c8e3c0614ef0d9c080a2a20da37e51548b71ccb7f384a906d8795bc772f70859'}.
+2023-06-07 00:32:43,644 CRITICAL transport.py Потеряно соединение с сервером.
+2023-06-07 00:32:43,645 ERROR transport.py Timeout соединения при обновлении списков пользователей.
+2023-06-07 00:32:43,645 DEBUG transport.py Запущен процесс - приёмник собщений с сервера.
+2023-06-07 00:32:44,649 DEBUG transport.py Потеряно соединение с сервером.
+2023-06-07 00:32:46,601 DEBUG transport.py Транспорт завершает работу.
+2023-06-07 00:33:28,424 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-07 00:33:28,472 DEBUG client.py Keys sucsessfully loaded.
+2023-06-07 00:33:28,995 DEBUG transport.py Server response = {'response': 511, 'data': '4e094b112c2c75a242756fd416849365ed52c1d6a79161322cd05595df7391b1f7d8453e920d463f7d9191b3c13f8e366b2e9522572600537890c940699b121a'}.
+2023-06-07 00:33:30,014 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': ['111', 'www', 'qqq']}
+2023-06-07 00:33:30,034 DEBUG transport.py Запущен процесс - приёмник собщений с сервера.
+2023-06-07 00:33:32,703 DEBUG transport.py Запрос публичного ключа для 111
+2023-06-07 00:33:33,524 ERROR transport.py Не удалось получить ключ собеседника111.
+2023-06-07 00:33:36,108 DEBUG transport.py Запрос публичного ключа для qqq
+2023-06-07 00:33:36,531 ERROR transport.py Не удалось получить ключ собеседникаqqq.
+2023-06-07 00:33:40,714 DEBUG transport.py Запрос публичного ключа для www
+2023-06-07 00:33:41,043 ERROR transport.py Не удалось получить ключ собеседникаwww.
+2023-06-07 00:33:53,844 DEBUG client.py Using USERNAME = www, PASSWD = www.
+2023-06-07 00:33:55,628 DEBUG client.py Keys sucsessfully loaded.
+2023-06-07 00:33:56,155 DEBUG transport.py Server response = {'response': 511, 'data': '1a249e409d463d726e63ab7ae1cc3cea5d4d091b1c1c4f35547963613391b6ef2670a320a230d003b0fdbc068b90bf99e31bd079f288aca98fbd73d61c8e6bf7'}.
+2023-06-07 00:33:57,173 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': []}
+2023-06-07 00:33:57,174 DEBUG transport.py Запущен процесс - приёмник собщений с сервера.
+2023-06-07 00:34:04,741 DEBUG transport.py Запрос публичного ключа для User1
+2023-06-07 00:34:07,209 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686090846.918256, 'sender': 'www', 'destination': 'User1', 'message_text': 'Oeq5V9hz6TkqyQcAE3/1SYG3QdpBo2SooYntZ7hYPelubaRROXRJfVy9QqUvzguUI6GsxSAi/Z4qxbp9/eSQi5BxX3hM5DAk+m2W5nkGiCfry0/z+W3FoJPr7SLbwcE4C3JXs7aHCuXL2FBsTZ6/dCG/1PdeUS5MqB4tyHg6keRfOskMJlU5iFeYgzxrpLV/Knq7tyBFiPkq1wqS6YxGZOIsvwOf2dsbUfaMBCwqZ5g4RiW2at00pIrRHXhNWyajYZvvymvg5d7sGI08QuprcsvqbsnkYHtFW1sOT+2+r5is7Q3eEQONw1yLn2mbq4seOAsa9gUvj+3IbdFi0pT+Mw=='}
+2023-06-07 00:34:07,210 DEBUG transport.py Получено сообщение от пользователя www:Oeq5V9hz6TkqyQcAE3/1SYG3QdpBo2SooYntZ7hYPelubaRROXRJfVy9QqUvzguUI6GsxSAi/Z4qxbp9/eSQi5BxX3hM5DAk+m2W5nkGiCfry0/z+W3FoJPr7SLbwcE4C3JXs7aHCuXL2FBsTZ6/dCG/1PdeUS5MqB4tyHg6keRfOskMJlU5iFeYgzxrpLV/Knq7tyBFiPkq1wqS6YxGZOIsvwOf2dsbUfaMBCwqZ5g4RiW2at00pIrRHXhNWyajYZvvymvg5d7sGI08QuprcsvqbsnkYHtFW1sOT+2+r5is7Q3eEQONw1yLn2mbq4seOAsa9gUvj+3IbdFi0pT+Mw==
+2023-06-07 00:34:07,210 INFO transport.py Отправлено сообщение для пользователя User1
+2023-06-07 00:34:24,668 DEBUG transport.py Транспорт завершает работу.
+2023-06-07 00:34:25,268 DEBUG transport.py Потеряно соединение с сервером.
+2023-06-07 00:34:26,233 DEBUG transport.py Транспорт завершает работу.
+2023-06-07 00:34:26,266 DEBUG transport.py Потеряно соединение с сервером.
+2023-06-07 00:38:14,919 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-07 00:38:14,989 DEBUG client.py Keys sucsessfully loaded.
+2023-06-07 00:38:15,537 DEBUG transport.py Server response = {'response': 511, 'data': '1548e6664e5d827de0d9379a02d00b321919e5cc3139aff0ea2a2c9bb4dcc65f82e1760a682cf4b2010e089f694081e28dc03b7a6eb68c097c6377d869b7377d'}.
+2023-06-07 00:38:16,564 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': ['111', 'www', 'qqq']}
+2023-06-07 00:38:16,582 DEBUG transport.py Запущен процесс - приёмник собщений с сервера.
+2023-06-07 00:38:26,340 DEBUG client.py Using USERNAME = www, PASSWD = www.
+2023-06-07 00:38:26,400 DEBUG client.py Keys sucsessfully loaded.
+2023-06-07 00:38:26,932 DEBUG transport.py Server response = {'response': 511, 'data': 'ee8f3833a7c8cb206fd2b40169b4f9825bcee4ca4e3b9c6f30726df0ea7e65a9ee9968b79b1cb81117541a00544974fdd07a5dcabb162d1a611055bb84da5d02'}.
+2023-06-07 00:38:27,951 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': ['User1']}
+2023-06-07 00:38:27,965 DEBUG transport.py Запущен процесс - приёмник собщений с сервера.
+2023-06-07 00:38:29,255 DEBUG transport.py Запрос публичного ключа для User1
+2023-06-07 00:38:34,469 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686091114.282499, 'sender': 'www', 'destination': 'User1', 'message_text': 'GtLJ4OhtFWyRYEaeBTcqp7Pi3zY3dp3d59/usiLDt7hW6PctMWt6Yzmvm04XbA9BGig+ABFVfTXJVdDSNkQnr45jHvyzNry1WgGygRy9iQMztLa7pSv2C1xTWVnLbwu/icKRnAIkFsg55ed5yXzOJENMyHkf9bUiGW947mUEdQHvtKfhOvD4EwKKXfdu9aXDyxAw9g/xpLaRfTmKVlat9EtSbsDSPWqNyUHvTv8enlFepHYhP2dU8/kyExM43G1Gm14V/bH7wZc3TEvKAdYE/1WCj43z5mPdb+iLtBb4A2VSXDQFP76LWZaRodPVklPUnJ9jKKGLnpNPN2ASzHxYOw=='}
+2023-06-07 00:38:34,469 DEBUG transport.py Получено сообщение от пользователя www:GtLJ4OhtFWyRYEaeBTcqp7Pi3zY3dp3d59/usiLDt7hW6PctMWt6Yzmvm04XbA9BGig+ABFVfTXJVdDSNkQnr45jHvyzNry1WgGygRy9iQMztLa7pSv2C1xTWVnLbwu/icKRnAIkFsg55ed5yXzOJENMyHkf9bUiGW947mUEdQHvtKfhOvD4EwKKXfdu9aXDyxAw9g/xpLaRfTmKVlat9EtSbsDSPWqNyUHvTv8enlFepHYhP2dU8/kyExM43G1Gm14V/bH7wZc3TEvKAdYE/1WCj43z5mPdb+iLtBb4A2VSXDQFP76LWZaRodPVklPUnJ9jKKGLnpNPN2ASzHxYOw==
+2023-06-07 00:38:34,469 INFO transport.py Отправлено сообщение для пользователя User1
+2023-06-07 00:38:36,949 DEBUG transport.py Запрос публичного ключа для www
+2023-06-07 00:56:26,270 DEBUG transport.py Транспорт завершает работу.
+2023-06-07 00:56:27,273 DEBUG transport.py Потеряно соединение с сервером.
+2023-06-07 00:56:28,783 DEBUG transport.py Транспорт завершает работу.
+2023-06-07 09:38:41,360 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-07 09:38:41,439 DEBUG client.py Keys sucsessfully loaded.
+2023-06-07 09:38:41,992 DEBUG transport.py Server response = {'response': 511, 'data': '672e2f592d19326dd9cc9751a212caaac59ddf7a3d64f5552ae85d6da3053111a260554bed8d21fb9d528717f513ff85b091428b60f797e89bf3cf57db68d25f'}.
+2023-06-07 09:38:43,020 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': ['111', 'www', 'qqq']}
+2023-06-07 09:38:43,041 DEBUG transport.py Запущен процесс - приёмник сообщений с сервера.
+2023-06-07 09:39:46,634 DEBUG transport.py Транспорт завершает работу.
+2023-06-07 09:39:47,481 DEBUG transport.py Потеряно соединение с сервером.
+2023-06-07 11:05:03,899 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-07 11:05:03,972 DEBUG client.py Keys sucsessfully loaded.
+2023-06-07 11:05:04,531 DEBUG transport.py Server response = {'response': 511, 'data': '36ef5c33e9dcdfe7c310b112b2c0fcfe1f227ea98ea589c3eb6d25b92d7eabc601e1e348cd9a3f1943c956444c824efc2c58b63d2ad12836c11884e2fea14eb9'}.
+2023-06-07 11:05:05,556 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': ['111', 'www', 'qqq']}
+2023-06-07 11:05:05,576 DEBUG transport.py Запущен процесс - приёмник сообщений с сервера.
+2023-06-07 11:05:51,023 DEBUG transport.py Транспорт завершает работу.
+2023-06-07 11:05:51,710 DEBUG transport.py Потеряно соединение с сервером.
+2023-06-07 11:28:22,598 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-07 11:28:22,663 DEBUG client.py Keys sucsessfully loaded.
+2023-06-07 11:28:23,210 DEBUG transport.py Server response = {'response': 511, 'data': 'f282d70292791dbc72dd2926555bf7e96ba74ba50620712690fcd1d12e62aaf43e991704f59184343e6429264aaeecb86bbb261a43d18fadf64a67e787cfa72f'}.
+2023-06-07 11:28:24,237 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': ['111', 'www', 'qqq']}
+2023-06-07 11:28:24,256 DEBUG transport.py Запущен процесс - приёмник сообщений с сервера.
+2023-06-07 11:28:38,117 DEBUG client.py Using USERNAME = qqq, PASSWD = qqq.
+2023-06-07 11:28:39,988 DEBUG client.py Keys sucsessfully loaded.
+2023-06-07 11:28:40,524 DEBUG transport.py Server response = {'response': 511, 'data': '02f8c580897517feb87746f01b480d623f927fb3a7f449e10b1cbb2e3867d520c11eca2e13e60046840f4270145440a919f6f02a44e25de47d656a9d8aa52f60'}.
+2023-06-07 11:28:41,545 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': []}
+2023-06-07 11:28:41,545 DEBUG transport.py Запущен процесс - приёмник сообщений с сервера.
+2023-06-07 11:28:51,318 DEBUG transport.py Запрос публичного ключа для User1
+2023-06-07 11:28:52,282 DEBUG transport.py Запрос публичного ключа для User1
+2023-06-07 11:28:55,593 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686130135.556844, 'sender': 'qqq', 'destination': 'User1', 'message_text': 'mM8bdRUDvtWXDAiTXoMD00TSy4/34VrM3hJDmAtuN1E8EnlFwBnsIE9qZ26qlPS+3Gga6o+/VntwU2F46NBBaUwPrQJz6U4UccRUwpkcuZU0uZfAWnBgQlY78esVxU5x4a8mwXfAjIhMpd+CtryPJhEUDSv2KaSRuyPwD+St2Low8TXdE6E56suWCilrhMDpLVJAHT6Q0FyAen4WCnsal/GBVQoPe0vFWbEYhwCgmq5nVfZBIT/BdBGhoo0hIkNQbOEKBtuxpWHgGc5LguUt2DP7f8bXl8BQillM6P+38iRAN+AOhuXno/bN+OhF7U5XxGoia+ESy8m8zC1eY6HFDg=='}
+2023-06-07 11:28:55,593 DEBUG transport.py Получено сообщение от пользователя qqq:mM8bdRUDvtWXDAiTXoMD00TSy4/34VrM3hJDmAtuN1E8EnlFwBnsIE9qZ26qlPS+3Gga6o+/VntwU2F46NBBaUwPrQJz6U4UccRUwpkcuZU0uZfAWnBgQlY78esVxU5x4a8mwXfAjIhMpd+CtryPJhEUDSv2KaSRuyPwD+St2Low8TXdE6E56suWCilrhMDpLVJAHT6Q0FyAen4WCnsal/GBVQoPe0vFWbEYhwCgmq5nVfZBIT/BdBGhoo0hIkNQbOEKBtuxpWHgGc5LguUt2DP7f8bXl8BQillM6P+38iRAN+AOhuXno/bN+OhF7U5XxGoia+ESy8m8zC1eY6HFDg==
+2023-06-07 11:28:55,593 INFO transport.py Отправлено сообщение для пользователя User1
+2023-06-07 11:28:58,211 DEBUG transport.py Запрос публичного ключа для qqq
+2023-06-07 11:29:01,109 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686130141.096083, 'sender': 'User1', 'destination': 'qqq', 'message_text': 'N6T2hdT0f0mCdWppUExBRKTvJNAFjwJVSTPek6Hdk+yWU1pXmxplBKrmc5pXSaVv+agC2Kz4uBlAARQhkKPdEfFfyuT8ogL6OgMw6HIJtY3QqrHRO2Vs3OvNSCG0/iDvmwvzbI2MFhzChkO5fuFo5h0vQzeVnPMmVa6wFaRUJxOKbB3C5aLDseHxubW5ntC7mdeN8ev+l24s+bdT57tuFYhS0Z9XwsrgPKOYW9r75zOskSgIvJzmJCC0ht2DLwPy0rJ68IEcxo3scSpdSX0lpwC+iMlpsr12BaOUJ/AGv/5ch3jfHdNks4LkNQ3PdEaRn3VsTlUOpHJG/kDDUSg9TQ=='}
+2023-06-07 11:29:01,110 INFO transport.py Отправлено сообщение для пользователя qqq
+2023-06-07 11:29:01,111 DEBUG transport.py Получено сообщение от пользователя User1:N6T2hdT0f0mCdWppUExBRKTvJNAFjwJVSTPek6Hdk+yWU1pXmxplBKrmc5pXSaVv+agC2Kz4uBlAARQhkKPdEfFfyuT8ogL6OgMw6HIJtY3QqrHRO2Vs3OvNSCG0/iDvmwvzbI2MFhzChkO5fuFo5h0vQzeVnPMmVa6wFaRUJxOKbB3C5aLDseHxubW5ntC7mdeN8ev+l24s+bdT57tuFYhS0Z9XwsrgPKOYW9r75zOskSgIvJzmJCC0ht2DLwPy0rJ68IEcxo3scSpdSX0lpwC+iMlpsr12BaOUJ/AGv/5ch3jfHdNks4LkNQ3PdEaRn3VsTlUOpHJG/kDDUSg9TQ==
+2023-06-07 11:29:27,896 DEBUG transport.py Принято сообщение с сервера: {'response': 205}
+2023-06-07 11:29:28,191 DEBUG transport.py Принято сообщение с сервера: {'response': 205}
+2023-06-07 11:29:28,666 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': ['User1']}
+2023-06-07 11:29:29,171 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': ['111', 'www', 'qqq']}
+2023-06-07 11:29:37,941 DEBUG transport.py Принято сообщение с сервера: {'response': 205}
+2023-06-07 11:29:38,700 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': ['111', 'www', 'qqq']}
+2023-06-07 11:29:38,702 DEBUG transport.py Принято сообщение с сервера: {'response': 205}
+2023-06-07 11:29:39,710 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': ['User1']}
+2023-06-07 11:29:42,435 DEBUG transport.py Запрос публичного ключа для www
+2023-06-07 11:29:45,254 DEBUG transport.py Потеряно соединение с сервером.
+2023-06-07 11:29:45,734 DEBUG transport.py Потеряно соединение с сервером.
+2023-06-07 11:29:53,715 DEBUG transport.py Транспорт завершает работу.
+2023-06-07 11:29:55,679 DEBUG transport.py Транспорт завершает работу.
+2023-06-07 11:33:45,879 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-07 11:33:45,942 DEBUG client.py Keys sucsessfully loaded.
+2023-06-07 11:33:46,478 DEBUG transport.py Server response = {'response': 511, 'data': '37de90cbcc7b5cf5363b3eec94b60fc43d4653cdd9c324abb4d501eb3e9fd2232aae5258a4de203dfcef1552a36df16892d4e9dadcc4c69ed0807e5e4bb12643'}.
+2023-06-07 11:33:47,501 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': ['111', 'qqq']}
+2023-06-07 11:33:47,518 DEBUG transport.py Запущен процесс - приёмник сообщений с сервера.
+2023-06-07 11:33:52,576 DEBUG transport.py Запрос публичного ключа для qqq
+2023-06-07 11:33:55,312 DEBUG transport.py Запрос публичного ключа для 111
+2023-06-07 11:33:55,521 ERROR transport.py Не удалось получить ключ собеседника111.
+2023-06-07 11:34:03,689 DEBUG transport.py Запрос публичного ключа для qqq
+2023-06-07 11:34:16,316 DEBUG client.py Using USERNAME = qqq, PASSWD = qqq.
+2023-06-07 11:34:16,370 DEBUG client.py Keys sucsessfully loaded.
+2023-06-07 11:34:16,893 DEBUG transport.py Server response = {'response': 511, 'data': 'a884fc66194d584e0f4ef007a773dd051ebee1210b672a46d1163ec1e4f9c43922a9f4d93268b29787faaf9641154b294da3a5c50edcffc4f7c8acb55a73d6a5'}.
+2023-06-07 11:34:17,908 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': ['User1']}
+2023-06-07 11:34:17,922 DEBUG transport.py Запущен процесс - приёмник сообщений с сервера.
+2023-06-07 11:34:25,866 DEBUG transport.py Запрос публичного ключа для User1
+2023-06-07 11:34:30,287 DEBUG transport.py Транспорт завершает работу.
+2023-06-07 11:34:30,965 DEBUG transport.py Потеряно соединение с сервером.
+2023-06-07 11:34:35,794 DEBUG transport.py Транспорт завершает работу.
+2023-06-07 11:34:36,676 DEBUG transport.py Потеряно соединение с сервером.
+2023-06-07 11:42:12,786 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-07 11:42:13,356 DEBUG client.py Keys sucsessfully loaded.
+2023-06-07 11:42:13,916 DEBUG transport.py Server response = {'response': 400, 'error': 'Пользователь не зарегистрирован.'}.
+2023-06-07 11:43:36,527 DEBUG client.py Using USERNAME = User2, PASSWD = User2.
+2023-06-07 11:43:38,457 DEBUG client.py Keys sucsessfully loaded.
+2023-06-07 11:43:38,992 DEBUG transport.py Server response = {'response': 511, 'data': '6c58c3967a49ee1cfc014de9243ac3389cdb92b249e2fe3be5fa657df9e3d32ed34dd0ce40e3bbb21785e8c87796ac8f9c57dbdf935eb28e83fe0cb9cb01dc65'}.
+2023-06-07 11:43:40,016 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': []}
+2023-06-07 11:43:40,017 DEBUG transport.py Запущен процесс - приёмник сообщений с сервера.
+2023-06-07 11:43:51,577 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-07 11:43:51,641 DEBUG client.py Keys sucsessfully loaded.
+2023-06-07 11:43:52,174 DEBUG transport.py Server response = {'response': 511, 'data': '6054cd88315040f87b2c8198df7081268c6e174b126305f7b7fd8ce4817cf40da6b76350259cc49837924ee685c68a4b16b9480d77e6ef5668b5043e304c85da'}.
+2023-06-07 11:43:53,192 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': []}
+2023-06-07 11:43:53,193 DEBUG transport.py Запущен процесс - приёмник сообщений с сервера.
+2023-06-07 11:44:03,564 DEBUG transport.py Запрос публичного ключа для User2
+2023-06-07 11:44:04,869 DEBUG transport.py Запрос публичного ключа для User2
+2023-06-07 11:44:07,238 INFO transport.py Отправлено сообщение для пользователя User2
+2023-06-07 11:44:08,097 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686131046.8325891, 'sender': 'User1', 'destination': 'User2', 'message_text': 'G7FuGJs2vrQle9pInJYqLr8NeYAAeHTbhAM9bxUvaHam76nyN7tUHgBPVDivB4st3NnO7wkkWuVFUXnuKdT1LEnUMPFvQe5C/4Cdn5aJb5R9t5bFzhOsNCNdxuHXjQ3lElddJs2Ft+7SLG/bQqy9X/ZErKN15F6fOGBWOu5LmOF4KULRrJyFXKIBpfLlVe8G7SAnqIsxl5SLOdPD4Xy4Ik+2FIYl7YBUXH4pXGU8OTF3TyHavl3U/gNHscfCkN5FVnVcikIP7+olKe8aNBKg2OqaKEEPVTIS2G5Ng4oJ1TwSNMUtw6LusdAX9yWPA2t73cbfFWfqH5/kKIZVBxJ8Aw=='}
+2023-06-07 11:44:08,097 DEBUG transport.py Получено сообщение от пользователя User1:G7FuGJs2vrQle9pInJYqLr8NeYAAeHTbhAM9bxUvaHam76nyN7tUHgBPVDivB4st3NnO7wkkWuVFUXnuKdT1LEnUMPFvQe5C/4Cdn5aJb5R9t5bFzhOsNCNdxuHXjQ3lElddJs2Ft+7SLG/bQqy9X/ZErKN15F6fOGBWOu5LmOF4KULRrJyFXKIBpfLlVe8G7SAnqIsxl5SLOdPD4Xy4Ik+2FIYl7YBUXH4pXGU8OTF3TyHavl3U/gNHscfCkN5FVnVcikIP7+olKe8aNBKg2OqaKEEPVTIS2G5Ng4oJ1TwSNMUtw6LusdAX9yWPA2t73cbfFWfqH5/kKIZVBxJ8Aw==
+2023-06-07 11:44:12,730 DEBUG transport.py Запрос публичного ключа для User1
+2023-06-07 11:44:20,778 INFO transport.py Отправлено сообщение для пользователя User1
+2023-06-07 11:44:21,292 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686131060.577688, 'sender': 'User2', 'destination': 'User1', 'message_text': 'tMd7/YF51RPCqVb+hxw459RqJJXxGFGYH0tdoM2YGE6mvrbGuYIdu4YnNDhavMLJz/oZcvxx2WbcgFRxPtpB/tIcDfIiRGO+9BcLLC/dYYdxSXvgaroTEyCbTkwXBp/OYbwI51EmRSwM85p3VCeKIwAc08yF6Q9PaFOeWK3iR0Q54+rjnHVpn1mNCWzB9Kuc29nmmykvPDJ/jKjBTyWwAjXXmEXRoJb9m6WAWKy9h3FZ1qdHb9WiDNHgSJIQ/M6D4MZKuXjDxgFqzvjNZQF792VTuXLPRra0peNpe5tJ0OD0PANbFnIk8883FwIAM7NUgM8JdMt2QvCunkVjxZOwMQ=='}
+2023-06-07 11:44:21,292 DEBUG transport.py Получено сообщение от пользователя User2:tMd7/YF51RPCqVb+hxw459RqJJXxGFGYH0tdoM2YGE6mvrbGuYIdu4YnNDhavMLJz/oZcvxx2WbcgFRxPtpB/tIcDfIiRGO+9BcLLC/dYYdxSXvgaroTEyCbTkwXBp/OYbwI51EmRSwM85p3VCeKIwAc08yF6Q9PaFOeWK3iR0Q54+rjnHVpn1mNCWzB9Kuc29nmmykvPDJ/jKjBTyWwAjXXmEXRoJb9m6WAWKy9h3FZ1qdHb9WiDNHgSJIQ/M6D4MZKuXjDxgFqzvjNZQF792VTuXLPRra0peNpe5tJ0OD0PANbFnIk8883FwIAM7NUgM8JdMt2QvCunkVjxZOwMQ==
+2023-06-07 11:45:54,393 DEBUG transport.py Запрос публичного ключа для User2
+2023-06-07 11:45:58,368 DEBUG transport.py Транспорт завершает работу.
+2023-06-07 11:45:58,521 DEBUG transport.py Потеряно соединение с сервером.
+2023-06-07 11:46:01,543 DEBUG transport.py Запрос публичного ключа для User1
+2023-06-07 11:46:05,562 DEBUG transport.py Транспорт завершает работу.
+2023-06-07 11:46:13,268 DEBUG client.py Using USERNAME = User2, PASSWD = User2.
+2023-06-07 11:46:13,331 DEBUG client.py Keys sucsessfully loaded.
+2023-06-07 11:46:13,860 DEBUG transport.py Server response = {'response': 511, 'data': '0c12c3c899d4feda16e763cdb5daebcd1a90a4a4b54d6ab57abb0972b60061e4997da3439f2cd7bf53649d1e003dc396f601f23f0030b2de38e42fe2a779887f'}.
+2023-06-07 11:46:14,884 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': []}
+2023-06-07 11:46:14,884 DEBUG transport.py Запущен процесс - приёмник сообщений с сервера.
+2023-06-07 11:46:25,008 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-07 11:46:25,065 DEBUG client.py Keys sucsessfully loaded.
+2023-06-07 11:46:25,590 DEBUG transport.py Server response = {'response': 511, 'data': '5bde922b3262457e89685217344cc03237ac87836f9f3c0e2708263bbfa9759575e96861143865c8a81d8d06ee8a3cd1097d5034d09b33adbfc4fe2ee9e1d7c2'}.
+2023-06-07 11:46:26,614 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': []}
+2023-06-07 11:46:26,614 DEBUG transport.py Запущен процесс - приёмник сообщений с сервера.
+2023-06-07 11:46:34,027 DEBUG transport.py Запрос публичного ключа для User2
+2023-06-07 11:46:41,661 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686131201.206913, 'sender': 'User1', 'destination': 'User2', 'message_text': '49tJ2BfY4ygby/NzBzd0cYsiQElJjCIsdA8/wRMUNSqTNAJL2IL+vF+/i/TGQUd3MpHXoAqHmkhqFNFLC4Tvg+7Gpr5IDZmhpgZE1CUemaf0kG8X+kl3CnSooY4jR55K1OlffN3QRkMW/bv6PV/udY3iZwZp5Mfi2wCyeIwZrynSZA8nxSB7CeYYz4t7mpbDjighq2MB73ogt3Y6osuU4yticE1+PbSN+kXrZBAykZKMw646wJI/QNehswAQ5+G4rkjsOfH1cOzBGVD9wqaxaDlkJosu2GlIvim3yyz7xubJva6SoMFV3D1DagVo6FDAo782x9A5MjnA2xpoACmK7Q=='}
+2023-06-07 11:46:41,661 DEBUG transport.py Получено сообщение от пользователя User1:49tJ2BfY4ygby/NzBzd0cYsiQElJjCIsdA8/wRMUNSqTNAJL2IL+vF+/i/TGQUd3MpHXoAqHmkhqFNFLC4Tvg+7Gpr5IDZmhpgZE1CUemaf0kG8X+kl3CnSooY4jR55K1OlffN3QRkMW/bv6PV/udY3iZwZp5Mfi2wCyeIwZrynSZA8nxSB7CeYYz4t7mpbDjighq2MB73ogt3Y6osuU4yticE1+PbSN+kXrZBAykZKMw646wJI/QNehswAQ5+G4rkjsOfH1cOzBGVD9wqaxaDlkJosu2GlIvim3yyz7xubJva6SoMFV3D1DagVo6FDAo782x9A5MjnA2xpoACmK7Q==
+2023-06-07 11:46:41,661 INFO transport.py Отправлено сообщение для пользователя User2
+2023-06-07 11:46:46,342 DEBUG transport.py Запрос публичного ключа для User1
+2023-06-07 11:46:51,095 DEBUG transport.py Транспорт завершает работу.
+2023-06-07 11:46:51,698 DEBUG transport.py Потеряно соединение с сервером.
+2023-06-07 11:46:52,190 DEBUG transport.py Транспорт завершает работу.
+2023-06-07 16:48:32,549 DEBUG client.py Using USERNAME = User1, PASSWD = User1.
+2023-06-07 16:48:32,624 DEBUG client.py Keys sucsessfully loaded.
+2023-06-07 16:48:33,186 DEBUG transport.py Server response = {'response': 511, 'data': '6e3c5b6388b136b746845fa010fb884d93b0df6a90716b0df12bd9d51c89189c6384c5af8a2ee32b88d4502a022a1763575b6dff07db32946bb663ecb234d316'}.
+2023-06-07 16:48:34,220 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': ['User2']}
+2023-06-07 16:48:34,235 DEBUG transport.py Запущен процесс - приёмник сообщений с сервера.
+2023-06-07 16:48:49,105 DEBUG client.py Using USERNAME = User2, PASSWD = User2.
+2023-06-07 16:48:49,171 DEBUG client.py Keys sucsessfully loaded.
+2023-06-07 16:48:49,700 DEBUG transport.py Server response = {'response': 511, 'data': '2f74bf79ec7c93e34b3bc7c59b3af83b3fa1dc5a3ca1fe9f341801cde0819e4aa3f98b38be63997c53cdb253876a8f0586c04b2a314702c85962aad933ac496c'}.
+2023-06-07 16:48:50,718 DEBUG transport.py Принято ответ с сервера с контакт листом: {'response': 202, 'alert': ['User1']}
+2023-06-07 16:48:50,731 DEBUG transport.py Запущен процесс - приёмник сообщений с сервера.
+2023-06-07 16:48:54,336 DEBUG transport.py Запрос публичного ключа для User1
+2023-06-07 16:48:57,235 INFO transport.py Отправлено сообщение для пользователя User1
+2023-06-07 16:48:57,811 DEBUG transport.py Принято сообщение с сервера: {'action': 'message', 'time': 1686149336.6217349, 'sender': 'User2', 'destination': 'User1', 'message_text': 'RgJ8oMZ/EsMQ1+ymZpyjYnf7OYlIcQnBbxyM5Bx5KNUzhqdzOHh/KYEf1wxe13zOf7Au7jWw3O0SENZWSiEVRE52oPbRNgyVpeAMjaV6lmKvjdl+iyt0e255LdurzHbRMKGo6QvZ/FXZwxgjaZ1kbZD3CUNPs9gmUG3uxMdTBmjPjGyNBr7Qj98YL+04pz+PuJY8EF0LUoE7DZF/7niZUjPPmc+eBP2dyQ9AXILVvf1hu3R/eegL4gSmLyJZd2fv5SEbTXmV4hdAVVsGYRXUPmLlOdHbqLaKJj31dPS6RfKcd0byhDbYWxfiRC8Vto5Z1PwtrDlqAMzrWKSGQu8C2A=='}
+2023-06-07 16:48:57,811 DEBUG transport.py Получено сообщение от пользователя User2:RgJ8oMZ/EsMQ1+ymZpyjYnf7OYlIcQnBbxyM5Bx5KNUzhqdzOHh/KYEf1wxe13zOf7Au7jWw3O0SENZWSiEVRE52oPbRNgyVpeAMjaV6lmKvjdl+iyt0e255LdurzHbRMKGo6QvZ/FXZwxgjaZ1kbZD3CUNPs9gmUG3uxMdTBmjPjGyNBr7Qj98YL+04pz+PuJY8EF0LUoE7DZF/7niZUjPPmc+eBP2dyQ9AXILVvf1hu3R/eegL4gSmLyJZd2fv5SEbTXmV4hdAVVsGYRXUPmLlOdHbqLaKJj31dPS6RfKcd0byhDbYWxfiRC8Vto5Z1PwtrDlqAMzrWKSGQu8C2A==
+2023-06-07 16:49:00,225 DEBUG transport.py Запрос публичного ключа для User2
+2023-06-07 16:49:02,326 DEBUG transport.py Транспорт завершает работу.
+2023-06-07 16:49:03,776 DEBUG transport.py Потеряно соединение с сервером.
+2023-06-07 16:49:05,289 DEBUG transport.py Транспорт завершает работу.
